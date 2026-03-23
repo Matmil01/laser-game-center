@@ -1,4 +1,3 @@
 <template>
-  <h1>This is the "/" page"</h1>
-    <p>Fuck you</p>
+  <h1 class="text-3xl font-bold">This is the "/" page"</h1>
 </template>
