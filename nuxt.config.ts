@@ -1,6 +1,7 @@
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
+  ssr: false,
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: ['~/assets/main.css'],
@@ -13,9 +14,6 @@ export default defineNuxtConfig({
       meta: [
         { name: 'description', content: 'Velkommen til Laser Game Center!' }
       ],
-      // link: [
-      //   { rel: 'icon', type: 'image/png', href: '/favicon.png' }
-      // ]
     }
   }
 })
