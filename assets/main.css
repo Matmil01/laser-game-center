@@ -1,1 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 @import "tailwindcss";
+
+@font-face {
+	font-family: 'Ethnocentric';
+	src: url('/fonts/Ethnocentric-Regular.otf') format('opentype');
+}
+
+body {
+	font-family: 'Quantico', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Ethnocentric', sans-serif;
+}
