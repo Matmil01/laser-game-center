@@ -1,11 +1,7 @@
 <template>
     <div
         ref="scrollContainer"
-        class="flex gap-4 overflow-x-auto hide-scrollbar"
-        @mouseenter="isPaused = true"
-        @mouseleave="isPaused = false"
-        @touchstart="isPaused = true"
-        @touchend="isPaused = false"
+        class="flex gap-4 overflow-hidden"
     >
         <!-- Render duplicated items to create a seamless infinite scroll effect -->
         <div class="flex-none" v-for="(foto, index) in duplicatedFotos" :key="index">
@@ -19,7 +15,6 @@ import { ref, computed, onMounted, watch } from 'vue';
 import fotosData from "../assets/data/fotos.json";
 
 const scrollContainer = ref(null);
-const isPaused = ref(false);
 let scrollAmount = 0;
 let animationStarted = false;
 
@@ -37,20 +32,17 @@ function startAutoScroll() {
 
     function autoScroll() {
         if (!container) return;
-        if (!isPaused.value) {
-            scrollAmount += scrollStep;
-            container.scrollLeft = scrollAmount;
+        
+        scrollAmount += scrollStep;
+        container.scrollLeft = scrollAmount;
 
-            // Check if we've scrolled exactly halfway (the length of the original list)
-            if (scrollAmount >= container.scrollWidth / 2) {
-                // Reset back to the start
-                scrollAmount = 0;
-                container.scrollLeft = 0;
-            }
-        } else {
-            // Keep track of the current scroll position if user scrolls manually while paused
-            scrollAmount = container.scrollLeft;
+        // Check if we've scrolled exactly halfway (the length of the original list)
+        if (scrollAmount >= container.scrollWidth / 2) {
+            // Reset back to the start
+            scrollAmount = 0;
+            container.scrollLeft = 0;
         }
+        
         requestAnimationFrame(autoScroll);
     }
 
@@ -72,14 +64,3 @@ watch(scrollContainer, (el) => {
     if (el) startAutoScroll();
 });
 </script>
-
-<style scoped>
-/* Hide scrollbar for an aesthetic look, while keeping it functionally scrollable */
-.hide-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-.hide-scrollbar::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
-}
-</style>
