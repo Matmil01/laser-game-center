@@ -14,3 +14,12 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Ethnocentric', sans-serif;
 }
+
+@theme {
+    --color-neonred: #FF0000;
+    --color-neongreen: #00FF00;
+    --color-neonorange: #FF9D00;
+    --color-neonpink: #FF009D;
+    --color-neonblue: #00C3FF;
+    --color-neonblack: #000000;
+}
