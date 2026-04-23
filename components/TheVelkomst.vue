@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-8 p-8">
+  <div class="flex gap-8 p-8 mb-7">
     <!-- Velkommen Box -->
     <div class="flex-1 border-2 border-neon-neonred p-6 relative">
       <h2 class="text-2xl mb-4 text-white">VELKOMMEN</h2>

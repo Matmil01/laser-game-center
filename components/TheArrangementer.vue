@@ -1,13 +1,13 @@
 <template>
-  <div class="flex gap-8 p-8 items-center justify-start md:justify-center relative">
+  <div class="flex gap-8 p-8 items-center justify-start md:justify-center relative mb-7">
     <!-- Venstre pil -->
-    <button
-      @click="prevSlide"
-      class="z-20 absolute left-2 md:left-0 top-1/2 -translate-y-1/2 p-2"
-      aria-label="Forrige"
-    >
-      <img src="/icons/pil.svg" alt="Forrige" class="w-10 h-10 rotate-180" />
-    </button>
+<button
+  @click="prevSlide"
+  class="z-20 absolute left-2 md:left-0 top-1/2 -translate-y-1/2 p-2"
+  aria-label="Forrige"
+>
+  <img src="/icons/pil.svg" alt="Forrige" class="w-10 h-10 rotate-180 cursor-pointer transition" />
+</button>
 
     <!-- Billedboks (skjules på mobil) -->
     <div class="hidden md:flex flex-1 max-w-lg max-h-100 min-h-75 min-w-75 justify-center overflow-hidden">
@@ -28,14 +28,14 @@
 
     <!-- Højre pil -->
     <button
-      @click="nextSlide"
-      class="z-20 absolute right-2 md:right-0 top-1/2 -translate-y-1/2 p-2"
-      aria-label="Næste"
+    @click="nextSlide"
+    class="z-20 absolute right-2 md:right-0 top-1/2 -translate-y-1/2 p-2"
+    aria-label="Næste"
     >
-      <img src="/icons/pil.svg" alt="Næste" class="w-10 h-10" />
+    <img src="/icons/pil.svg" alt="Næste" class="w-10 h-10 cursor-pointer transition" />
     </button>
-  </div>
-</template>
+    </div>
+    </template>
 
 <script>
 export default {

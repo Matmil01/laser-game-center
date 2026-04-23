@@ -1,7 +1,7 @@
 <template>
     <div
         ref="scrollContainer"
-        class="flex gap-4 overflow-hidden"
+        class="flex gap-4 overflow-hidden mb-7"
     >
         <!-- Render duplicated items to create a seamless infinite scroll effect -->
         <div class="flex-none" v-for="(foto, index) in duplicatedFotos" :key="index">

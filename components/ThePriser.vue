@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-8 p-8">
+  <div class="flex gap-8 p-8 mb-7">
     <!-- Card 1 - Green -->
     <div class="flex-1 border-neon-neongreen p-8 flex flex-col">
       <h2 class="text-2xl text-white text-center mb-6">1. SPIL</h2>
