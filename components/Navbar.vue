@@ -1,8 +1,7 @@
 <template>
-  <nav class="px-6 py-4">
-    <ul class="flex gap-6">
-      <li><NuxtLink to="/">Home</NuxtLink></li>
-      <li><NuxtLink to="/about">About</NuxtLink></li>
-    </ul>
+<div class="bg-black">
+  <nav class="px-6 py-4 w-[1200px] mx-auto">
+      <h1 class="text-white text-2xl font-bold">JEG FUCKING ELSKER LASERTAG</h1>
   </nav>
+</div>
 </template>
