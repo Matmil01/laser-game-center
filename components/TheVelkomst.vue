@@ -11,7 +11,7 @@ Centeret befinder sig på Mønstervej 60, 6854 Henne og er indrettet som et mør
 Max 5 personer per hold. Er I flere, laver vi turnering - og kun ét hold kan vinde æren.
 Tør DU!?
       </p>
-      <button class="absolute bottom-4 right-4 border-neon-neonred px-6 py-2 text-white hover:bg-neonred transition-colors">
+      <button class="neon-pulse-button absolute bottom-4 right-4 border-neon-neonred hover:border-neon-neongreen px-6 py-2 text-white transition-all">
         BOOK NU
       </button>
     </div>
@@ -26,5 +26,20 @@ Tør DU!?
   </div>
 </template>
 
-<script>
+<script setup>
 </script>
+
+<style scoped>
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow: 0 0 18px 3px #00FF00;
+  }
+  50% {
+    box-shadow: 0 0 30px 8px #00FF00;
+  }
+}
+
+.neon-pulse-button:hover {
+  animation: neonPulse 1.5s ease-in-out infinite;
+}
+</style>
