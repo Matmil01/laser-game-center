@@ -1,3 +1,3 @@
 <template>
-<h1 class="text-3xl font-bold text-blue-500">Tailwind works</h1>
+<h1 class="text-black text-2xl font-bold">ADMIN</h1>
 </template>

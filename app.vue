@@ -1,8 +1,8 @@
 <template>
-  <Navbar />
+  <TheNavbar />
   <NuxtPage />
 </template>
 
 <script setup>
-import Navbar  from '@/components/Navbar.vue'
+import TheNavbar from '@/components/TheNavbar.vue'
 </script>
