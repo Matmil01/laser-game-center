@@ -30,6 +30,7 @@
 
     <div class="w-300 mx-auto">
         <TheVelkomst />
+        <TheAktuelt />
         <TheFotokarrusel />
         <ThePriser />
         <TheReglerForSpillet />
@@ -38,6 +39,4 @@
         <TheFooter />
     </div>
 </div>
-
-
 </template>
