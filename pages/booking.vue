@@ -1,6 +1,7 @@
 
 <template>
-  <div class="max-w-lg mx-auto px-6 py-10">
+  <div class="w-300 mx-auto px-6 py-10">
+    <div class="max-w-lg">
     <h1 class="text-3xl font-black mb-8 tracking-wide">Book tid</h1>
 
     <p class="mb-8 text-white font-semibold">OBS! Minimum 4 personer til en booking</p>
@@ -119,6 +120,7 @@
         </button>
       </template>
     </form>
+    </div>
   </div>
 </template>
 
