@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="emit('login')" class="space-y-4 max-w-xs">
     <div>
-      <label class="block text-sm font-medium mb-1 cursor-pointer">Adgangskode</label>
+      <label class="block text-sm font-medium mb-1 cursor-pointer text-white">Adgangskode</label>
       <input
         :value="passwordInput"
         @input="emit('update:passwordInput', $event.target.value)"

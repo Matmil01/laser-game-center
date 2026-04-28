@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-5xl mx-auto px-6 py-10">
 
-    <h1 class="text-3xl font-black mb-8 tracking-wide">Admin</h1>
+    <h1 class="text-3xl font-black mb-8 tracking-wide text-white">Admin</h1>
 
     <!-- Login -->
     <AdminLogin
@@ -61,8 +61,8 @@
 </template>
 
 <script setup>
-import AdminLogin from '~/components/booking/admin/AdminLogin.vue'
-// import BookingerTab from '~/components/booking/admin/BookingerTab.vue'
+import AdminLogin from '~/components/booking/AdminLogin.vue'
+import BookingerTab from '~/components/booking/admin/BookingerTab.vue'
 import KontaktTab from '~/components/booking/admin/KontaktTab.vue'
 import AktueltTab from '~/components/booking/admin/AktueltTab.vue'
 

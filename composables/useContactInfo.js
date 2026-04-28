@@ -1,3 +1,4 @@
+// Fetcher alt fra settings.php (kontakt info men også aktuelt fields)
 export const useContactInfo = () => {
   const contact = useState('contactInfo', () => null)
 
