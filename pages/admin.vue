@@ -4,7 +4,7 @@
     <h1 class="text-3xl font-black mb-8 tracking-wide">Admin</h1>
 
     <!-- Login -->
-    <AdminLoginForm
+    <AdminLogin
       v-if="!authed"
       :passwordInput="passwordInput"
       :loginError="loginError"
@@ -61,7 +61,7 @@
 </template>
 
 <script setup>
-// import AdminLoginForm from '~/components/booking/admin/AdminLoginForm.vue'
+import AdminLogin from '~/components/booking/admin/AdminLogin.vue'
 // import BookingerTab from '~/components/booking/admin/BookingerTab.vue'
 import KontaktTab from '~/components/booking/admin/KontaktTab.vue'
 // import AktueltTab from '~/components/booking/admin/AktueltTab.vue'
