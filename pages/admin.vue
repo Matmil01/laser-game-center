@@ -64,7 +64,7 @@
 import AdminLogin from '~/components/booking/admin/AdminLogin.vue'
 // import BookingerTab from '~/components/booking/admin/BookingerTab.vue'
 import KontaktTab from '~/components/booking/admin/KontaktTab.vue'
-// import AktueltTab from '~/components/booking/admin/AktueltTab.vue'
+import AktueltTab from '~/components/booking/admin/AktueltTab.vue'
 
 const config  = useRuntimeConfig()
 const apiUrl  = config.public.apiUrl
