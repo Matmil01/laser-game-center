@@ -1,6 +1,8 @@
 <template>
-  <TheNavbar />
-  <NuxtPage />
+  <div class="bg-black">
+    <TheNavbar />
+    <NuxtPage />
+  </div>
 </template>
 
 <script setup>
