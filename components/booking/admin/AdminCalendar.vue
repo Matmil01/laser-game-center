@@ -247,7 +247,7 @@
         </ul>
       </div>
 
-      <Tooltip :tooltip-slot="calTooltipSlot" :tooltip-style="calTooltipStyle" />
+      <BookingAdminTooltip :tooltip-slot="calTooltipSlot" :tooltip-style="calTooltipStyle" />
 
     </div>
   </div>

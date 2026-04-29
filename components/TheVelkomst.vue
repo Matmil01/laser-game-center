@@ -6,7 +6,7 @@
       <p class="text-white mb-2">
        Kom og prøv en spændende aktivitet for dig og dine venner, hvor to hold dyster mod hinanden iført laservåben og veste i en gammel, forfalden bygning, hvor kun det stærkeste hold overlever. <br><br>
 
-Centeret befinder sig på Mønstervej 60, 6854 Henne og er indrettet som et mørkt labyrintområde på to etager fyldt med gemmesteder og overraskelser. <br><br>
+Centeret befinder sig på {{ contact.address }} og er indrettet som et mørkt labyrintområde på to etager fyldt med gemmesteder og overraskelser. <br><br>
 
 Max 5 personer per hold. Er I flere, laver vi turnering - og kun ét hold kan vinde æren. <br>
 Tør DU!?
@@ -25,6 +25,8 @@ Tør DU!?
 </template>
 
 <script setup>
+const { contact, fetchContactInfo } = useContactInfo()
+onMounted(fetchContactInfo)
 </script>
 
 <style scoped>

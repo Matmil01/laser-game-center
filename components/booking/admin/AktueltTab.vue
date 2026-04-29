@@ -1,6 +1,6 @@
 <template>
   <div class="bg-black border-2 border-neonred shadow-[0_0_18px_2px_var(--color-neonred)] p-6 mb-2">
-    <h2 class="font-black text-lg mb-4 tracking-wide">Aktuelt</h2>
+    <h2 class="font-black text-lg mb-4 tracking-wide text-white">Aktuelt</h2>
     <form @submit.prevent="saveAktuelt" class="flex flex-col gap-4 max-w-sm">
       <div>
         <button
@@ -14,11 +14,11 @@
           >
             <span v-if="settingsAktueltVisible" class="w-2.5 h-2.5 bg-neongreen block" />
           </span>
-          <span class="text-sm font-medium">Vis på hjemmeside</span>
+          <span class="text-sm font-medium text-white">Vis på hjemmeside</span>
         </button>
       </div>
       <div>
-        <label class="block text-sm font-medium mb-1">Titel</label>
+        <label class="block text-sm font-medium mb-1 text-white">Titel</label>
         <input
           v-model="settingsAktueltTitle"
           type="text"
@@ -28,7 +28,7 @@
         />
       </div>
       <div>
-        <label class="block text-sm font-medium mb-1">Tekst</label>
+        <label class="block text-sm font-medium mb-1 text-white">Tekst</label>
         <textarea
           v-model="settingsAktueltText"
           maxlength="500"
@@ -38,7 +38,7 @@
         />
       </div>
       <div>
-        <label class="block text-sm font-medium mb-1">Ikon</label>
+        <label class="block text-sm font-medium mb-1 text-white">Ikon</label>
         <div class="flex gap-3">
           <button
             v-for="icon in ['icon1', 'icon2']"
@@ -52,7 +52,7 @@
         </div>
       </div>
       <div>
-        <label class="block text-sm font-medium mb-1">Kantfarve</label>
+        <label class="block text-sm font-medium mb-1 text-white">Kantfarve</label>
         <div class="flex gap-3 flex-wrap">
           <button
             v-for="c in themeColors"

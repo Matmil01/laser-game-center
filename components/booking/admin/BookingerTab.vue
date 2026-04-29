@@ -1,6 +1,6 @@
 <template>
   <div class="bg-black border-2 border-neonred shadow-[0_0_18px_2px_var(--color-neonred)] p-6 mb-8">
-    <h2 class="font-black text-lg tracking-wide mb-4">Sæt tilgængelighed</h2>
+    <h2 class="font-black text-lg tracking-wide mb-4 text-white">Sæt tilgængelighed</h2>
     <form @submit.prevent="setWindow">
       <div class="flex flex-col sm:flex-row gap-5">
         <DatePicker
@@ -15,7 +15,7 @@
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block text-sm font-medium mb-1">Fra</label>
+              <label class="block text-sm font-medium mb-1 text-white">Fra</label>
               <select
                 v-model="windowFrom"
                 required
@@ -25,7 +25,7 @@
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1">Til</label>
+              <label class="block text-sm font-medium mb-1 text-white">Til</label>
               <select
                 v-model="windowTo"
                 required

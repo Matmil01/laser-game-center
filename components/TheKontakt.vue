@@ -5,15 +5,15 @@
   <h2 class="text-white text-2xl font-bold text-center mb-8">Kontakt os</h2>
   <div class="mb-12.5 ml-22.5 flex text-xl items-center text-white">
     <img src="/icons/lokation.svg" alt="Adresse ikon" class="w-6 h-6 mr-4" />
-    <span class="text-white text-center">Mønstervej 60 6854 Henne</span>
+    <span class="text-white text-center">{{ contact.address }}</span>
   </div>
   <div class="mb-12.5 ml-22.5 flex text-xl items-center text-white">
     <img src="/icons/telefon.svg" alt="Telefon ikon" class="w-6 h-6 mr-4" />
-    <a href="tel:+4512345678" class="hover:underline">+45 29 46 56 75</a>
+    <a v-if="contact.phone" :href="`tel:${contact.phone.replace(/\s/g, '')}`" class="hover:underline">{{ contact.phone }}</a>
   </div>
   <div class="ml-22.5 flex text-xl items-center text-white">
     <img src="/icons/mail.svg" alt="Mail ikon" class="w-6 h-6 mr-4" />
-    <a href="mailto:lasergamecenter@gmail.com" class="hover:underline">lasergamecenter@gmail.com</a>
+    <a v-if="contact.email" :href="`mailto:${contact.email}`" class="hover:underline">{{ contact.email }}</a>
   </div>
 </div>
     <!-- Maps -->
@@ -28,5 +28,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
+const { contact, fetchContactInfo } = useContactInfo()
+onMounted(fetchContactInfo)
 </script>
