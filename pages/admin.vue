@@ -40,6 +40,7 @@
         <BookingerTab
           :password="password"
           :authed="authed"
+          @unauthorized="handleUnauthorized"
         />
       </template>
       <template v-if="activeTab === 'aktuelt'">
@@ -47,6 +48,7 @@
           :password="password"
           :authed="authed"
           @update-aktuelt-info="onContactInfoUpdated"
+          @unauthorized="handleUnauthorized"
         />
       </template>
       <template v-if="activeTab === 'contact'">
@@ -54,6 +56,7 @@
           :password="password"
           :authed="authed"
           @update-contact-info="onContactInfoUpdated"
+          @unauthorized="handleUnauthorized"
         />
       </template>
     </template>
@@ -124,5 +127,10 @@ function logout() {
   localStorage.removeItem(PASSWORD_KEY)
   password.value = ''
   authed.value = false
+}
+
+function handleUnauthorized() {
+  logout()
+  loginError.value = 'Session udløbet – log ind igen.'
 }
 </script>
