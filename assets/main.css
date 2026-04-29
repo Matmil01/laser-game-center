@@ -7,6 +7,10 @@
 	src: url('/fonts/Ethnocentric-Regular.otf') format('opentype');
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	font-family: 'Quantico', sans-serif;
 }

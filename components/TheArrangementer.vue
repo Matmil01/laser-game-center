@@ -1,4 +1,5 @@
 <template>
+  <div id="arrangementer">
   <h2 class="md:text-4xl font-bold text-white text-center">arrangementer</h2>
   <div class="flex gap-8 p-8 items-center justify-start md:justify-center relative mb-7">
     <!-- Venstre pil -->
@@ -77,6 +78,7 @@
     >
       <img src="/icons/pil.svg" alt="Næste" class="w-10 h-10 cursor-pointer transition" />
     </button>
+  </div>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex md:flex-row gap-8 p-8">
+  <div id="kontakt" class="flex md:flex-row gap-8 p-8">
 <!-- Kontakt os -->
 <div class="flex-1 p-6 border-neon-neonred">
   <h2 class="text-white text-2xl font-bold text-center mb-8">Kontakt os</h2>

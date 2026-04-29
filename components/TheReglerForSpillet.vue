@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-8 p-8 mb-7">
+  <div id="regler" class="flex gap-8 p-8 mb-7">
     <!-- Left Box - Rules Text -->
     <div class="flex-1 border-neon-neonred p-6">
       <h2 class="text-2xl mb-4 text-white">REGLER FOR SPILLET</h2>

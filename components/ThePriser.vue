@@ -1,4 +1,5 @@
 <template>
+  <div id="priser">
     <h2 class=" md:text-4xl font-bold text-white text-center">PRISER</h2>
   <div class="flex gap-8 p-8 mb-7">
     <!-- Card 1 - Green -->
@@ -52,6 +53,7 @@
       
       <p class="text-white text-xs text-center mt-8 opacity-70">inkluderer intro & resultater</p>
     </div>
+  </div>
   </div>
 </template>
 

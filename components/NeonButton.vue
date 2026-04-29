@@ -1,5 +1,14 @@
 <template>
+  <NuxtLink 
+    v-if="to"
+    :to="to"
+    class="neon-pulse-button border-neon-neonred hover:border-neon-neongreen px-6 py-2 text-white transition-all inline-block no-underline"
+    :class="customClass"
+  >
+    <slot>{{ text }}</slot>
+  </NuxtLink>
   <button 
+    v-else
     class="neon-pulse-button border-neon-neonred hover:border-neon-neongreen px-6 py-2 text-white transition-all"
     :class="customClass"
     @click="handleClick"
@@ -15,6 +24,10 @@ defineProps({
     default: ''
   },
   customClass: {
+    type: String,
+    default: ''
+  },
+  to: {
     type: String,
     default: ''
   }
