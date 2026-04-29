@@ -87,6 +87,8 @@ const props = defineProps({
   authed:   Boolean
 })
 
+const emit = defineEmits(['unauthorized'])
+
 const config  = useRuntimeConfig()
 const apiUrl  = config.public.apiUrl
 
@@ -195,6 +197,7 @@ async function loadData(navigate = false) {
     if (res.db_error) loadError.value = res.db_error
     if (navigate && newDate.value) calendarRef.value?.navigateTo(newDate.value, true)
   } catch (e) {
+    if (e.status === 401) { emit('unauthorized'); return }
     loadError.value = e.data?.error ?? 'Kunne ikke hente data.'
   } finally {
     slotsLoading.value = false
@@ -215,6 +218,7 @@ async function setWindow() {
       ? `Tilgængelighed oprettet: kl. ${windowFrom.value}–${windowTo.value}`
       : `Tilgængelighed opdateret: kl. ${windowFrom.value}–${windowTo.value}`
   } catch (e) {
+    if (e.status === 401) { emit('unauthorized'); return }
     addError.value = e.data?.error ?? 'Kunne ikke gemme tilgængelighed.'
   } finally {
     addLoading.value = false
@@ -232,6 +236,7 @@ async function deleteWindow(compositeId) {
     await loadData()
     if (editingSlot.value?.id === compositeId) editingSlot.value = null
   } catch (e) {
+    if (e.status === 401) { emit('unauthorized'); return }
     alert(e.data?.error ?? 'Kunne ikke slette tidsramme.')
   } finally {
     deletingId.value = null
@@ -249,6 +254,7 @@ async function cancelBooking(compositeId) {
     await loadData()
     editingSlot.value = null
   } catch (e) {
+    if (e.status === 401) { emit('unauthorized'); return }
     alert(e.data?.error ?? 'Kunne ikke annullere booking.')
   } finally {
     cancellingId.value = null
@@ -267,6 +273,7 @@ async function updateWindow({ id: compositeId, from, to }) {
     await loadData()
     editingSlot.value = null
   } catch (e) {
+    if (e.status === 401) { emit('unauthorized'); return }
     modalSaveError.value = e.data?.error ?? 'Kunne ikke opdatere tidsramme.'
   } finally {
     modalSaving.value = false

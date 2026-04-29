@@ -36,7 +36,7 @@ const props = defineProps({
   password: String,
   authed: Boolean
 })
-const emit = defineEmits(['update-contact-info'])
+const emit = defineEmits(['update-contact-info', 'unauthorized'])
 
 const config  = useRuntimeConfig()
 const apiUrl  = config.public.apiUrl
@@ -84,6 +84,7 @@ async function saveSettings() {
     settingsPhone.value   = data.phone   ?? ''
     emit('update-contact-info', { ...data })
   } catch (e) {
+    if (e.status === 401) { emit('unauthorized'); return }
     settingsSaveError.value = e.data?.error ?? 'Kunne ikke gemme.'
   } finally {
     settingsSaving.value = false
