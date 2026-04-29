@@ -29,14 +29,13 @@
     </div>
 
     <div class="w-300 mx-auto">
-        <TheVelkomst />
         <TheAktuelt />
+        <TheVelkomst />
         <TheFotokarrusel />
         <ThePriser />
         <TheReglerForSpillet />
         <TheArrangementer />
         <TheKontakt />
-        <TheFooter />
     </div>
 </div>
 </template>

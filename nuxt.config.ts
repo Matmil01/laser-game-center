@@ -1,12 +1,26 @@
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
-  ssr: false,
   compatibilityDate: '2025-07-15',
+  ssr: false,
   devtools: { enabled: true },
+  runtimeConfig: {
+    public: {
+      apiUrl: '', // set in .env
+    },
+  },
   css: ['~/assets/main.css'],
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    server: {
+      proxy: {
+        '/server-api': {
+          target: 'https://laser.matmil.dk',
+          changeOrigin: true,
+          secure: false,
+        }
+      }
+    }
   },
   app: {
     head: {

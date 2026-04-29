@@ -15,9 +15,6 @@
 
     <!-- Admin-panel med tabs -->
     <template v-else>
-      <!-- log ud button -->
-      <button class="mb-8 text-sm text-neonred hover:text-neonred/70 cursor-pointer" @click="logout">Log ud</button>
-
       <div class="flex border-b-2 border-neonred mb-8">
         <button
           class="px-4 py-2 font-bold text-sm border-b-2 transition-colors"
@@ -34,6 +31,10 @@
           :class="activeTab === 'contact' ? 'border-neonred text-white' : 'border-transparent text-zinc-400 hover:text-white'"
           @click="activeTab = 'contact'"
         >Kontakt</button>
+        <button
+          class="ml-auto px-4 py-2 font-bold text-sm border-b-2 border-transparent text-neonred hover:text-neonred/70 cursor-pointer transition-colors"
+          @click="logout"
+        >Log ud</button>
       </div>
       <template v-if="activeTab === 'booking'">
         <BookingerTab

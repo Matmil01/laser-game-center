@@ -1,21 +1,21 @@
 <template>
   <div class="bg-black border-2 border-neonred shadow-[0_0_18px_2px_var(--color-neonred)] p-6 mb-2">
-    <h2 class="font-black text-lg mb-4 tracking-wide">Opdater kontaktoplysninger</h2>
+    <h2 class="font-black text-lg mb-4 tracking-wide text-white">Opdater kontaktoplysninger</h2>
     <form @submit.prevent="saveSettings" class="flex flex-col gap-3 max-w-sm">
       <div>
-        <label class="block text-sm font-medium mb-1">CVR</label>
+        <label class="block text-sm font-medium mb-1 text-white">CVR</label>
         <input v-model="settingsCvr" type="text" maxlength="20" class="border border-zinc-600 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-neonred text-sm bg-zinc-800 text-white" />
       </div>
       <div>
-        <label class="block text-sm font-medium mb-1">Adresse</label>
+        <label class="block text-sm font-medium mb-1 text-white">Adresse</label>
         <input v-model="settingsAddress" type="text" maxlength="200" class="border border-zinc-600 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-neonred text-sm bg-zinc-800 text-white" />
       </div>
       <div>
-        <label class="block text-sm font-medium mb-1">Email</label>
+        <label class="block text-sm font-medium mb-1 text-white">Email</label>
         <input v-model="settingsEmail" type="email" maxlength="200" class="border border-zinc-600 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-neonred text-sm bg-zinc-800 text-white" />
       </div>
       <div>
-        <label class="block text-sm font-medium mb-1">Telefon</label>
+        <label class="block text-sm font-medium mb-1 text-white">Telefon</label>
         <input v-model="settingsPhone" type="text" maxlength="30" class="border border-zinc-600 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-neonred text-sm bg-zinc-800 text-white" />
       </div>
       <button
