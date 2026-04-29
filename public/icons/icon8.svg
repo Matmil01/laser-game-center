@@ -11,6 +11,6 @@
     </style>
   </defs>
   <circle class="cls-1" cx="56.44" cy="56.44" r="52.44"/>
-  <rect x="49.8" y="17.16" width="15.7" height="79.46" rx="7.85" ry="7.85" transform="translate(-23.29 59.84) rotate(-46.7)"/>
-  <rect x="48.05" y="15.51" width="15.7" height="79.46" rx="7.85" ry="7.85" transform="translate(60.25 -23.23) rotate(48.51)"/>
+  <rect x="47.02" y="21.75" width="18.31" height="42.26" rx="9.16" ry="9.16"/>
+  <circle cx="56.18" cy="81.27" r="9.86"/>
 </svg>

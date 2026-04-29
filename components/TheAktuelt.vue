@@ -8,7 +8,22 @@
 		}"
 	>
 		<div class="flex items-center gap-4">
-			<img v-if="contact.aktuelt_icon && ['icon1', 'icon2'].includes(contact.aktuelt_icon)" :src="`/icons/${contact.aktuelt_icon}.svg`" class="w-16 h-16 shrink-0 object-contain select-none" alt="" />
+			<!-- mask-image trick. No need to inline the SVG markup. -->
+			<div
+				v-if="contact.aktuelt_icon"
+				class="w-16 h-16 shrink-0 select-none"
+				:style="{
+					backgroundColor: contact.aktuelt_color || '#FF9D00',
+					maskImage: `url('/icons/${contact.aktuelt_icon}.svg')`,
+					WebkitMaskImage: `url('/icons/${contact.aktuelt_icon}.svg')`,
+					maskSize: 'contain',
+					WebkitMaskSize: 'contain',
+					maskRepeat: 'no-repeat',
+					WebkitMaskRepeat: 'no-repeat',
+					maskPosition: 'center',
+					WebkitMaskPosition: 'center',
+				}"
+			/>
 			<div>
 				<h2 class="text-lg font-black tracking-wide mb-1">{{ contact.aktuelt_title || 'AKTUELT' }}</h2>
 				<p class="text-sm leading-relaxed">{{ contact.aktuelt_text }}</p>

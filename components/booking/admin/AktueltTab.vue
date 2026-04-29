@@ -39,15 +39,29 @@
       </div>
       <div>
         <label class="block text-sm font-medium mb-1 text-white">Ikon</label>
-        <div class="flex gap-3">
+        <div class="flex flex-wrap gap-3">
           <button
-            v-for="icon in ['icon1', 'icon2']"
+            v-for="icon in ['icon1', 'icon2', 'icon3', 'icon4', 'icon5', 'icon6', 'icon7', 'icon8', 'icon9']"
             :key="icon"
             type="button"
             @click="settingsAktueltIcon = icon"
             :class="['p-2 border-2 transition cursor-pointer', settingsAktueltIcon === icon ? 'border-white shadow-[0_0_6px_1px_white]' : 'border-zinc-600 hover:border-zinc-400']"
           >
-            <img :src="`/icons/${icon}.svg`" class="w-12 h-12 object-contain" :alt="icon" />
+              <!-- mask-image trick. No need to inline the SVG markup. -->
+            <div
+              class="w-12 h-12 shrink-0"
+              :style="{
+                backgroundColor: settingsAktueltIcon === icon ? settingsAktueltColor : '#ffffff',
+                maskImage: `url('/icons/${icon}.svg')`,
+                WebkitMaskImage: `url('/icons/${icon}.svg')`,
+                maskSize: 'contain',
+                WebkitMaskSize: 'contain',
+                maskRepeat: 'no-repeat',
+                WebkitMaskRepeat: 'no-repeat',
+                maskPosition: 'center',
+                WebkitMaskPosition: 'center',
+              }"
+            />
           </button>
         </div>
       </div>
@@ -91,7 +105,20 @@
         }"
       >
         <div class="flex items-center gap-4">
-          <img :src="`/icons/${settingsAktueltIcon}.svg`" class="w-16 h-16 shrink-0 object-contain" alt="" />
+          <div
+            class="w-16 h-16 shrink-0"
+            :style="{
+              backgroundColor: settingsAktueltColor,
+              maskImage: `url('/icons/${settingsAktueltIcon}.svg')`,
+              WebkitMaskImage: `url('/icons/${settingsAktueltIcon}.svg')`,
+              maskSize: 'contain',
+              WebkitMaskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              WebkitMaskRepeat: 'no-repeat',
+              maskPosition: 'center',
+              WebkitMaskPosition: 'center',
+            }"
+          />
           <div>
             <h2 class="text-lg font-black tracking-wide mb-1">{{ settingsAktueltTitle || 'AKTUELT' }}</h2>
             <p class="text-sm leading-relaxed">{{ settingsAktueltText }}</p>
@@ -108,7 +135,7 @@ const props = defineProps({
   password: String,
   authed: Boolean
 })
-const emit = defineEmits(['update-aktuelt-info'])
+const emit = defineEmits(['update-aktuelt-info', 'unauthorized'])
 
 const config  = useRuntimeConfig()
 const apiUrl  = config.public.apiUrl
@@ -167,6 +194,7 @@ async function saveAktuelt() {
       aktuelt_visible: settingsAktueltVisible.value ? '1' : '0',
     })
   } catch (e) {
+    if (e.status === 401) { emit('unauthorized'); return }
     aktueltSaveError.value = e.data?.error ?? 'Kunne ikke gemme.'
   } finally {
     aktueltSaving.value = false
