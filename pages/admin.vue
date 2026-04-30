@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <BookingNav />
   <div class="max-w-5xl mx-auto px-6 py-10">
 
     <h1 class="text-3xl font-black mb-8 tracking-wide text-white">Admin</h1>
@@ -19,17 +21,17 @@
         <button
           class="px-4 py-2 font-bold text-sm border-b-2 transition-colors"
           :class="activeTab === 'booking' ? 'border-neonred text-white' : 'border-transparent text-zinc-400 hover:text-white'"
-          @click="activeTab = 'booking'"
+          @click="tryChangeTab('booking')"
         >Bookinger</button>
         <button
           class="px-4 py-2 font-bold text-sm border-b-2 transition-colors"
           :class="activeTab === 'aktuelt' ? 'border-neonred text-white' : 'border-transparent text-zinc-400 hover:text-white'"
-          @click="activeTab = 'aktuelt'"
+          @click="tryChangeTab('aktuelt')"
         >Aktuelt</button>
         <button
           class="px-4 py-2 font-bold text-sm border-b-2 transition-colors"
           :class="activeTab === 'contact' ? 'border-neonred text-white' : 'border-transparent text-zinc-400 hover:text-white'"
-          @click="activeTab = 'contact'"
+          @click="tryChangeTab('contact')"
         >Kontakt</button>
         <button
           class="ml-auto px-4 py-2 font-bold text-sm border-b-2 border-transparent text-neonred hover:text-neonred/70 cursor-pointer transition-colors"
@@ -49,6 +51,7 @@
           :authed="authed"
           @update-aktuelt-info="onContactInfoUpdated"
           @unauthorized="handleUnauthorized"
+          @dirty-change="v => dirtyTabs.aktuelt = v"
         />
       </template>
       <template v-if="activeTab === 'contact'">
@@ -57,14 +60,17 @@
           :authed="authed"
           @update-contact-info="onContactInfoUpdated"
           @unauthorized="handleUnauthorized"
+          @dirty-change="v => dirtyTabs.contact = v"
         />
       </template>
     </template>
+  </div>
   </div>
 
 </template>
 
 <script setup>
+import BookingNav from '~/components/booking/BookingNav.vue'
 import AdminLogin from '~/components/booking/AdminLogin.vue'
 import BookingerTab from '~/components/booking/admin/BookingerTab.vue'
 import KontaktTab from '~/components/booking/admin/KontaktTab.vue'
@@ -89,6 +95,14 @@ const authed        = ref(false)
 const password      = ref('')
 
 const activeTab    = ref('booking')
+const dirtyTabs    = reactive({ aktuelt: false, contact: false })
+
+function tryChangeTab(tab) {
+  const currentDirty = dirtyTabs[activeTab.value]
+  if (currentDirty && !window.confirm('Du har ændringer der ikke er gemt. Vil du forlade fanen?')) return
+  dirtyTabs[activeTab.value] = false
+  activeTab.value = tab
+}
 
 // Henter gemt adgangskode fra localStorage, så admin ikke skal logge ind igen ved sideopdatering.
 onMounted(() => {

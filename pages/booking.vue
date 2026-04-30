@@ -1,7 +1,9 @@
 
 <template>
-  <div class="w-300 mx-auto px-6 py-10">
-    <div class="max-w-lg">
+  <div>
+    <BookingNav />
+  <div class="w-full max-w-2xl mx-auto px-4 py-10">
+    <div>
       <h1 class="text-3xl text-white mb-8 tracking-wide">Book tid</h1>
 
       <p class="mb-8 text-white font-semibold">OBS! Minimum 4 personer til en booking</p>
@@ -35,9 +37,11 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script setup>
+import BookingNav from '~/components/booking/BookingNav.vue'
 import BookingForm from '~/components/booking/public/BookingForm.vue'
 import DatePicker from '~/components/booking/DatePicker.vue'
 

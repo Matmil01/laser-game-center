@@ -1,6 +1,6 @@
 // Timeslots og datoformatering bruges i både admin- og bookingkomponenter.
 // Samme værdier og regler (dansk lokale, tidszone) så de er samlet her.
-export const timeSlotOptions = Array.from({ length: 32 }, (_, i) => {
+export const timeSlotOptions = Array.from({ length: 34 }, (_, i) => {
   const total = 7 * 60 + i * 30
   return `${String(Math.floor(total / 60)).padStart(2, '0')}:${String(total % 60).padStart(2, '0')}`
 })

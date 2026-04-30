@@ -1,6 +1,6 @@
 <template>
 <div class="bg-black pb-2">
-    <footer class="px-6 py-4 w-300 mx-auto text-center text-white text-sm opacity-70">
+    <footer class="px-4 py-4 w-full max-w-2xl mx-auto text-center text-white text-sm opacity-70">
         © {{ new Date().getFullYear() }} Laser Game Center | CVR {{ contact.cvr }} | {{ contact.phone }} | {{ contact.address }}
     </footer>
     <div class="flex justify-center gap-4 mb-4">

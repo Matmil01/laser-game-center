@@ -28,9 +28,9 @@
     <div v-if="selectedTime">
       <label class="block text-sm font-medium mb-2 text-white">
         Antal spil: <span class="font-bold">{{ numGames }}</span>
-        <span class="text-zinc-400 font-normal ml-2">({{ numGames * 30 }} min - kl. {{ selectedTime }}–{{ endTimePreview }})</span>
+        <span class="block text-zinc-400 font-normal text-xs mt-0.5">{{ numGames * 30 }} min · kl. {{ selectedTime }}–{{ endTimePreview }}</span>
       </label>
-      <div class="flex gap-2">
+      <div class="flex flex-wrap gap-2">
         <button
           v-for="n in selectedMaxGames"
           :key="n"

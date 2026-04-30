@@ -135,7 +135,7 @@ const props = defineProps({
   password: String,
   authed: Boolean
 })
-const emit = defineEmits(['update-aktuelt-info', 'unauthorized'])
+const emit = defineEmits(['update-aktuelt-info', 'unauthorized', 'dirty-change'])
 
 const config  = useRuntimeConfig()
 const apiUrl  = config.public.apiUrl
@@ -148,6 +148,12 @@ const settingsAktueltVisible = ref(true)
 const aktueltSaving          = ref(false)
 const aktueltSaveError       = ref('')
 const aktueltSaveInfo        = ref('')
+const aktueltLoaded          = ref(false)
+
+watch(
+  [settingsAktueltTitle, settingsAktueltText, settingsAktueltIcon, settingsAktueltColor, settingsAktueltVisible],
+  () => { if (aktueltLoaded.value) emit('dirty-change', true) }
+)
 
 const themeColors = [
   { name: 'NeonRed',    hex: '#FF0000' },
@@ -166,6 +172,8 @@ async function loadSettings() {
     settingsAktueltColor.value   = data.aktuelt_color   ?? '#FF9D00'
     settingsAktueltVisible.value = data.aktuelt_visible !== '0'
     emit('update-aktuelt-info', { ...data })
+    await nextTick()
+    aktueltLoaded.value = true
   } catch {}
 }
 
@@ -186,6 +194,7 @@ async function saveAktuelt() {
       },
     })
     aktueltSaveInfo.value = 'Gemt!'
+    emit('dirty-change', false)
     emit('update-aktuelt-info', {
       aktuelt_title: settingsAktueltTitle.value,
       aktuelt_text: settingsAktueltText.value,

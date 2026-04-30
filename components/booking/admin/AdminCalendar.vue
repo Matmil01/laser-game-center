@@ -125,7 +125,10 @@
                 v-for="slot in (calSlotsByDate[day.key] || [])"
                 :key="slot.id"
                 :class="[
-                  'absolute left-0.5 right-0.5 px-1.5 py-1 box-border flex flex-col justify-start gap-0.5 cursor-pointer transition-[filter] duration-150 overflow-hidden hover:brightness-[1.08]',
+                  'absolute left-0.5 right-0.5 box-border flex cursor-pointer transition-[filter] duration-150 overflow-hidden hover:brightness-[1.08]',
+                  (slot.duration_min ?? 60) <= 30
+                    ? 'items-center px-1.5 py-0'
+                    : 'flex-col justify-start px-1.5 py-1 gap-0.5',
                   slot._type === 'window' ? 'z-0 text-neongreen' : (slot.is_booked ? 'z-1 text-white' : 'z-1 text-black')
                 ]"
                 :style="{ ...calBookingStyle(slot.slot_time, slot.duration_min ?? 60), background: calSlotColor(slot), opacity: day.isPast ? 0.35 : (slot._type === 'window' ? 0.55 : 1) }"
@@ -133,9 +136,18 @@
                 @mouseenter="(e) => showCalTooltip(slot, e)"
                 @mouseleave="hideCalTooltip"
               >
-                <div class="font-bold text-[0.72rem] leading-tight truncate">{{ slot._type === 'window' ? 'Tilgængelig' : (slot.is_booked ? (slot.name || 'Booket') : 'Ledig') }}</div>
-                <div class="text-[0.65rem] opacity-90 truncate">{{ slot.slot_time.slice(0,5) }}–{{ calSlotEndTime(slot.slot_time, slot.duration_min ?? 60) }}</div>
-                <div v-if="slot.is_booked && slot.participants" class="text-[0.65rem] opacity-90 truncate">{{ slot.participants }} pers.</div>
+                <!-- Short slot (≤ 30 min): single condensed line -->
+                <template v-if="(slot.duration_min ?? 60) <= 30">
+                  <span class="text-[0.63rem] font-bold leading-none truncate shrink-0">{{ slot.slot_time.slice(0,5) }}</span>
+                  <span class="text-[0.63rem] leading-none mx-0.5 opacity-60 shrink-0">·</span>
+                  <span class="text-[0.63rem] leading-none truncate opacity-90">{{ slot._type === 'window' ? 'Tilgængelig' : (slot.is_booked ? (slot.name || 'Booket') : 'Ledig') }}</span>
+                </template>
+                <!-- Normal slot -->
+                <template v-else>
+                  <div class="font-bold text-[0.72rem] leading-tight truncate">{{ slot._type === 'window' ? 'Tilgængelig' : (slot.is_booked ? (slot.name || 'Booket') : 'Ledig') }}</div>
+                  <div class="text-[0.65rem] opacity-90 truncate">{{ slot.slot_time.slice(0,5) }}–{{ calSlotEndTime(slot.slot_time, slot.duration_min ?? 60) }}</div>
+                  <div v-if="slot.is_booked && slot.participants && (slot.duration_min ?? 60) > 45" class="text-[0.65rem] opacity-90 truncate">{{ slot.participants }} pers.</div>
+                </template>
               </div>
             </div>
           </div>
@@ -263,8 +275,8 @@ const props = defineProps({
 
 const emit = defineEmits(['refresh', 'delete-slot', 'cancel-booking', 'select-date', 'open-slot'])
 
-// tidssøjlen vises fra 07:00 til 20:00
-const CAL_HOURS = Array.from({ length: 14 }, (_, i) => `${String(i + 7).padStart(2, '0')}:00`)
+// tidssøjlen vises fra 07:00 til 21:00
+const CAL_HOURS = Array.from({ length: 15 }, (_, i) => `${String(i + 7).padStart(2, '0')}:00`)
 const CAL_START_MIN = 7 * 60  // offset til CSS top-beregning
 const CAL_HOUR_PX = 52        // højde per time i pixels
 // Ugedagsnavne fra mandag – 2024-01-01 er anchor fordi det er en mandag

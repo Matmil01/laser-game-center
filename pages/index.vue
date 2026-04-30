@@ -1,5 +1,6 @@
 <template>
 <div class="bg-black min-h-screen justify-center">
+    <TheNavbar />
     <div class="sm:h-[570px] h-90">
         <div
             class="absolute mt-15 top-0 left-0 w-full sm:h-[570px] h-90 overflow-hidden z-0"

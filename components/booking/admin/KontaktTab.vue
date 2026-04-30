@@ -36,7 +36,7 @@ const props = defineProps({
   password: String,
   authed: Boolean
 })
-const emit = defineEmits(['update-contact-info', 'unauthorized'])
+const emit = defineEmits(['update-contact-info', 'unauthorized', 'dirty-change'])
 
 const config  = useRuntimeConfig()
 const apiUrl  = config.public.apiUrl
@@ -48,6 +48,12 @@ const settingsPhone = ref('')
 const settingsSaving = ref(false)
 const settingsSaveError = ref('')
 const settingsSaveInfo = ref('')
+const kontaktLoaded = ref(false)
+
+watch(
+  [settingsCvr, settingsAddress, settingsEmail, settingsPhone],
+  () => { if (kontaktLoaded.value) emit('dirty-change', true) }
+)
 
 async function loadSettings() {
   try {
@@ -57,6 +63,8 @@ async function loadSettings() {
     settingsEmail.value   = data.email   ?? ''
     settingsPhone.value   = data.phone   ?? ''
     emit('update-contact-info', { ...data })
+    await nextTick()
+    kontaktLoaded.value = true
   } catch {}
 }
 
@@ -76,6 +84,7 @@ async function saveSettings() {
       },
     })
     settingsSaveInfo.value = 'Gemt!'
+    emit('dirty-change', false)
     // Henter data igen efter gem, så formularen viser præcis det serveren har gemt
     const data = await $fetch(`${apiUrl}/settings.php`)
     settingsCvr.value     = data.cvr     ?? ''
