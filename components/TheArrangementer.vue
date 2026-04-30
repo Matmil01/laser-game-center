@@ -13,19 +13,19 @@
 
     <!-- Billedboks (skjules på mobil) -->
     <transition
-      :enter-active-class="direction === 'left' 
-        ? 'transition-all duration-500 ease-in-out' 
+      :enter-active-class="direction === 'left'
+        ? 'transition-all duration-500 ease-in-out'
         : 'transition-all duration-500 ease-in-out'"
-      :leave-active-class="direction === 'left' 
-        ? 'transition-all duration-500 ease-in-out' 
+      :leave-active-class="direction === 'left'
+        ? 'transition-all duration-500 ease-in-out'
         : 'transition-all duration-500 ease-in-out'"
-      :enter-from-class="direction === 'left' 
-        ? '-translate-x-full opacity-0' 
+      :enter-from-class="direction === 'left'
+        ? '-translate-x-full opacity-0'
         : 'translate-x-full opacity-0'"
       enter-to-class="translate-x-0 opacity-100"
       leave-from-class="translate-x-0 opacity-100"
-      :leave-to-class="direction === 'left' 
-        ? 'translate-x-full opacity-0' 
+      :leave-to-class="direction === 'left'
+        ? 'translate-x-full opacity-0'
         : '-translate-x-full opacity-0'"
       mode="out-in"
     >
@@ -43,19 +43,19 @@
 
     <!-- Tekstboks -->
     <transition
-      :enter-active-class="direction === 'left' 
-        ? 'transition-all duration-500 ease-in-out' 
+      :enter-active-class="direction === 'left'
+        ? 'transition-all duration-500 ease-in-out'
         : 'transition-all duration-500 ease-in-out'"
-      :leave-active-class="direction === 'left' 
-        ? 'transition-all duration-500 ease-in-out' 
+      :leave-active-class="direction === 'left'
+        ? 'transition-all duration-500 ease-in-out'
         : 'transition-all duration-500 ease-in-out'"
-      :enter-from-class="direction === 'left' 
-        ? '-translate-x-full opacity-0' 
+      :enter-from-class="direction === 'left'
+        ? '-translate-x-full opacity-0'
         : 'translate-x-full opacity-0'"
       enter-to-class="translate-x-0 opacity-100"
       leave-from-class="translate-x-0 opacity-100"
-      :leave-to-class="direction === 'left' 
-        ? 'translate-x-full opacity-0' 
+      :leave-to-class="direction === 'left'
+        ? 'translate-x-full opacity-0'
         : '-translate-x-full opacity-0'"
       mode="out-in"
     >
@@ -90,32 +90,32 @@ export default {
       direction: 'right',
       slides: [
         {
-          image: "/photos/stag-prank-bachelor-party.jpg",
-          alt: "Arrangement 1",
+          image: "/photos/lasergame-spil-oksboel-10.webp",
+          alt: "Kvinde, der gemmer sig, mens hun spiller lasergame",
           title: "Fødselsdag",
           text: "Gør fødselsdagen ekstra spændende med lasergame!\nVed børnefødselsdage spiller fødselaren gratis ved opfyldelse af minimumskrav, hvilket skaber en særlig oplevelse og en dag, børnene sent vil glemme.\nDette kræver min. booking af to spil for mindst 6 personer! Gratis fødselsar er min. 8 personer",
         },
         {
-          image: "/photos/race-planet-lasergame.jpg",
-          alt: "Arrangement 2",
+          image: "/photos/lasergame-spil-oksboel-11.webp",
+          alt: "To kvinder går mod hinanden iført lasergame-udstyr",
           title: "Team Building",
           text: "Gennem intense lasergame-oplevelser styrkes relationer og fællesskab på en sjov og anderledes måde.\nDet er en oplagt aktivitet for virksomheder, foreninger eller grupper.",
         },
         {
-          image: "/photos/F for får.png",
-          alt: "Arrangement 3",
+          image: "/photos/lasergame-spil-oksboel-4.webp",
+          alt: "Kvinde og gruppe venner spiller lasergame sammen",
           title: "Selskaber og private arrangementer",
           text: "Uanset om det er en vennegruppe, familieevent eller anden fejring, kan centeret bookes uden for højsæsonen.\nDet giver mulighed for en anderledes og aktiv oplevelse, hvor alle kan være med.",
         },
         {
-          image: "/photos/hof-van-eckberge-lasergame-reserveren.jpg",
-          alt: "Arrangement 4",
+          image: "/photos/lasergame-spil-oksboel-16.webp",
+          alt: "Mennesker iført lasergame-udstyr venter på spillets start",
           title: "Mobil lasergame – vi kommer til jer",
           text: "Med den mobile løsning fra OX-Consult kan lasergame rykkes ud til jeres egen lokation.\nPerfekt til skoler, events eller firmaer, der ønsker en fleksibel løsning.",
         },
         {
-          image: "/photos/skærmbillede 2026-04-20 kl. 11.12.45.png",
-          alt: "Arrangement 5",
+          image: "/photos/lasergame-spil-oksboel-1.webp",
+          alt: "Mand der sigter med laserpistol",
           title: "Fleksible faciliteter",
           text: "Har I en hal eller et større lokale, kan det nemt omdannes til en lasergame-bane ved brug af borde, kasser eller gymnastikredskaber.\nDet giver en unik og tilpasset oplevelse i jeres egne rammer.",
         },      ],
@@ -133,4 +133,3 @@ export default {
   },
 };
 </script>
-
