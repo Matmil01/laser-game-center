@@ -6,12 +6,12 @@
             class="absolute mt-15 top-0 left-0 w-full sm:h-[570px] h-90 overflow-hidden z-0"
         >
             <img
-                src="/photos/F for får.png"
+                src="/photos/hero.webp"
                 aria-hidden="true"
                 class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none blur-sm scale-105"
             />
             <video
-                src="/videos/placeholder.mp4"
+                src="/videos/hero.mp4"
                 autoplay
                 loop
                 muted
