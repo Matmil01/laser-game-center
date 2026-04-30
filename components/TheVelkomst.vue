@@ -11,7 +11,7 @@ Centeret befinder sig på {{ contact.address }} og er indrettet som et mørkt la
 Max 5 personer per hold. Er I flere, laver vi turnering - og kun ét hold kan vinde æren. <br>
 Tør DU!?
       </p>
-      <NeonButton custom-class="absolute bottom-4 right-4" text="BOOK NU" />
+      <NeonButton to="/booking" custom-class="absolute bottom-4 right-4" text="BOOK NU" />
     </div>
 
     <!-- Episk Box -->
@@ -28,6 +28,3 @@ Tør DU!?
 const { contact, fetchContactInfo } = useContactInfo()
 onMounted(fetchContactInfo)
 </script>
-
-<style scoped>
-</style>

@@ -131,7 +131,7 @@
                     : 'flex-col justify-start px-1.5 py-1 gap-0.5',
                   slot._type === 'window' ? 'z-0 text-neongreen' : (slot.is_booked ? 'z-1 text-white' : 'z-1 text-black')
                 ]"
-                :style="{ ...calBookingStyle(slot.slot_time, slot.duration_min ?? 60), background: calSlotColor(slot), opacity: day.isPast ? 0.35 : (slot._type === 'window' ? 0.55 : 1) }"
+                :style="{ ...calBookingStyle(slot.slot_time, slot.duration_min ?? 60), background: calSlotColor(slot), opacity: day.isPast ? 0.35 : (slot._type === 'window' ? 0.75 : 1) }"
                 @click.stop="$emit('open-slot', slot)"
                 @mouseenter="(e) => showCalTooltip(slot, e)"
                 @mouseleave="hideCalTooltip"

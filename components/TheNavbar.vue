@@ -2,7 +2,7 @@
 <div class="bg-black sticky top-0 z-50">
   <nav class="px-6 py-4 w-300 mx-auto flex items-center justify-between">
 <h1 class="flex items-center gap-2">
-  <a href="#top"><img src="/icons/LogoHvid.svg" alt="Logo" class="h-15 inline-block" /></a>
+  <a href="#top"><img src="/icons/logoHvid.svg" alt="Logo" class="h-15 inline-block" /></a>
 </h1> 
     
     <div class="flex items-center gap-6">
