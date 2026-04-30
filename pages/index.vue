@@ -1,5 +1,5 @@
 <template>
-<div class="bg-black min-h-screen justify-center">
+<div id="top" class="bg-black min-h-screen justify-center">
     <TheNavbar />
     <div class="sm:h-[570px] h-90">
         <div

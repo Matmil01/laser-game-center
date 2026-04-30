@@ -4,6 +4,7 @@
 <h1 class="flex items-center gap-2">
   <NuxtLink to="/"><img src="/icons/LogoHvid.svg" alt="Logo" class="h-15 inline-block" /></NuxtLink>
 </h1> 
+    <h1><a href="#top" class="text-white text-2xl font-bold">LASER GAME CENTER</a></h1>
     <div class="flex items-center gap-6">
       <a href="#priser" class="text-white text-sm hover:text-neonred transition-colors duration-300">Priser</a>
       <a href="#regler" class="text-white text-sm hover:text-neonred transition-colors duration-300">Regler</a>
