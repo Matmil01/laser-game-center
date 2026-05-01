@@ -1,0 +1,33 @@
+# ---------------------------
+# CORS (your existing config)
+# ---------------------------
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type"
+
+# ---------------------------
+# BLOCK SENSITIVE FILES
+# ---------------------------
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "\.(env|ini|log|sql|bak|config)$">
+    Require all denied
+</FilesMatch>
+
+<Files ".env">
+    Require all denied
+</Files>
+
+# ---------------------------
+# PROTECT PHP SOURCE FILES (optional hardening)
+# ---------------------------
+<FilesMatch "\.php$">
+    Require all granted
+</FilesMatch>
+
+# ---------------------------
+# DISABLE DIRECTORY LISTING
+# ---------------------------
+Options -Indexes
