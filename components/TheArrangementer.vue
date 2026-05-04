@@ -1,5 +1,5 @@
 <template>
-  <div id="arrangementer">
+  <div id="arrangementer" class="scroll-mt-24">
   <h2 class="md:text-4xl font-bold text-white text-center">arrangementer</h2>
   <div class="flex gap-8 p-8 items-center justify-start md:justify-center relative mb-7">
     <!-- Venstre pil -->

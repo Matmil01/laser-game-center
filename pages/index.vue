@@ -32,8 +32,8 @@
     <div class="w-300 mx-auto">
         <TheAktuelt />
         <TheVelkomst />
-        <TheFotokarrusel />
         <ThePriser />
+        <TheFotokarrusel />
         <TheReglerForSpillet />
         <TheArrangementer />
         <TheKontakt />
