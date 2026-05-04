@@ -5,7 +5,7 @@
             <h2 class="text-white text-2xl font-bold text-left">
                 Kontakt os
             </h2>
-            <div class="flex flex-col h-full justify-between items-start py-14">
+            <div class="flex flex-col h-9/12 justify-between items-start py-14 pl-13">
                 <div class="flex text-xl items-center text-white">
                     <img
                         src="/icons/telefon.svg"
@@ -43,21 +43,21 @@
                         contact.address
                     }}</span>
                 </div>
-                <div class="flex space-x-4 items-center justify-center w-full">
-                    <NeonButton
-                        to="https://maps.app.goo.gl/qDZTcvpdaMJsfkLv9"
-                        text="Se på Google Maps"
-                    />
-                    <NeonButton
-                        to="https://maps.apple/p/AWPbK8TbMZgfJM"
-                        text="Se på Apple Maps"
-                    />
-                </div>
+            </div>
+            <div class="flex space-x-4 items-center justify-center w-full">
+                <NeonButton
+                    to="https://maps.app.goo.gl/qDZTcvpdaMJsfkLv9"
+                    text="Se på Google Maps"
+                />
+                <NeonButton
+                    to="https://maps.apple/p/AWPbK8TbMZgfJM"
+                    text="Se på Apple Maps"
+                />
             </div>
         </div>
         <!-- Maps -->
         <div
-            class="flex-1 border-neon-neonred p-4 md:p-6 mt-6 md:mt-0 box-border"
+            class="flex-1 border-neon-neonred md:p-6 mt-6 md:mt-0 box-border"
         >
             <img
                 src="/icons/lasergamecenter-i-danmark.svg"
