@@ -4,7 +4,7 @@
       class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
       @click.self="$emit('close')"
     >
-      <div class="bg-black border-2 border-neonred shadow-[0_0_18px_2px_var(--color-neonred)] w-full max-w-md mx-4 p-6">
+      <div class="bg-black border-neon-subtle-neonred w-full max-w-md mx-4 p-6">
 
         <div class="flex items-start justify-between mb-5">
           <div>

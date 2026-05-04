@@ -14,7 +14,7 @@
     <button
       type="submit"
       :disabled="loginLoading"
-      class="w-full bg-black text-white border-2 border-neonred shadow-[0_0_8px_1px_var(--color-neonred)] py-2 font-bold tracking-wide hover:border-neongreen hover:shadow-[0_0_8px_1px_var(--color-neongreen)] disabled:opacity-50 cursor-pointer transition"
+      class="w-full bg-black text-white border-neon-subtle-neonred py-2 font-bold tracking-wide hover:border-neon-subtle-neongreen disabled:opacity-50 cursor-pointer transition"
     >
       {{ loginLoading ? 'Checker…' : 'Log ind' }}
     </button>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black border-2 border-neonred shadow-[0_0_18px_2px_var(--color-neonred)] p-6 mb-2">
+  <div class="bg-black border-neon-subtle-neonred p-6 mb-2">
     <h2 class="font-black text-lg mb-4 tracking-wide text-white">Aktuelt</h2>
     <form @submit.prevent="saveAktuelt" class="flex flex-col gap-4 max-w-sm">
       <div>
@@ -24,7 +24,7 @@
           type="text"
           maxlength="100"
           placeholder="AKTUELT"
-          class="border border-zinc-600 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-neonred text-sm bg-zinc-800 text-white"
+          class="border-neon-subtle-neonred px-3 py-2 w-full focus:outline-none text-sm bg-black text-white"
         />
       </div>
       <div>
@@ -34,7 +34,7 @@
           maxlength="500"
           rows="4"
           placeholder="Skriv tekst"
-          class="border border-zinc-600 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-neonred text-sm bg-zinc-800 text-white resize-y"
+          class="border-neon-subtle-neonred px-3 py-2 w-full focus:outline-none text-sm bg-black text-white resize-y"
         />
       </div>
       <div>
@@ -86,7 +86,7 @@
       <button
         type="submit"
         :disabled="aktueltSaving"
-        class="bg-black text-white border-2 border-neonred shadow-[0_0_8px_1px_var(--color-neonred)] px-5 py-2 font-bold tracking-wide hover:border-neongreen hover:shadow-[0_0_8px_1px_var(--color-neongreen)] disabled:opacity-50 cursor-pointer transition w-full"
+        class="bg-black text-white border-neon-subtle-neonred px-5 py-2 font-bold tracking-wide hover:border-neon-subtle-neongreen disabled:opacity-50 cursor-pointer transition w-full"
       >
         {{ aktueltSaving ? 'Gemmer…' : 'Gem' }}
       </button>
@@ -121,7 +121,7 @@
           />
           <div>
             <h2 class="text-lg font-black tracking-wide mb-1">{{ settingsAktueltTitle || 'AKTUELT' }}</h2>
-            <p class="text-sm leading-relaxed">{{ settingsAktueltText }}</p>
+            <p class="text-sm leading-relaxed whitespace-pre-wrap">{{ settingsAktueltText }}</p>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black border-2 border-neonred shadow-[0_0_18px_2px_var(--color-neonred)] p-6 mb-8">
+  <div class="bg-black border-neon-subtle-neonred p-6 mb-8">
     <h2 class="font-black text-lg tracking-wide mb-4 text-white">Sæt tilgængelighed</h2>
     <form @submit.prevent="setWindow">
       <div class="flex flex-col sm:flex-row gap-5">
@@ -19,7 +19,7 @@
               <select
                 v-model="windowFrom"
                 required
-                class="border border-zinc-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neonred bg-zinc-800 text-white cursor-pointer w-full text-sm"
+                class="border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white cursor-pointer w-full text-sm"
               >
                 <option v-for="t in timeSlotOptions" :key="t" :value="t">{{ t }}</option>
               </select>
@@ -29,7 +29,7 @@
               <select
                 v-model="windowTo"
                 required
-                class="border border-zinc-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neonred bg-zinc-800 text-white cursor-pointer w-full text-sm"
+                class="border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white cursor-pointer w-full text-sm"
               >
                 <option v-for="t in windowToOptions" :key="t" :value="t">{{ t }}</option>
               </select>
@@ -39,7 +39,7 @@
           <button
             type="submit"
             :disabled="addLoading || !newDate"
-            class="bg-black text-white border-2 border-neonred shadow-[0_0_8px_1px_var(--color-neonred)] px-5 py-2 font-bold tracking-wide hover:border-neongreen hover:shadow-[0_0_8px_1px_var(--color-neongreen)] disabled:opacity-50 cursor-pointer transition"
+            class="bg-black text-white border-neon-subtle-neonred px-5 py-2 font-bold tracking-wide hover:border-neon-subtle-neongreen disabled:opacity-50 cursor-pointer transition"
           >
             {{ addLoading ? 'Gemmer…' : 'Gem tilgængelighed' }}
           </button>
@@ -95,7 +95,7 @@ const apiUrl  = config.public.apiUrl
 const windows      = ref([])
 const bookings     = ref([])
 const slotsLoading = ref(false)
-const newDate      = ref('')
+const newDate      = ref(calToKey(new Date()))
 const windowFrom   = ref('10:00')
 const windowTo     = ref('21:00')
 const addLoading   = ref(false)

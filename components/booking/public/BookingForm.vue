@@ -12,10 +12,10 @@
           :key="slot.start_time"
           type="button"
           :class="[
-            'border px-3 py-2 text-sm font-medium transition-colors cursor-pointer',
+            'px-3 py-2 text-sm font-medium transition-colors cursor-pointer',
             selectedTime === slot.start_time
-              ? 'bg-neonred text-white border-neonred'
-              : 'border-zinc-600 text-zinc-300 hover:border-neonred hover:text-white'
+              ? 'border-neon-subtle-neongreen text-white'
+              : 'border-neon-subtle-neonred text-zinc-300 hover:border-neon-subtle-neongreen hover:text-white'
           ]"
           @click="selectTime(slot)"
         >
@@ -36,10 +36,10 @@
           :key="n"
           type="button"
           :class="[
-            'px-4 py-2 border text-sm font-semibold transition-colors cursor-pointer',
+            'px-4 py-2 text-sm font-semibold transition-colors cursor-pointer',
             numGames === n
-              ? 'bg-neonred border-neonred text-white'
-              : 'border-zinc-600 text-zinc-300 hover:border-neonred hover:text-white'
+              ? 'border-neon-subtle-neongreen text-white'
+              : 'border-neon-subtle-neonred text-zinc-300 hover:border-neon-subtle-neongreen hover:text-white'
           ]"
           @click="numGames = n"
         >
@@ -58,19 +58,19 @@
           type="range"
           min="4"
           max="99"
-          class="w-full accent-neonred cursor-pointer"
+          class="w-full accent-neongreen cursor-pointer"
         />
         <div class="flex justify-center items-center gap-3 mt-2">
           <button
             type="button"
             :disabled="participants <= 4"
-            class="w-9 h-9 border border-zinc-600 text-lg font-bold hover:border-neonred text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer"
+            class="w-9 h-9 border-neon-subtle-neonred text-lg font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer"
             @click="participants = Math.max(4, participants - 1)"
           >−</button>
           <button
             type="button"
             :disabled="participants >= 99"
-            class="w-9 h-9 border border-zinc-600 text-lg font-bold hover:border-neonred text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer"
+            class="w-9 h-9 border-neon-subtle-neonred text-lg font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer"
             @click="participants = Math.min(99, participants + 1)"
           >+</button>
         </div>
@@ -85,19 +85,19 @@
         </div>
         <div>
           <label class="block text-sm font-medium mb-1 cursor-pointer text-white">Navn</label>
-          <input v-model="form.name" type="text" required placeholder="Dit fulde navn" class="w-full border border-zinc-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neonred bg-zinc-800 text-white placeholder-zinc-500 cursor-pointer" />
+          <input v-model="form.name" type="text" required placeholder="Dit fulde navn" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
         </div>
         <div>
           <label class="block text-sm font-medium mb-1 cursor-pointer text-white">Email</label>
-          <input v-model="form.email" type="email" required placeholder="din@mail.dk" class="w-full border border-zinc-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neonred bg-zinc-800 text-white placeholder-zinc-500 cursor-pointer" />
+          <input v-model="form.email" type="email" required placeholder="din@mail.dk" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
         </div>
         <div>
           <label class="block text-sm font-medium mb-1 cursor-pointer text-white">Telefon</label>
-          <input v-model="form.phone" type="tel" required placeholder="Dit telefonnummer" class="w-full border border-zinc-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neonred bg-zinc-800 text-white placeholder-zinc-500 cursor-pointer" />
+          <input v-model="form.phone" type="tel" required placeholder="Dit telefonnummer" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
         </div>
         <div>
           <label class="block text-sm font-medium mb-1 cursor-pointer text-white">Besked <span class="text-zinc-500 font-normal">(valgfri)</span></label>
-          <textarea v-model="form.note" rows="3" placeholder="Skriv gerne hvad du ønsker hjælp til…" class="w-full border border-zinc-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neonred bg-zinc-800 text-white placeholder-zinc-500 resize-none" />
+          <textarea v-model="form.note" rows="3" placeholder="Skriv gerne hvad du ønsker hjælp til…" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500 resize-none" />
         </div>
       </div>
 
@@ -106,7 +106,7 @@
       <button
         type="submit"
         :disabled="loading"
-        class="w-full bg-black text-white border-2 border-neonred shadow-[0_0_8px_1px_var(--color-neonred)] py-3 font-bold tracking-wide hover:border-neongreen hover:shadow-[0_0_8px_1px_var(--color-neongreen)] disabled:opacity-50 transition-colors"
+        class="w-full bg-black text-white border-neon-subtle-neonred py-3 font-bold tracking-wide hover:border-neon-subtle-neongreen disabled:opacity-50 transition-colors cursor-pointer"
       >
         {{ loading ? 'Sender…' : 'Bekræft booking' }}
       </button>

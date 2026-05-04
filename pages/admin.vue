@@ -23,17 +23,17 @@
       <div class="flex border-b-2 border-neonred mb-8">
         <button
           class="px-4 py-2 font-bold text-sm border-b-2 transition-colors"
-          :class="activeTab === 'booking' ? 'border-neonred text-white' : 'border-transparent text-zinc-400 hover:text-white'"
+          :class="activeTab === 'booking' ? 'border-neonred text-white' : 'border-transparent text-zinc-400 hover:text-white cursor-pointer'"
           @click="tryChangeTab('booking')"
         >Bookinger</button>
         <button
           class="px-4 py-2 font-bold text-sm border-b-2 transition-colors"
-          :class="activeTab === 'aktuelt' ? 'border-neonred text-white' : 'border-transparent text-zinc-400 hover:text-white'"
+          :class="activeTab === 'aktuelt' ? 'border-neonred text-white' : 'border-transparent text-zinc-400 hover:text-white cursor-pointer'"
           @click="tryChangeTab('aktuelt')"
         >Aktuelt</button>
         <button
           class="px-4 py-2 font-bold text-sm border-b-2 transition-colors"
-          :class="activeTab === 'contact' ? 'border-neonred text-white' : 'border-transparent text-zinc-400 hover:text-white'"
+          :class="activeTab === 'contact' ? 'border-neonred text-white' : 'border-transparent text-zinc-400 hover:text-white cursor-pointer'"
           @click="tryChangeTab('contact')"
         >Kontakt</button>
         <button

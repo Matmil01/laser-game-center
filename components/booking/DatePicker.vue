@@ -48,9 +48,12 @@ defineEmits(['dayclick'])
   --vc-day-content-hover-bg:       rgba(255, 255, 255, 0.1);
   --vc-day-content-disabled-color: #3f3f46;
 
-  font-family:  inherit;
-  color:        #ffffff;
-  border-color: #3f3f46;
+  font-family:   inherit;
+  color:         #ffffff;
+  border:        2px solid var(--color-neonred);
+  box-shadow:    0 0 8px 1px var(--color-neonred);
+  /* override v-calendar's default rounding */
+  border-radius: 0 !important;
 }
 
 .booking-datepicker .vc-title {
@@ -63,7 +66,6 @@ defineEmits(['dayclick'])
 /* Header prev/next */
 .booking-datepicker .vc-arrow {
   color:         #ffffff;
-  border-radius: 0;
 }
 
 .booking-datepicker .vc-arrow:hover {
@@ -85,7 +87,6 @@ defineEmits(['dayclick'])
 
 .booking-datepicker .vc-day-content {
   color:         #ffffff;
-  border-radius: 0;
 }
 
 .booking-datepicker .vc-day-content.vc-highlight-content-light {
@@ -104,7 +105,6 @@ defineEmits(['dayclick'])
 .booking-datepicker .vc-nav-popover-container {
   background-color: #18181b;
   border-color:     #3f3f46;
-  border-radius:    0;
 }
 
 .booking-datepicker .vc-nav-title,

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black text-white border-2 border-neonred shadow-[0_0_18px_2px_var(--color-neonred)] p-5">
+  <div class="bg-black text-white border-neon-subtle-neonred p-5">
     <div class="flex items-center justify-between mb-4">
       <h2 class="font-black text-lg tracking-wide text-white">Kalender</h2>
       <button

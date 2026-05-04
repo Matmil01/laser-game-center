@@ -26,7 +26,7 @@
 			/>
 			<div>
 				<h2 class="text-lg font-black tracking-wide mb-1">{{ contact.aktuelt_title || 'AKTUELT' }}</h2>
-				<p class="text-sm leading-relaxed">{{ contact.aktuelt_text }}</p>
+				<p class="text-sm leading-relaxed whitespace-pre-wrap">{{ contact.aktuelt_text }}</p>
 			</div>
 		</div>
 	</div>
