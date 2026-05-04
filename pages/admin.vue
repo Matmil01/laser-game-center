@@ -1,11 +1,11 @@
 <template>
   <div>
-    <BookingNav />
   <div class="max-w-5xl mx-auto px-6 py-10">
 
-    <h1 class="text-3xl font-black mb-8 tracking-wide text-white">Admin</h1>
-
     <!-- Login -->
+    <div v-if="!authed" class="flex items-center justify-center" style="min-height: calc(100vh - 12rem);">
+    <div>
+      <h1 class="text-3xl font-black mb-8 tracking-wide text-white">Log ind</h1>
     <AdminLogin
       v-if="!authed"
       :passwordInput="passwordInput"
@@ -14,9 +14,12 @@
       @update:passwordInput="val => passwordInput = val"
       @login="login"
     />
+    </div>
+    </div>
 
     <!-- Admin-panel med tabs -->
     <template v-else>
+      <h1 class="text-3xl font-black mb-8 tracking-wide text-white">Admin</h1>
       <div class="flex border-b-2 border-neonred mb-8">
         <button
           class="px-4 py-2 font-bold text-sm border-b-2 transition-colors"
@@ -70,7 +73,6 @@
 </template>
 
 <script setup>
-import BookingNav from '~/components/booking/BookingNav.vue'
 import AdminLogin from '~/components/booking/AdminLogin.vue'
 import BookingerTab from '~/components/booking/admin/BookingerTab.vue'
 import KontaktTab from '~/components/booking/admin/KontaktTab.vue'

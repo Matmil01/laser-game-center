@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <BookingNav />
+  <div class="flex items-center justify-center" style="min-height: calc(100vh - 4rem);">
   <div class="w-full max-w-2xl mx-auto px-4 py-10">
     <div>
       <h1 class="text-3xl text-white mb-8 tracking-wide">Book tid</h1>
@@ -38,10 +38,10 @@
     </div>
   </div>
   </div>
+  </div>
 </template>
 
 <script setup>
-import BookingNav from '~/components/booking/BookingNav.vue'
 import BookingForm from '~/components/booking/public/BookingForm.vue'
 import DatePicker from '~/components/booking/DatePicker.vue'
 
