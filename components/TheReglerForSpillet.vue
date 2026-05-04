@@ -14,9 +14,8 @@ Efter kampen vises både en teamscore og en individuel placering så alle ved, h
     </div>
 
     <!-- Right Box - YouTube Video -->
-    <div class="flex-1 border-neon-neonred p-6">
-      <h2 class="text-2xl mb-4 text-white">SE HVORDAN DET FOREGÅR</h2>
-      <div class="aspect-video w-full">
+    <div class="flex-1 border-neon-neonred">
+      <div class="aspect-video w-full h-full">
         <iframe
           class="w-full h-full"
           src="https://www.youtube.com/embed/kgfZIeXGzb0?rel=0&showinfo=0"

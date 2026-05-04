@@ -1,34 +1,75 @@
 <template>
-  <div id="kontakt" class="flex md:flex-row gap-8 p-8">
-<!-- Kontakt os -->
-<div class="flex-1 p-6 border-neon-neonred">
-  <h2 class="text-white text-2xl font-bold text-center mb-8">Kontakt os</h2>
-  <div class="mb-12.5 ml-22.5 flex text-xl items-center text-white">
-    <img src="/icons/lokation.svg" alt="Adresse ikon" class="w-6 h-6 mr-4" />
-    <span class="text-white text-center">{{ contact.address }}</span>
-  </div>
-  <div class="mb-12.5 ml-22.5 flex text-xl items-center text-white">
-    <img src="/icons/telefon.svg" alt="Telefon ikon" class="w-6 h-6 mr-4" />
-    <a v-if="contact.phone" :href="`tel:${contact.phone.replace(/\s/g, '')}`" class="hover:underline">{{ contact.phone }}</a>
-  </div>
-  <div class="ml-22.5 flex text-xl items-center text-white">
-    <img src="/icons/mail.svg" alt="Mail ikon" class="w-6 h-6 mr-4" />
-    <a v-if="contact.email" :href="`mailto:${contact.email}`" class="hover:underline">{{ contact.email }}</a>
-  </div>
-</div>
-    <!-- Maps -->
-<div class="flex-1 border-neon-neonred p-4 md:p-6 flex items-center justify-center mt-6 md:mt-0 box-border">      <iframe
-        src="https://www.google.com/maps?q=Mønstervej+60,+6854+Henne&output=embed"
-        class="w-full h-80 border-0"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+    <div id="kontakt" class="flex md:flex-row gap-8 p-8">
+        <!-- Kontakt os -->
+        <div class="flex-1 p-6 border-neon-neonred">
+            <h2 class="text-white text-2xl font-bold text-left">
+                Kontakt os
+            </h2>
+            <div class="flex flex-col h-full justify-between items-start py-14">
+                <div class="flex text-xl items-center text-white">
+                    <img
+                        src="/icons/telefon.svg"
+                        alt="Telefon ikon"
+                        class="w-6 h-6 mr-4"
+                    />
+                    <a
+                        v-if="contact.phone"
+                        :href="`tel:${contact.phone.replace(/\s/g, '')}`"
+                        class="hover:underline"
+                        >{{ contact.phone }}</a
+                    >
+                </div>
+
+                <div class="flex text-xl items-center text-white">
+                    <img
+                        src="/icons/mail.svg"
+                        alt="Mail ikon"
+                        class="w-6 h-6 mr-4"
+                    />
+                    <a
+                        v-if="contact.email"
+                        :href="`mailto:${contact.email}`"
+                        class="hover:underline"
+                        >{{ contact.email }}</a
+                    >
+                </div>
+                <div class="flex text-xl items-center text-white">
+                    <img
+                        src="/icons/lokation.svg"
+                        alt="Adresse ikon"
+                        class="w-6 h-6 mr-4"
+                    />
+                    <span class="text-white text-center">{{
+                        contact.address
+                    }}</span>
+                </div>
+                <div class="flex space-x-4 items-center justify-center w-full">
+                    <NeonButton
+                        to="https://maps.app.goo.gl/qDZTcvpdaMJsfkLv9"
+                        text="Se på Google Maps"
+                    />
+                    <NeonButton
+                        to="https://maps.apple/p/AWPbK8TbMZgfJM"
+                        text="Se på Apple Maps"
+                    />
+                </div>
+            </div>
+        </div>
+        <!-- Maps -->
+        <div
+            class="flex-1 border-neon-neonred p-4 md:p-6 mt-6 md:mt-0 box-border"
+        >
+            <img
+                src="/icons/lasergamecenter-i-danmark.svg"
+                alt="Kort over lokation"
+                class="w-full h-96"
+            />
+
+        </div>
     </div>
-  </div>
 </template>
 
 <script setup>
-const { contact, fetchContactInfo } = useContactInfo()
-onMounted(fetchContactInfo)
+const { contact, fetchContactInfo } = useContactInfo();
+onMounted(fetchContactInfo);
 </script>

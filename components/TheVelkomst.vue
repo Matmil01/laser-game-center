@@ -15,11 +15,16 @@ Tør DU!?
     </div>
 
     <!-- Episk Box -->
-    <div class="flex-1 border-neon-neonred p-6">
-      <h2 class="text-2xl mb-4 text-white">EPISK SEKTION</h2>
-      <p class="text-white">
-        MED LIGESÅ EPISK INDHOLD
-      </p>
+    <div class="flex-1 border-neon-neonred">
+        <video
+            src="/videos/hero.mp4"
+            style="width: 100%; height: 100%; object-fit: cover;"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="none"
+        ></video>
     </div>
   </div>
 </template>
