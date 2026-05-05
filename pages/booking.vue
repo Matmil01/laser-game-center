@@ -1,4 +1,3 @@
-
 <template>
   <div>
   <div class="flex items-center justify-center" style="min-height: calc(100vh - 4rem);">
@@ -7,6 +6,9 @@
       <h1 class="text-3xl text-white mb-8 tracking-wide">Book tid</h1>
 
       <p class="mb-8 text-white font-semibold">OBS! Minimum 4 personer til en booking</p>
+      <p v-if="!selectedDateHasSlots" class="mb-8 text-white font-semibold">
+        Ingen ledige tider? Ring til os på {{ contact.phone }} — så finder vi en løsning.
+      </p>
 
       <div v-if="success" class="bg-black border-2 border-neonred shadow-[0_0_18px_2px_var(--color-neonred)] p-6 text-center">
         <p class="text-xl font-semibold text-neongreen mb-1">Booking bekræftet!</p>
@@ -28,6 +30,7 @@
             :attributes="calendarAttributes"
             @dayclick="onDayClick"
           />
+
         </div>
         <BookingForm
           :date="date"
@@ -44,6 +47,8 @@
 <script setup>
 import BookingForm from '~/components/booking/public/BookingForm.vue'
 import DatePicker from '~/components/booking/DatePicker.vue'
+
+const { contact, fetchContactInfo } = useContactInfo()
 
 const config = useRuntimeConfig()
 const apiUrl = config.public.apiUrl
@@ -73,7 +78,11 @@ async function loadAvailableDates() {
     availableDates.value = []
   }
 }
-onMounted(loadAvailableDates)
+onMounted(() => { fetchContactInfo(); loadAvailableDates() })
+
+const selectedDateHasSlots = computed(() =>
+  date.value && availableDates.value.some(d => d.toDateString() === date.value.toDateString())
+)
 
 const calendarAttributes = computed(() => [
   ...(availableDates.value.length ? [{

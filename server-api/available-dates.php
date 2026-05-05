@@ -12,7 +12,7 @@ $today = date('Y-m-d');
 
 // Hent alle fremtidige datoer med et tilgængeligheds-vindue
 $stmt = $pdo->prepare(
-    'SELECT window_date FROM availability_windows WHERE window_date >= ? ORDER BY window_date'
+    'SELECT DISTINCT window_date FROM availability_windows WHERE window_date >= ? ORDER BY window_date'
 );
 $stmt->execute([$today]);
 $rows = $stmt->fetchAll();

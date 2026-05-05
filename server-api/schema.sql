@@ -3,8 +3,7 @@ CREATE TABLE IF NOT EXISTS availability_windows (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     window_date DATE NOT NULL,
     start_time  TIME NOT NULL,
-    end_time    TIME NOT NULL,
-    UNIQUE KEY unique_window_date (window_date)
+    end_time    TIME NOT NULL
 );
 
 -- Bookinger: en kunde booker et starttidspunkt og et antal spil inden for en tidsramme.

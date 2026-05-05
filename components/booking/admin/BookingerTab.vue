@@ -174,11 +174,6 @@ const addSlotCalAttrs = computed(() => {
 function onAddSlotDayClick(day) {
   if (!day.isDisabled) {
     newDate.value = calToKey(day.date)
-    const existing = windows.value.find(w => w.window_date === newDate.value)
-    if (existing) {
-      windowFrom.value = existing.start_time.slice(0, 5)
-      windowTo.value   = existing.end_time.slice(0, 5)
-    }
   }
 }
 

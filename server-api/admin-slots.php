@@ -86,14 +86,17 @@ if ($action === 'set_window') {
         http_response_code(400); echo json_encode(['error' => 'Tidsrammen skal være mindst 30 minutter']); exit;
     }
 
-    // Check for existing window on this date
-    $existing = $pdo->prepare('SELECT id FROM availability_windows WHERE window_date = ?');
-    $existing->execute([$date]);
-    $win = $existing->fetch();
-
-    if ($win) {
+    // Check for overlapping window on this date
+    $overlapCheck = $pdo->prepare(
+        'SELECT id FROM availability_windows
+         WHERE window_date = ?
+           AND (HOUR(start_time)*60 + MINUTE(start_time)) < ?
+           AND (HOUR(end_time)*60 + MINUTE(end_time)) > ?'
+    );
+    $overlapCheck->execute([$date, $toMin, $fromMin]);
+    if ($overlapCheck->fetch()) {
         http_response_code(409);
-        echo json_encode(['error' => 'Der er allerede en tidsramme for denne dato. Klik på den i kalenderen for at redigere.']);
+        echo json_encode(['error' => 'Den valgte tidsramme overlapper med en eksisterende tidsramme på samme dato.']);
         exit;
     }
 
@@ -127,10 +130,25 @@ if ($action === 'update_window') {
         http_response_code(400); echo json_encode(['error' => 'Tidsrammen skal være mindst 30 minutter']); exit;
     }
 
-    $stmt = $pdo->prepare('SELECT id FROM availability_windows WHERE id = ?');
+    $stmt = $pdo->prepare('SELECT id, window_date FROM availability_windows WHERE id = ?');
     $stmt->execute([$id]);
-    if (!$stmt->fetch()) {
+    $winRow = $stmt->fetch();
+    if (!$winRow) {
         http_response_code(404); echo json_encode(['error' => 'Vindue ikke fundet']); exit;
+    }
+
+    $overlapCheck = $pdo->prepare(
+        'SELECT id FROM availability_windows
+         WHERE window_date = ?
+           AND id != ?
+           AND (HOUR(start_time)*60 + MINUTE(start_time)) < ?
+           AND (HOUR(end_time)*60 + MINUTE(end_time)) > ?'
+    );
+    $overlapCheck->execute([$winRow['window_date'], $id, $toMin, $fromMin]);
+    if ($overlapCheck->fetch()) {
+        http_response_code(409);
+        echo json_encode(['error' => 'Den opdaterede tidsramme overlapper med en anden tidsramme på samme dato.']);
+        exit;
     }
 
     $check = $pdo->prepare(
