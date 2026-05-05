@@ -1,14 +1,14 @@
 <template>
   <div id="arrangementer" class="scroll-mt-24">
-  <h2 class="md:text-4xl font-bold text-white text-center">arrangementer</h2>
-  <div class="flex gap-8 p-8 items-center justify-start md:justify-center relative mb-7">
+  <h2 class="sm:text-4xl text-2xl font-bold text-white text-center">arrangementer</h2>
+  <div class="flex gap-8 items-center justify-start md:justify-center relative my-7 px-10 sm:px-20">
     <!-- Venstre pil -->
     <button
       @click="slideLeft"
       class="z-20 absolute left-2 md:left-0 top-1/2 -translate-y-1/2 p-2"
       aria-label="Forrige"
     >
-      <img src="/icons/pil.svg" alt="Forrige" class="w-10 h-10 rotate-180 cursor-pointer transition" />
+      <img src="/icons/pil.svg" alt="Forrige" class="sm:w-10 sm:h-10 w-6 h-6 rotate-180 cursor-pointer transition" />
     </button>
 
     <!-- Billedboks (skjules på mobil) -->
@@ -30,7 +30,7 @@
       mode="out-in"
     >
       <div
-        class="hidden md:flex flex-1 max-w-lg max-h-100 min-h-75 min-w-75 justify-center overflow-hidden"
+        class="hidden md:flex flex-1 max-w-lg max-h-100 justify-center overflow-hidden"
         :key="slides[current].image"
       >
         <img
@@ -60,10 +60,10 @@
       mode="out-in"
     >
       <div
-        class="flex-1 max-w-lg max-h-100 min-h-75 min-w-75 border-neon-neonred p-6 flex flex-col justify-start md:justify-center mx-12 md:mx-0"
+        class="flex-1 border-neon-neonred p-6 flex flex-col justify-start md:justify-center"
         :key="slides[current].title"
       >
-        <h2 class="text-2xl font-bold mb-4 text-white">{{ slides[current].title }}</h2>
+        <h2 class="text-xl sm:text-2xl font-bold mb-4 text-white">{{ slides[current].title }}</h2>
         <div class="text-white flex flex-col space-y-6">
           <span v-for="(line, i) in slides[current].text.split('\n')" :key="i">{{ line }}</span>
         </div>
@@ -76,7 +76,7 @@
       class="z-20 absolute right-2 md:right-0 top-1/2 -translate-y-1/2 p-2"
       aria-label="Næste"
     >
-      <img src="/icons/pil.svg" alt="Næste" class="w-10 h-10 cursor-pointer transition" />
+      <img src="/icons/pil.svg" alt="Næste" class="sm:w-10 sm:h-10 w-6 h-6 cursor-pointer transition" />
     </button>
   </div>
   </div>
