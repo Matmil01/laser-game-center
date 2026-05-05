@@ -1,9 +1,9 @@
 <template>
-  <div class="flex gap-8 p-8 mb-7">
+  <div class="flex-1 md:flex gap-8 p-8 mb-7">
     <!-- Velkommen Box -->
-    <div class="flex-1 border-2 border-neon-neonred p-6 relative">
+    <div class="border-2 border-neon-neonred p-6 relative md:w-6/12 mb-6 md:mb-0">
       <h2 class="text-2xl text-white mb-1">VELKOMMEN</h2>
-      <p class="text-white mb-2">
+      <p class="text-white md:mb-2 mb-6">
        Kom og prøv en spændende aktivitet for dig og dine venner, hvor to hold dyster mod hinanden iført laservåben og veste i en gammel, forfalden bygning, hvor kun det stærkeste hold overlever. <br><br>
 
 Centeret befinder sig på {{ contact.address }} og er indrettet som et mørkt labyrintområde på to etager fyldt med gemmesteder og overraskelser. <br><br>
@@ -15,7 +15,7 @@ Tør DU!?
     </div>
 
     <!-- Episk Box -->
-    <div class="flex-1 border-neon-neonred">
+    <div class="border-neon-neonred md:w-6/12">
         <video
             src="/videos/hero.mp4"
             style="width: 100%; height: 100%; object-fit: cover;"

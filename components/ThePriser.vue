@@ -1,9 +1,9 @@
 <template>
   <div id="priser" class="scroll-mt-24">
-    <h2 class=" md:text-4xl font-bold text-white text-center">PRISER</h2>
-  <div class="flex gap-8 p-8 mb-7">
+    <h2 class="text-4xl font-bold text-white text-center">PRISER</h2>
+  <div class="sm:flex gap-8 p-8 mb-7">
     <!-- Card 1 - Green -->
-    <div class="flex-1 border-neon-neongreen p-8 flex flex-col">
+    <div class="flex-1 border-neon-neongreen p-8 flex flex-col mb-6 md:mb-0">
       <h2 class="text-2xl text-white text-center mb-6">1. SPIL</h2>
       <div class="border-b-2 border-neongreen mb-8" style="box-shadow: 0 0 18px 3px #00FF00;"></div>
 
@@ -16,7 +16,7 @@
     </div>
 
     <!-- Card 2 - Pink -->
-    <div class="flex-1 border-neon-neonpink p-8 flex flex-col">
+    <div class="flex-1 border-neon-neonpink p-8 flex flex-col mb-6 md:mb-0">
       <h2 class="text-2xl text-white text-center mb-6">2. SPIL</h2>
       <div class="border-b-2 border-neonpink mb-8" style="box-shadow: 0 0 18px 3px #FF009D;"></div>
 
@@ -29,7 +29,7 @@
     </div>
 
     <!-- Card 3 - Orange -->
-    <div class="flex-1 border-neon-neonorange p-8 flex flex-col">
+    <div class="flex-1 border-neon-neonorange p-8 flex flex-col mb-6 md:mb-0">
       <h2 class="text-2xl text-white text-center mb-6">3. SPIL</h2>
       <div class="border-b-2 border-neonorange mb-8" style="box-shadow: 0 0 18px 3px #FF9D00;"></div>
 
@@ -42,7 +42,7 @@
     </div>
 
     <!-- Card 4 - Blue -->
-    <div class="flex-1 border-neon-neonblue p-8 flex flex-col">
+    <div class="flex-1 border-neon-neonblue p-8 flex flex-col mb-6 md:mb-0">
       <h2 class="text-2xl text-white text-center mb-6">4. SPIL</h2>
       <div class="border-b-2 border-neonblue mb-8" style="box-shadow: 0 0 18px 3px #00C3FF;"></div>
 

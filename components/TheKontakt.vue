@@ -1,11 +1,11 @@
 <template>
-    <div id="kontakt" class="flex md:flex-row gap-8 p-8">
+    <div id="kontakt" class="md:flex md:flex-row gap-8 p-8">
         <!-- Kontakt os -->
         <div class="flex-1 p-6 border-neon-neonred">
             <h2 class="text-white text-2xl font-bold text-left">
                 Kontakt os
             </h2>
-            <div class="flex flex-col h-9/12 justify-between items-start py-14 pl-13">
+            <div class="flex flex-col md:h-9/12 h-60 justify-between items-start py-14 pl-12">
                 <div class="flex text-xl items-center text-white">
                     <img
                         src="/icons/telefon.svg"

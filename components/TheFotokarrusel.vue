@@ -5,7 +5,7 @@
     >
         <!-- Render duplicated items to create a seamless infinite scroll effect -->
         <div class="flex-none" v-for="(foto, index) in duplicatedFotos" :key="index">
-            <img class="h-72 max-w-fit object-cover" :src="foto.src" :alt="foto.alt" />
+            <img class="md:h-72 h-64 max-w-fit object-cover" :src="foto.src" :alt="foto.alt" />
         </div>
     </div>
 </template>
@@ -28,7 +28,7 @@ function startAutoScroll() {
     if (!container) return;
     animationStarted = true;
 
-    const scrollStep = 0.3;
+    const scrollStep = 0.4;
 
     function autoScroll() {
         if (!container) return;

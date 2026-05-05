@@ -1,7 +1,7 @@
 <template>
-  <div id="regler" class="flex gap-8 p-8 mb-7 scroll-mt-24">
+  <div id="regler" class="md:flex gap-8 p-8 mb-7 scroll-mt-24">
     <!-- Left Box - Rules Text -->
-    <div class="flex-1 border-neon-neonred p-6">
+    <div class="flex-1 border-neon-neonred p-6 mb-6 md:mb-0">
       <h2 class="text-2xl mb-4 text-white">REGLER FOR SPILLET</h2>
       <p class="text-white">
       To hold kæmper fra hver sin base gennem et snørklet labyrintlandskab over to plan i to sammenhængende bygninger.<br><br>

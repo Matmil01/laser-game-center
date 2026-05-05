@@ -1,15 +1,15 @@
 <template>
-  <NuxtLink 
+  <NuxtLink
     v-if="to"
     :to="to"
-    class="neon-pulse-button border-neon-neonred hover:border-neon-neongreen px-6 py-2 text-white transition-all inline-block no-underline"
+    class="neon-pulse-button border-neon-neonred hover:border-neon-neongreen px-6 py-2 text-white transition-all inline-block no-underline text-center"
     :class="customClass"
   >
     <slot>{{ text }}</slot>
   </NuxtLink>
-  <button 
+  <button
     v-else
-    class="neon-pulse-button border-neon-neonred hover:border-neon-neongreen px-6 py-2 text-white transition-all"
+    class="neon-pulse-button border-neon-neonred hover:border-neon-neongreen px-6 py-2 text-white transition-all text-center"
     :class="customClass"
     @click="handleClick"
   >

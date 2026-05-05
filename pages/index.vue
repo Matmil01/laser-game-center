@@ -23,12 +23,12 @@
         <div class="relative z-10 flex items-center justify-center h-full">
             <h1
                 class="mt-64 text-white text-center text-3xl sm:text-5xl z-10 bg-black/30 px-2 py-2 backdrop-blur-md rounded-xl"
-            >
+            >LASER GAME CENTER OKSBØL
             </h1>
         </div>
     </div>
 
-    <div class="w-300 mx-auto">
+    <div class="lg:w-300 mx-auto">
         <TheAktuelt />
         <TheVelkomst />
         <ThePriser />
