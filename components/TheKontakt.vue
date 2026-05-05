@@ -5,7 +5,7 @@
             <h2 class="text-white text-2xl font-bold text-left">
                 Kontakt os
             </h2>
-            <div class="flex flex-col md:h-9/12 h-60 justify-between items-start py-14 pl-12">
+            <div class="flex flex-col md:h-9/12 h-60 justify-between items-start py-14 md:pl-12">
                 <div class="flex text-xl items-center text-white">
                     <img
                         src="/icons/telefon.svg"
