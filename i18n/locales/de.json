@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "priser": "Preise",
+    "regler": "Regeln",
+    "arrangementer": "Veranstaltungen",
+    "kontakt": "Kontakt",
+    "booking": "BUCHUNG"
+  },
+  "common": {
+    "bookNow": "JETZT BUCHEN",
+    "minutes": "Minuten"
+  },
+  "velkomst": {
+    "title": "WILLKOMMEN",
+    "p1": "Komm und erlebe eine aufregende Aktivität mit dir und deinen Freunden – eines der coolsten Erlebnisse in Westjütland! Zwei Teams treten gegeneinander an, ausgestattet mit Lasergewehren und Westen in einem alten, verfallenen Gebäude, in dem nur das stärkste Team überlebt.",
+    "p2": "Wenn du nach Spaßaktivitäten in der Nähe von Blåvand suchst, ist dies das perfekte Erlebnis für Freunde, Familie und Kollegen. Das Center befindet sich am Mønstervej 60, 6854 Henne und ist als dunkles, zweistöckiges Labyrinth eingerichtet, das voller Verstecke und Überraschungen ist.",
+    "p3": "Max. 5 Personen pro Team. Bei größeren Gruppen veranstalten wir ein Turnier – und nur ein Team kann die Ehre gewinnen.",
+    "p4": "Traust DU dich!?"
+  },
+  "priser": {
+    "title": "PREISE",
+    "game": "SPIEL",
+    "perPerson": "Preis pro Person",
+    "includes": "Inklusive Einführung & Ergebnisse",
+    "price1": "8 €",
+    "price2": "13 €",
+    "price3": "17 €",
+    "price4": "21 €"
+  },
+  "regler": {
+    "title": "SPIELREGELN",
+    "p1": "Zwei Teams kämpfen von ihrer eigenen Basis durch ein verschlungenes Labyrinth auf zwei Etagen in zwei verbundenen Gebäuden.",
+    "p2": "Du sammelst Punkte, indem du Gegner triffst – aber wenn du selbst getroffen wirst, verlierst du Punkte.",
+    "p3": "Wenn du getroffen wirst, macht deine Weste 10 Sekunden lang Lärm und die Waffe funktioniert nicht mehr. Rückzug zur Basis und zurückkehren, kampfbereit.",
+    "p4": "Nach dem Kampf werden sowohl ein Teamergebnis als auch eine individuelle Platzierung angezeigt, sodass jeder weiß, wer das Team getragen hat – und wer nicht.",
+    "p5": "Hast DU das Zeug dazu, Westjütlands bester Laserkrieger zu werden?",
+    "videoTitle": "Lasergame Video"
+  },
+  "arrangementer": {
+    "title": "VERANSTALTUNGEN",
+    "prev": "Zurück",
+    "next": "Weiter",
+    "slides": [
+      {
+        "alt": "Frau versteckt sich beim Lasergame",
+        "title": "Geburtstagsparty",
+        "text": "Mach den Geburtstag mit Lasergame noch aufregender! Eines der spaßigsten Erlebnisse an der Westküste!\nBei Kindergeburtstagen spielt das Geburtstagskind kostenlos, wenn die Mindestanforderungen erfüllt sind – ein besonderes Erlebnis und ein Tag, den die Kinder lange nicht vergessen werden.\nDies erfordert eine Mindestbuchung von zwei Spielen für mindestens 6 Personen! Kostenloses Geburtstagskind erfordert mind. 8 Personen"
+      },
+      {
+        "alt": "Zwei Frauen gehen aufeinander zu in Lasergame-Ausrüstung",
+        "title": "Teambuilding",
+        "text": "Ist Ihr Unternehmen in der Nähe von Oksbøl, Esbjerg, Varde oder Blåvand? Oder kommen Sie von weit her?\nEgal woher Sie kommen, dies ist eine ideale Aktivität für Unternehmen, Vereine oder Gruppen.\nDurch intensive Lasergame-Erlebnisse werden Beziehungen und Gemeinschaft auf eine lustige und andere Art gestärkt."
+      },
+      {
+        "alt": "Frau und Gruppe von Freunden spielen Lasergame zusammen",
+        "title": "Gesellschaften und private Veranstaltungen",
+        "text": "Ob es eine Freundesgruppe, ein Familienevent oder eine andere Feier ist – das Center kann außerhalb der Hochsaison gebucht werden.\nDas bietet die Möglichkeit für ein andersartiges und aktives Erlebnis, bei dem alle mitmachen können."
+      },
+      {
+        "alt": "Menschen in Lasergame-Ausrüstung warten auf den Spielstart",
+        "title": "Mobiles Lasergame – wir kommen zu Ihnen",
+        "text": "Nicht an der Westküste? Kein Problem! Wir kommen zu Ihnen!\nMit der mobilen Lösung von OX-Consult kann Lasergame an Ihren eigenen Standort gebracht werden.\nPerfekt für Schulen, Events oder Unternehmen, die eine flexible Lösung suchen."
+      },
+      {
+        "alt": "Mann zielt mit Laserpistole",
+        "title": "Flexible Einrichtungen",
+        "text": "Wenn Sie eine Halle oder einen größeren Raum haben, kann dieser leicht mit Tischen, Kisten oder Sportgeräten in eine Lasergame-Bahn umgewandelt werden.\nDas schafft ein einzigartiges und maßgeschneidertes Erlebnis in Ihrer eigenen Umgebung."
+      }
+    ]
+  },
+  "kontakt": {
+    "title": "Kontakt",
+    "googleMaps": "Auf Google Maps ansehen",
+    "appleMaps": "Auf Apple Maps ansehen",
+    "phoneAlt": "Telefon-Symbol",
+    "mailAlt": "E-Mail-Symbol",
+    "addressAlt": "Adress-Symbol"
+  }
+}
