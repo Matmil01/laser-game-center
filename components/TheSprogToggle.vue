@@ -3,7 +3,7 @@
     <button
       v-for="option in otherLangs"
       :key="option.code"
-      @click="lang = option.code"
+      @click="setLocale(option.code)"
       :title="option.label"
       class="text-xl leading-none cursor-pointer"
     >
@@ -14,9 +14,8 @@
 
 <script setup>
 import { computed } from 'vue'
-import { useLang } from '@/composables/useLang'
 
-const { lang } = useLang()
+const { locale, setLocale } = useI18n()
 
 const langs = [
   { code: 'da', flag: '🇩🇰', label: 'Dansk' },
@@ -24,5 +23,5 @@ const langs = [
   { code: 'de', flag: '🇩🇪', label: 'Deutsch' },
 ]
 
-const otherLangs = computed(() => langs.filter(l => l.code !== lang.value))
+const otherLangs = computed(() => langs.filter(l => l.code !== locale.value))
 </script>

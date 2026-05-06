@@ -45,11 +45,11 @@
             <div class="flex space-x-4 items-center justify-center w-full">
                 <NeonButton
                     to="https://maps.app.goo.gl/qDZTcvpdaMJsfkLv9"
-                    text="Se på Google Maps"
+                    :text="$t('kontakt.googleMaps')"
                 />
                 <NeonButton
                     to="https://maps.apple/p/AWPbK8TbMZgfJM"
-                    text="Se på Apple Maps"
+                    :text="$t('kontakt.appleMaps')"
                 />
             </div>
         </div>
