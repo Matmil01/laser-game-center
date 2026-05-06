@@ -9,7 +9,8 @@
 Du scorer point ved at ramme modstandere – men bliver du selv ramt, mister du point. <br>
 Når du bliver ramt, larmer vesten i 10 sekunder og våbnet går ud af funktion. Træk dig tilbage mod din base og kom tilbage klar til kamp. <br><br>
 
-Efter kampen vises både en teamscore og en individuel placering så alle ved, hvem der bar holdet - og hvem der ikke gjorde.
+Efter kampen vises både en teamscore og en individuel placering så alle ved, hvem der bar holdet - og hvem der ikke gjorde.<br><br>
+Har DU hvad der skal til for at blive Vestjyllands bedste laserkriger? <br><br>
       </p>
     </div>
 

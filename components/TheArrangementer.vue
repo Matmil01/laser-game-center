@@ -93,13 +93,13 @@ export default {
           image: "/photos/lasergame-spil-oksboel-10.webp",
           alt: "Kvinde, der gemmer sig, mens hun spiller lasergame",
           title: "Fødselsdag",
-          text: "Gør fødselsdagen ekstra spændende med lasergame!\nVed børnefødselsdage spiller fødselaren gratis ved opfyldelse af minimumskrav, hvilket skaber en særlig oplevelse og en dag, børnene sent vil glemme.\nDette kræver min. booking af to spil for mindst 6 personer! Gratis fødselsar er min. 8 personer",
+          text: "Gør fødselsdagen ekstra spændende med lasergame! En af de sjoveste oplevelser på vestkysten!\nVed børnefødselsdage spiller fødselaren gratis ved opfyldelse af minimumskrav, hvilket skaber en særlig oplevelse og en dag, børnene sent vil glemme.\nDette kræver min. booking af to spil for mindst 6 personer! Gratis fødselsar er min. 8 personer",
         },
         {
           image: "/photos/lasergame-spil-oksboel-11.webp",
           alt: "To kvinder går mod hinanden iført lasergame-udstyr",
           title: "Team Building",
-          text: "Gennem intense lasergame-oplevelser styrkes relationer og fællesskab på en sjov og anderledes måde.\nDet er en oplagt aktivitet for virksomheder, foreninger eller grupper.",
+          text: "Er din virksomhed lokaliseret nær Oskbøl, Esbjerg, Varde, eller Blåvand? Eller kommer i langvejs fra?\nUanset hvor I kommer fra, er dette en oplagt aktivitet for virksomheder, foreninger eller grupper.\nGennem intense lasergame-oplevelser styrkes relationer og fællesskab på en sjov og anderledes måde.",
         },
         {
           image: "/photos/lasergame-spil-oksboel-4.webp",
@@ -111,7 +111,7 @@ export default {
           image: "/photos/lasergame-spil-oksboel-16.webp",
           alt: "Mennesker iført lasergame-udstyr venter på spillets start",
           title: "Mobil lasergame – vi kommer til jer",
-          text: "Med den mobile løsning fra OX-Consult kan lasergame rykkes ud til jeres egen lokation.\nPerfekt til skoler, events eller firmaer, der ønsker en fleksibel løsning.",
+          text: "Er i ikke på vestkysten? Frygt ej! Vi kommer til dig!\nMed den mobile løsning fra OX-Consult kan lasergame rykkes ud til jeres egen lokation.\nPerfekt til skoler, events eller firmaer, der ønsker en fleksibel løsning.",
         },
         {
           image: "/photos/lasergame-spil-oksboel-1.webp",
