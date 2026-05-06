@@ -7,11 +7,14 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "deploy": "nuxt generate && node deploy.cjs"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@tailwindcss/vite": "^4.2.2",
+    "dotenv": "^17.4.2",
+    "ftp-deploy": "^2.4.7",
     "nuxt": "^4.4.2",
     "tailwindcss": "^4.2.2",
     "v-calendar": "^3.1.2",

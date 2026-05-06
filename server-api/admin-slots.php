@@ -52,7 +52,7 @@ if ($action === 'list') {
         echo json_encode([
             'windows'  => $windows,
             'bookings' => [],
-            'db_error' => 'Bookings-tabel fejl: ' . $e->getMessage(),
+            'db_error' => 'Bookings-tabel fejl',
         ]);
         exit;
     }
