@@ -2,7 +2,13 @@
 <div class="bg-black sticky top-0 z-50">
   <nav class="px-6 py-4 max-w-300 mx-auto flex items-center justify-between">
 <h1 class="flex items-center gap-2">
-  <a href="/"><img src="/icons/logoHvid.svg" alt="Logo" class="h-10 sm:h-15 inline-block" /></a>
+<a href="/" @mouseenter="hovered = true" @mouseleave="hovered = false">
+  <img
+    :src="hovered ? '/icons/logoGif.gif' : '/icons/logoHvid.svg'"
+    alt="Logo"
+    class="h-8.75 sm:h-11.25 inline-block"
+  />
+</a>
 </h1>
 
     <div class="flex items-center gap-6">
@@ -15,3 +21,8 @@
   </nav>
 </div>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+const hovered = ref(false)
+</script>
