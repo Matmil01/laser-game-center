@@ -11,6 +11,7 @@
     "deploy": "nuxt generate && node deploy.cjs"
   },
   "dependencies": {
+    "@nuxtjs/i18n": "^10.3.0",
     "@popperjs/core": "^2.11.8",
     "@tailwindcss/vite": "^4.2.2",
     "dotenv": "^17.4.2",

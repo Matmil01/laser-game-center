@@ -18,9 +18,20 @@
         </button>
       </div>
       <div>
+        <div class="flex gap-1 mb-3">
+          <button
+            v-for="tab in langTabs"
+            :key="tab.code"
+            type="button"
+            @click="activeLangTab = tab.code"
+            :title="tab.label"
+            class="text-xl leading-none px-2 py-1 border-b-2 transition-all duration-150"
+            :class="activeLangTab === tab.code ? 'border-white opacity-100' : 'border-transparent opacity-30 hover:opacity-60'"
+          >{{ tab.flag }}</button>
+        </div>
         <label class="block text-sm font-medium mb-1 text-white">Titel</label>
         <input
-          v-model="settingsAktueltTitle"
+          v-model="titles[activeLangTab]"
           type="text"
           maxlength="100"
           placeholder="AKTUELT"
@@ -30,7 +41,7 @@
       <div>
         <label class="block text-sm font-medium mb-1 text-white">Tekst</label>
         <textarea
-          v-model="settingsAktueltText"
+          v-model="texts[activeLangTab]"
           maxlength="500"
           rows="4"
           placeholder="Skriv tekst"
@@ -97,7 +108,7 @@
     <div class="mt-8">
       <p class="text-xs font-semibold uppercase tracking-wide text-zinc-500 mb-3">Forhåndsvisning</p>
       <div
-        v-if="settingsAktueltVisible && settingsAktueltText"
+        v-if="settingsAktueltVisible && texts[activeLangTab]"
         class="max-w-md w-full mx-auto px-6 py-5 bg-black text-white border-2 transition-all"
         :style="{
           borderColor: settingsAktueltColor,
@@ -120,8 +131,8 @@
             }"
           />
           <div>
-            <h2 class="text-lg font-black tracking-wide mb-1">{{ settingsAktueltTitle || 'AKTUELT' }}</h2>
-            <p class="text-sm leading-relaxed whitespace-pre-wrap">{{ settingsAktueltText }}</p>
+            <h2 class="text-lg font-black tracking-wide mb-1">{{ titles[activeLangTab] || 'AKTUELT' }}</h2>
+            <p class="text-sm leading-relaxed whitespace-pre-wrap">{{ texts[activeLangTab] }}</p>
           </div>
         </div>
       </div>
@@ -140,8 +151,16 @@ const emit = defineEmits(['update-aktuelt-info', 'unauthorized', 'dirty-change']
 const config  = useRuntimeConfig()
 const apiUrl  = config.public.apiUrl
 
-const settingsAktueltTitle   = ref('AKTUELT')
-const settingsAktueltText    = ref('')
+const langTabs = [
+  { code: 'da', flag: '🇩🇰', label: 'Dansk' },
+  { code: 'en', flag: '🇬🇧', label: 'English' },
+  { code: 'de', flag: '🇩🇪', label: 'Deutsch' },
+]
+const activeLangTab = ref('da')
+
+const titles = reactive({ da: 'AKTUELT', en: '', de: '' })
+const texts  = reactive({ da: '', en: '', de: '' })
+
 const settingsAktueltIcon    = ref('icon1')
 const settingsAktueltColor   = ref('#FF9D00')
 const settingsAktueltVisible = ref(true)
@@ -151,8 +170,9 @@ const aktueltSaveInfo        = ref('')
 const aktueltLoaded          = ref(false)
 
 watch(
-  [settingsAktueltTitle, settingsAktueltText, settingsAktueltIcon, settingsAktueltColor, settingsAktueltVisible],
-  () => { if (aktueltLoaded.value) emit('dirty-change', true) }
+  [() => ({ ...titles }), () => ({ ...texts }), settingsAktueltIcon, settingsAktueltColor, settingsAktueltVisible],
+  () => { if (aktueltLoaded.value) emit('dirty-change', true) },
+  { deep: true }
 )
 
 const themeColors = [
@@ -166,8 +186,8 @@ const themeColors = [
 async function loadSettings() {
   try {
     const data = await $fetch(`${apiUrl}/settings.php`)
-    settingsAktueltTitle.value   = data.aktuelt_title   ?? 'AKTUELT'
-    settingsAktueltText.value    = data.aktuelt_text    ?? ''
+    titles.da                    = data.aktuelt_title   ?? 'AKTUELT'
+    texts.da                     = data.aktuelt_text    ?? ''
     settingsAktueltIcon.value    = data.aktuelt_icon    ?? 'icon1'
     settingsAktueltColor.value   = data.aktuelt_color   ?? '#FF9D00'
     settingsAktueltVisible.value = data.aktuelt_visible !== '0'
@@ -186,8 +206,8 @@ async function saveAktuelt() {
       method: 'POST',
       body: {
         pw: props.password,
-        aktuelt_title: settingsAktueltTitle.value,
-        aktuelt_text: settingsAktueltText.value,
+        aktuelt_title: titles.da,
+        aktuelt_text: texts.da,
         aktuelt_icon: settingsAktueltIcon.value,
         aktuelt_color: settingsAktueltColor.value,
         aktuelt_visible: settingsAktueltVisible.value ? '1' : '0',
@@ -196,8 +216,8 @@ async function saveAktuelt() {
     aktueltSaveInfo.value = 'Gemt!'
     emit('dirty-change', false)
     emit('update-aktuelt-info', {
-      aktuelt_title: settingsAktueltTitle.value,
-      aktuelt_text: settingsAktueltText.value,
+      aktuelt_title: titles.da,
+      aktuelt_text: texts.da,
       aktuelt_icon: settingsAktueltIcon.value,
       aktuelt_color: settingsAktueltColor.value,
       aktuelt_visible: settingsAktueltVisible.value ? '1' : '0',
