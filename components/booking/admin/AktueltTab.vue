@@ -186,8 +186,12 @@ const themeColors = [
 async function loadSettings() {
   try {
     const data = await $fetch(`${apiUrl}/settings.php`)
-    titles.da                    = data.aktuelt_title   ?? 'AKTUELT'
+    titles.da                    = data.aktuelt_title    ?? 'AKTUELT'
     texts.da                     = data.aktuelt_text    ?? ''
+    titles.en                    = data.aktuelt_title_en ?? ''
+    texts.en                     = data.aktuelt_text_en  ?? ''
+    titles.de                    = data.aktuelt_title_de ?? ''
+    texts.de                     = data.aktuelt_text_de  ?? ''
     settingsAktueltIcon.value    = data.aktuelt_icon    ?? 'icon1'
     settingsAktueltColor.value   = data.aktuelt_color   ?? '#FF9D00'
     settingsAktueltVisible.value = data.aktuelt_visible !== '0'
@@ -208,6 +212,10 @@ async function saveAktuelt() {
         pw: props.password,
         aktuelt_title: titles.da,
         aktuelt_text: texts.da,
+        aktuelt_title_en: titles.en,
+        aktuelt_text_en: texts.en,
+        aktuelt_title_de: titles.de,
+        aktuelt_text_de: texts.de,
         aktuelt_icon: settingsAktueltIcon.value,
         aktuelt_color: settingsAktueltColor.value,
         aktuelt_visible: settingsAktueltVisible.value ? '1' : '0',
@@ -218,6 +226,10 @@ async function saveAktuelt() {
     emit('update-aktuelt-info', {
       aktuelt_title: titles.da,
       aktuelt_text: texts.da,
+      aktuelt_title_en: titles.en,
+      aktuelt_text_en: texts.en,
+      aktuelt_title_de: titles.de,
+      aktuelt_text_de: texts.de,
       aktuelt_icon: settingsAktueltIcon.value,
       aktuelt_color: settingsAktueltColor.value,
       aktuelt_visible: settingsAktueltVisible.value ? '1' : '0',

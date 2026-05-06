@@ -3,13 +3,13 @@
         <!-- Kontakt os -->
         <div class="flex-1 p-6 border-neon-neonred">
             <h2 class="text-white text-2xl font-bold text-left">
-                Kontakt os
+                {{ $t('kontakt.title') }}
             </h2>
             <div class="flex flex-col md:h-9/12 h-60 justify-between items-start py-14 md:pl-12">
                 <div class="flex text-xl items-center text-white">
                     <img
                         src="/icons/telefon.svg"
-                        alt="Telefon ikon"
+                        :alt="$t('kontakt.phoneAlt')"
                         class="w-6 h-6 mr-4"
                     />
                     <a
@@ -23,7 +23,7 @@
                 <div class="flex text-xl items-center text-white">
                     <img
                         src="/icons/mail.svg"
-                        alt="Mail ikon"
+                        :alt="$t('kontakt.mailAlt')"
                         class="w-6 h-6 mr-4"
                     />
                     <a
@@ -36,7 +36,7 @@
                 <div class="flex text-xl items-center text-white">
                     <img
                         src="/icons/lokation.svg"
-                        alt="Adresse ikon"
+                        :alt="$t('kontakt.addressAlt')"
                         class="w-6 h-6 mr-4"
                     />
                     <span class="text-white text-center">Mønstervej 60, 6854 Henne</span>
