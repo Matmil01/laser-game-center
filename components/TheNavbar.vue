@@ -17,6 +17,7 @@
       <a href="/#arrangementer" class="text-white text-sm hover:text-neonred transition-colors duration-300 hidden md:block">Arrangementer</a>
       <a href="/#kontakt" class="text-white text-sm hover:text-neonred transition-colors duration-300 hidden md:block">Kontakt</a>
       <NeonButton to="/booking" text="BOOKING" custom-class="!px-4 !py-1 text-sm" />
+      <TheSprogToggle />
     </div>
   </nav>
 </div>
