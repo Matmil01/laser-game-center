@@ -7,10 +7,6 @@
         <input v-model="settingsCvr" type="text" maxlength="20" class="border-neon-subtle-neonred px-3 py-2 w-full focus:outline-none text-sm bg-black text-white" />
       </div>
       <div>
-        <label class="block text-sm font-medium mb-1 text-white">Adresse</label>
-        <input v-model="settingsAddress" type="text" maxlength="200" class="border-neon-subtle-neonred px-3 py-2 w-full focus:outline-none text-sm bg-black text-white" />
-      </div>
-      <div>
         <label class="block text-sm font-medium mb-1 text-white">Email</label>
         <input v-model="settingsEmail" type="email" maxlength="200" class="border-neon-subtle-neonred px-3 py-2 w-full focus:outline-none text-sm bg-black text-white" />
       </div>
@@ -42,7 +38,6 @@ const config  = useRuntimeConfig()
 const apiUrl  = config.public.apiUrl
 
 const settingsCvr = ref('')
-const settingsAddress = ref('')
 const settingsEmail = ref('')
 const settingsPhone = ref('')
 const settingsSaving = ref(false)
@@ -51,7 +46,7 @@ const settingsSaveInfo = ref('')
 const kontaktLoaded = ref(false)
 
 watch(
-  [settingsCvr, settingsAddress, settingsEmail, settingsPhone],
+  [settingsCvr, settingsEmail, settingsPhone],
   () => { if (kontaktLoaded.value) emit('dirty-change', true) }
 )
 
@@ -59,7 +54,6 @@ async function loadSettings() {
   try {
     const data = await $fetch(`${apiUrl}/settings.php`)
     settingsCvr.value     = data.cvr     ?? ''
-    settingsAddress.value = data.address ?? ''
     settingsEmail.value   = data.email   ?? ''
     settingsPhone.value   = data.phone   ?? ''
     emit('update-contact-info', { ...data })
@@ -78,7 +72,6 @@ async function saveSettings() {
       body: {
         pw: props.password,
         cvr: settingsCvr.value,
-        address: settingsAddress.value,
         email: settingsEmail.value,
         phone: settingsPhone.value,
       },
@@ -88,7 +81,6 @@ async function saveSettings() {
     // Henter data igen efter gem, så formularen viser præcis det serveren har gemt
     const data = await $fetch(`${apiUrl}/settings.php`)
     settingsCvr.value     = data.cvr     ?? ''
-    settingsAddress.value = data.address ?? ''
     settingsEmail.value   = data.email   ?? ''
     settingsPhone.value   = data.phone   ?? ''
     emit('update-contact-info', { ...data })

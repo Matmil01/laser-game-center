@@ -39,9 +39,7 @@
                         alt="Adresse ikon"
                         class="w-6 h-6 mr-4"
                     />
-                    <span class="text-white text-center">{{
-                        contact.address
-                    }}</span>
+                    <span class="text-white text-center">Mønstervej 60, 6854 Henne</span>
                 </div>
             </div>
             <div class="flex space-x-4 items-center justify-center w-full">

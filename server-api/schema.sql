@@ -31,12 +31,15 @@ CREATE TABLE IF NOT EXISTS settings (
 
 -- Indsæt standardværdier ved første opsætning (springer over hvis de allerede findes)
 INSERT IGNORE INTO settings (`key`, `value`) VALUES
-    ('cvr',           ''),
-    ('address',       ''),
-    ('email',         ''),
-    ('phone',         ''),
-    ('aktuelt_title',   'AKTUELT'),
-    ('aktuelt_text',    ''),
-    ('aktuelt_icon',    'icon1'),
-    ('aktuelt_color',   '#FF9D00'),
-    ('aktuelt_visible', '1');
+    ('cvr',              ''),
+    ('email',            ''),
+    ('phone',            ''),
+    ('aktuelt_title',    'AKTUELT'),
+    ('aktuelt_text',     ''),
+    ('aktuelt_icon',     'icon1'),
+    ('aktuelt_color',    '#FF9D00'),
+    ('aktuelt_visible',  '1'),
+    ('aktuelt_title_en', ''),
+    ('aktuelt_text_en',  ''),
+    ('aktuelt_title_de', ''),
+    ('aktuelt_text_de',  '');
