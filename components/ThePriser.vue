@@ -12,7 +12,7 @@
         <p class="text-white text-center">20 minutter</p>
       </div>
 
-      <p class="text-white text-xs text-center mt-8 opacity-70">inkluderer intro & resultater</p>
+      <p class="text-white text-xs text-center mt-8 opacity-70">Prisen er pr. person <br>Inkluderer intro & resultater</p>
     </div>
 
     <!-- Card 2 - Pink -->
@@ -25,7 +25,7 @@
         <p class="text-white text-center">40 minutter</p>
       </div>
 
-      <p class="text-white text-xs text-center mt-8 opacity-70">inkluderer intro & resultater</p>
+      <p class="text-white text-xs text-center mt-8 opacity-70">Prisen er pr. person <br>Inkluderer intro & resultater</p>
     </div>
 
     <!-- Card 3 - Orange -->
@@ -38,7 +38,7 @@
         <p class="text-white text-center">60 minutter</p>
       </div>
 
-      <p class="text-white text-xs text-center mt-8 opacity-70">inkluderer intro & resultater</p>
+      <p class="text-white text-xs text-center mt-8 opacity-70">Prisen er pr. person <br>Inkluderer intro & resultater</p>
     </div>
 
     <!-- Card 4 - Blue -->
@@ -51,7 +51,7 @@
         <p class="text-white text-center">80 minutter</p>
       </div>
 
-      <p class="text-white text-xs text-center mt-8 opacity-70">inkluderer intro & resultater</p>
+      <p class="text-white text-xs text-center mt-8 opacity-70">Prisen er pr. person <br>Inkluderer intro & resultater</p>
     </div>
   </div>
   </div>
