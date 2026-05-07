@@ -40,9 +40,7 @@ export default defineNuxtConfig({
       meta: [
         { name: 'description', content: 'Velkommen til Laser Game Center!' }
       ],
-      link: [
-        { rel: 'icon', type: 'image/x-icon', href: 'icons/favicon.svg' }
-      ]
+
     }
   }
 })
