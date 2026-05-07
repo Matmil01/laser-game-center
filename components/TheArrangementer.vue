@@ -1,7 +1,7 @@
 <template>
   <div id="arrangementer" class="scroll-mt-24">
   <h2 class="sm:text-4xl text-2xl font-bold text-white text-center">{{ $t('arrangementer.title') }}</h2>
-  <div class="flex gap-8 items-center justify-start md:justify-center relative my-7 px-10 sm:px-20">
+  <div class="flex gap-8 items-center justify-start md:justify-center relative my-7 px-10 sm:px-20 overflow-hidden">
     <!-- Venstre pil -->
     <button
       @click="slideLeft"

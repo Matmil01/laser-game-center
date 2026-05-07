@@ -35,6 +35,7 @@ $date         = $data['date']            ?? '';
 $start_time   = $data['start_time']      ?? '';
 $num_games    = (int)($data['num_games'] ?? 0);
 $participants = (int)($data['participants'] ?? 4);
+$locale       = in_array($data['locale'] ?? '', ['da', 'en', 'de']) ? $data['locale'] : 'da';
 
 if (!$name || !$email || !$phone || !$date || !$start_time || !$num_games) {
     http_response_code(400);
@@ -137,25 +138,53 @@ $mail->Username   = getenv('SMTP_USER');
 $mail->Password   = getenv('SMTP_PASS');
 $mail->CharSet    = 'UTF-8';
 
+
+$subjects = [
+    'da' => 'Bekræftelse på din Lasertag-booking',
+    'en' => 'Confirmation of your Lasertag booking',
+    'de' => 'Bestätigung Ihrer Lasertag-Buchung',
+];
+
 $mail->setFrom(getenv('SMTP_USER'), getenv('SMTP_FROM_NAME'));
 $mail->addAddress($email, $name);
-$mail->Subject = 'Bekræftelse på din Lasertag-booking';
-$mail->Body    = "Hej $name,\n\n"
-    . "Din tid til lasertag er nu booket og bekræftet!\n\n"
-    . "Dato: $dateFormatted\n"
-    . "Tid: $startFormatted – $endFormatted\n"
-    . "Antal spil: $num_games\n"
-    . "Antal deltagere: $participants\n\n"
-    . "Mød gerne op 10 minutter før din spilletid.\n\n"
-    . "Hvis du har brug for at aflyse eller ændre din booking, kan du kontakte os på e-mail eller telefon.\n\n"
-    . "Vi glæder os til at se dig!\n\n"
-    . "Venlig hilsen\n"
-    . "Laser Game Center Oksbøl";
+$mail->isHTML(true);
+$mail->Subject = $subjects[$locale];
+ob_start();
+include __DIR__ . "/emails/confirmation-{$locale}.php";
+$mail->Body = ob_get_clean();
 
 try {
     $mail->send();
 } catch (Exception $e) {
     error_log('PHPMailer: ' . $mail->ErrorInfo);
+}
+
+// Send notifikationsemail til siteejeren
+$adminEmail = getenv('ADMIN_EMAIL');
+if ($adminEmail) {
+    $adminMail = new PHPMailer(true);
+    $adminMail->isSMTP();
+    $adminMail->Host       = getenv('SMTP_HOST');
+    $adminMail->Port       = (int)getenv('SMTP_PORT');
+    $adminMail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $adminMail->SMTPAuth   = true;
+    $adminMail->Username   = getenv('SMTP_USER');
+    $adminMail->Password   = getenv('SMTP_PASS');
+    $adminMail->CharSet    = 'UTF-8';
+
+    $adminMail->setFrom(getenv('SMTP_USER'), getenv('SMTP_FROM_NAME'));
+    $adminMail->addAddress($adminEmail);
+    $adminMail->isHTML(true);
+    $adminMail->Subject = 'Ny Lasertag-booking modtaget';
+    ob_start();
+    include __DIR__ . '/emails/admin-notification.php';
+    $adminMail->Body = ob_get_clean();
+
+    try {
+        $adminMail->send();
+    } catch (Exception $e) {
+        error_log('PHPMailer admin notify: ' . $adminMail->ErrorInfo);
+    }
 }
 
 echo json_encode([

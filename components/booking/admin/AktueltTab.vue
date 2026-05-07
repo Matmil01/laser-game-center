@@ -25,8 +25,8 @@
             type="button"
             @click="activeLangTab = tab.code"
             :title="tab.label"
-            class="text-xl leading-none px-2 py-1 border-b-2 transition-all duration-150"
-            :class="activeLangTab === tab.code ? 'border-white opacity-100' : 'border-transparent opacity-30 hover:opacity-60'"
+            class="text-xl leading-none px-2 py-1 border-b-2 transition-all duration-150 cursor-pointer"
+            :class="activeLangTab === tab.code ? 'border-white' : 'border-transparent'"
           >{{ tab.flag }}</button>
         </div>
         <label class="block text-sm font-medium mb-1 text-white">Titel</label>

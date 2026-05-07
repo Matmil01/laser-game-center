@@ -127,6 +127,7 @@ const emit = defineEmits(['success', 'refresh-dates'])
 
 const config = useRuntimeConfig()
 const apiUrl = config.public.apiUrl
+const { locale } = useI18n()
 
 const slots            = ref([])
 const selectedTime     = ref(null)
@@ -186,6 +187,7 @@ async function submitBooking() {
         start_time:   selectedTime.value,
         num_games:    numGames.value,
         participants: participants.value,
+        locale:       locale.value,
       },
     })
     emit('success', res)
