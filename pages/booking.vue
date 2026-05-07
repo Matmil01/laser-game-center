@@ -23,7 +23,7 @@
           <div class="relative z-10 flex items-center justify-center h-full">
               <h1
                   class="mt-64 text-white text-center text-3xl sm:text-5xl z-10 bg-black/30 px-2 py-2 backdrop-blur-md rounded-xl"
-              >BOOK TID
+              >{{ $t('booking.heroTitle') }}
               </h1>
           </div>
       </div>
@@ -31,25 +31,25 @@
   <div class="w-full max-w-2xl mx-auto px-4 py-10">
     <div>
 
-      <p class="mb-8 text-white font-semibold">OBS! Minimum 4 personer til en booking</p>
-      <p v-if="!selectedDateHasSlots" class="mb-8 text-white font-semibold">
-        Ingen ledige tider? Ring til os på {{ contact.phone }} — så finder vi en løsning.
+      <p class="mb-8 text-white font-semibold">{{ $t('booking.minPersons') }}</p>
+      <p v-if="futureAvailableDates.length === 0" class="mb-8 text-white font-semibold">
+        {{ $t('booking.noSlots', { phone: contact.phone }) }}
       </p>
 
       <div v-if="success" class="bg-black border-2 border-neonred shadow-[0_0_18px_2px_var(--color-neonred)] p-6 text-center">
-        <p class="text-xl font-semibold text-neongreen mb-1">Booking bekræftet!</p>
+        <p class="text-xl font-semibold text-neongreen mb-1">{{ $t('booking.confirmed') }}</p>
         <p class="text-neongreen">{{ success.date }} kl. {{ success.time }}–{{ success.end_time }}</p>
-        <p class="text-neongreen text-sm mt-1">{{ success.num_games }} spil · {{ success.num_games * 30 }} minutter</p>
-        <p class="text-sm text-zinc-400 mt-2">En bekræftelse er sendt til din email.</p>
+        <p class="text-neongreen text-sm mt-1">{{ success.num_games }} {{ $t('booking.games') }} · {{ success.num_games * 30 }} {{ $t('common.minutes') }}</p>
+        <p class="text-sm text-zinc-400 mt-2">{{ $t('booking.emailSent') }}</p>
         <button
           class="mt-6 text-sm text-zinc-400 underline cursor-pointer hover:text-white"
           @click="reset"
-        >Book en ny tid</button>
+        >{{ $t('booking.newBooking') }}</button>
       </div>
 
       <div v-else class="space-y-6">
         <div>
-          <label class="block text-sm font-medium mb-1 text-white cursor-pointer">Vælg dato</label>
+          <label class="block text-sm font-medium mb-1 text-white cursor-pointer">{{ $t('booking.chooseDate') }}</label>
           <DatePicker
             is-expanded
             :min-date="today"
@@ -105,6 +105,13 @@ async function loadAvailableDates() {
   }
 }
 onMounted(() => { fetchContactInfo(); loadAvailableDates() })
+
+
+// Viser kun beskeden om ingen ledige tider hvis der ikke er slots fra og med i dag.
+const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate())
+const futureAvailableDates = computed(() =>
+  availableDates.value.filter(d => d >= todayMidnight)
+)
 
 const selectedDateHasSlots = computed(() =>
   date.value && availableDates.value.some(d => d.toDateString() === date.value.toDateString())

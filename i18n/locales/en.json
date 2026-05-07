@@ -68,6 +68,37 @@
       }
     ]
   },
+  "bookingForm": {
+    "chooseTime": "Choose start time",
+    "loadingSlots": "Loading available times…",
+    "noSlots": "No available times on this day.",
+    "numGames": "Number of games:",
+    "games": "games",
+    "minPreview": "min · at",
+    "numParticipants": "Number of participants:",
+    "name": "Name",
+    "namePlaceholder": "Your full name",
+    "email": "Email",
+    "emailPlaceholder": "Your email",
+    "phone": "Phone",
+    "phonePlaceholder": "Your phone number",
+    "message": "Message",
+    "optional": "optional",
+    "messagePlaceholder": "Feel free to write what you need help with…",
+    "sending": "Sending…",
+    "confirm": "Confirm booking",
+    "error": "Something went wrong. Please try again."
+  },
+  "booking": {
+    "heroTitle": "BOOK A TIME",
+    "minPersons": "NOTE! Minimum 4 people per booking",
+    "noSlots": "No available times? Call us on {phone} — we'll find a solution.",
+    "confirmed": "Booking confirmed!",
+    "games": "games",
+    "emailSent": "A confirmation has been sent to your email.",
+    "newBooking": "Book a new time",
+    "chooseDate": "Choose date"
+  },
   "kontakt": {
     "title": "Contact us",
     "googleMaps": "View on Google Maps",

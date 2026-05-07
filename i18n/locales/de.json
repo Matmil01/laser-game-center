@@ -68,6 +68,37 @@
       }
     ]
   },
+  "bookingForm": {
+    "chooseTime": "Startzeit wählen",
+    "loadingSlots": "Verfügbare Zeiten werden geladen…",
+    "noSlots": "Keine verfügbaren Zeiten an diesem Tag.",
+    "numGames": "Anzahl der Spiele:",
+    "games": "Spiele",
+    "minPreview": "Min · um",
+    "numParticipants": "Anzahl der Teilnehmer:",
+    "name": "Name",
+    "namePlaceholder": "Ihr vollständiger Name",
+    "email": "E-Mail",
+    "emailPlaceholder": "Ihre E-Mail",
+    "phone": "Telefon",
+    "phonePlaceholder": "Ihre Telefonnummer",
+    "message": "Nachricht",
+    "optional": "optional",
+    "messagePlaceholder": "Schreiben Sie gerne, wobei wir Ihnen helfen können…",
+    "sending": "Wird gesendet…",
+    "confirm": "Buchung bestätigen",
+    "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+  },
+  "booking": {
+    "heroTitle": "TERMIN BUCHEN",
+    "minPersons": "HINWEIS! Mindestens 4 Personen pro Buchung",
+    "noSlots": "Keine freien Zeiten? Rufen Sie uns an unter {phone} — wir finden eine Lösung.",
+    "confirmed": "Buchung bestätigt!",
+    "games": "Spiele",
+    "emailSent": "Eine Bestätigung wurde an Ihre E-Mail gesendet.",
+    "newBooking": "Neue Zeit buchen",
+    "chooseDate": "Datum wählen"
+  },
   "kontakt": {
     "title": "Kontakt",
     "googleMaps": "Auf Google Maps ansehen",

@@ -3,9 +3,9 @@
 
     <!-- Starttidspunkter -->
     <div v-if="date">
-      <label class="block text-sm font-medium mb-2 text-white">Vælg starttidspunkt</label>
-      <p v-if="slotsLoading" class="text-sm text-zinc-400">Henter ledige tider…</p>
-      <p v-else-if="slots.length === 0" class="text-sm text-zinc-500">Ingen ledige tider på denne dag.</p>
+      <label class="block text-sm font-medium mb-2 text-white">{{ $t('bookingForm.chooseTime') }}</label>
+      <p v-if="slotsLoading" class="text-sm text-zinc-400">{{ $t('bookingForm.loadingSlots') }}</p>
+      <p v-else-if="slots.length === 0" class="text-sm text-zinc-500">{{ $t('bookingForm.noSlots') }}</p>
       <div v-else class="grid grid-cols-3 gap-2">
         <button
           v-for="slot in slots"
@@ -27,8 +27,8 @@
     <!-- Antal spil -->
     <div v-if="selectedTime">
       <label class="block text-sm font-medium mb-2 text-white">
-        Antal spil: <span class="font-bold">{{ numGames }}</span>
-        <span class="block text-zinc-400 font-normal text-xs mt-0.5">{{ numGames * 30 }} min · kl. {{ selectedTime }}–{{ endTimePreview }}</span>
+        {{ $t('bookingForm.numGames') }} <span class="font-bold">{{ numGames }}</span>
+        <span class="block text-zinc-400 font-normal text-xs mt-0.5">{{ numGames * 30 }} {{ $t('bookingForm.minPreview') }} {{ selectedTime }}–{{ endTimePreview }}</span>
       </label>
       <div class="flex flex-wrap gap-2">
         <button
@@ -43,7 +43,7 @@
           ]"
           @click="numGames = n"
         >
-          {{ n }} spil
+          {{ n }} {{ $t('bookingForm.games') }}
         </button>
       </div>
     </div>
@@ -52,7 +52,7 @@
 
       <!-- Antal deltagere -->
       <div>
-        <label class="block text-sm font-medium mb-2 text-white">Antal deltagere: <span class="font-bold">{{ participants }}</span></label>
+        <label class="block text-sm font-medium mb-2 text-white">{{ $t('bookingForm.numParticipants') }} <span class="font-bold">{{ participants }}</span></label>
         <input
           v-model.number="participants"
           type="range"
@@ -84,20 +84,20 @@
           <input id="website" v-model="form.website" type="text" name="website" tabindex="-1" autocomplete="off" />
         </div>
         <div>
-          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">Navn</label>
-          <input v-model="form.name" type="text" required placeholder="Dit fulde navn" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
+          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">{{ $t('bookingForm.name') }}</label>
+          <input v-model="form.name" type="text" required :placeholder="$t('bookingForm.namePlaceholder')" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
         </div>
         <div>
-          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">Email</label>
-          <input v-model="form.email" type="email" required placeholder="din@mail.dk" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
+          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">{{ $t('bookingForm.email') }}</label>
+          <input v-model="form.email" type="email" required :placeholder="$t('bookingForm.emailPlaceholder')" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
         </div>
         <div>
-          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">Telefon</label>
-          <input v-model="form.phone" type="tel" required placeholder="Dit telefonnummer" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
+          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">{{ $t('bookingForm.phone') }}</label>
+          <input v-model="form.phone" type="tel" required :placeholder="$t('bookingForm.phonePlaceholder')" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
         </div>
         <div>
-          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">Besked <span class="text-zinc-500 font-normal">(valgfri)</span></label>
-          <textarea v-model="form.note" rows="3" placeholder="Skriv gerne hvad du ønsker hjælp til…" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500 resize-none" />
+          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">{{ $t('bookingForm.message') }} <span class="text-zinc-500 font-normal">({{ $t('bookingForm.optional') }})</span></label>
+          <textarea v-model="form.note" rows="3" :placeholder="$t('bookingForm.messagePlaceholder')" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500 resize-none" />
         </div>
       </div>
 
@@ -108,7 +108,7 @@
         :disabled="loading"
         class="w-full bg-black text-white border-neon-subtle-neonred py-3 font-bold tracking-wide hover:border-neon-subtle-neongreen disabled:opacity-50 transition-colors cursor-pointer"
       >
-        {{ loading ? 'Sender…' : 'Bekræft booking' }}
+        {{ loading ? $t('bookingForm.sending') : $t('bookingForm.confirm') }}
       </button>
     </template>
 
@@ -127,7 +127,7 @@ const emit = defineEmits(['success', 'refresh-dates'])
 
 const config = useRuntimeConfig()
 const apiUrl = config.public.apiUrl
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 
 const slots            = ref([])
 const selectedTime     = ref(null)
@@ -193,7 +193,7 @@ async function submitBooking() {
     emit('success', res)
     emit('refresh-dates')
   } catch (e) {
-    error.value = e.data?.error ?? 'Noget gik galt. Prøv igen.'
+    error.value = e.data?.error ?? t('bookingForm.error')
   } finally {
     loading.value = false
   }

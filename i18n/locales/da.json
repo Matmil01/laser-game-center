@@ -68,6 +68,37 @@
       }
     ]
   },
+  "bookingForm": {
+    "chooseTime": "Vælg starttidspunkt",
+    "loadingSlots": "Henter ledige tider…",
+    "noSlots": "Ingen ledige tider på denne dag.",
+    "numGames": "Antal spil:",
+    "games": "spil",
+    "minPreview": "min · kl.",
+    "numParticipants": "Antal deltagere:",
+    "name": "Navn",
+    "namePlaceholder": "Dit fulde navn",
+    "email": "Email",
+    "emailPlaceholder": "Din email",
+    "phone": "Telefon",
+    "phonePlaceholder": "Dit telefonnummer",
+    "message": "Besked",
+    "optional": "valgfri",
+    "messagePlaceholder": "Skriv gerne hvad du ønsker hjælp til…",
+    "sending": "Sender…",
+    "confirm": "Bekræft booking",
+    "error": "Noget gik galt. Prøv igen."
+  },
+  "booking": {
+    "heroTitle": "BOOK TID",
+    "minPersons": "OBS! Minimum 4 personer til en booking",
+    "noSlots": "Ingen ledige tider? Ring til os på {phone} — så finder vi en løsning.",
+    "confirmed": "Booking bekræftet!",
+    "games": "spil",
+    "emailSent": "En bekræftelse er sendt til din email.",
+    "newBooking": "Book en ny tid",
+    "chooseDate": "Vælg dato"
+  },
   "kontakt": {
     "title": "Kontakt os",
     "googleMaps": "Se på Google Maps",
