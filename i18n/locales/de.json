@@ -96,6 +96,7 @@
     "confirmed": "Buchung bestätigt!",
     "games": "Spiele",
     "emailSent": "Eine Bestätigung wurde an Ihre E-Mail gesendet.",
+    "emailFailed": "Ihre Buchung ist registriert, aber die Bestätigungsmail konnte nicht gesendet werden. Bitte kontaktieren Sie uns zur Bestätigung.",
     "newBooking": "Neue Zeit buchen",
     "chooseDate": "Datum wählen"
   },

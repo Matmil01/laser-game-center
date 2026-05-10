@@ -6,10 +6,10 @@
 	<h2 style="color: #0a3c6e;">Hej <?= htmlspecialchars($name) ?>,</h2>
 	<p>Din tid til lasertag er nu booket og bekræftet!</p>
 	<table style="margin: 16px 0 24px 0; font-size: 15px;">
-		<tr><td><strong>Dato:</strong></td><td><?= $dateFormatted ?></td></tr>
-		<tr><td><strong>Tid:</strong></td><td><?= $startFormatted ?> – <?= $endFormatted ?></td></tr>
-		<tr><td><strong>Antal spil:</strong></td><td><?= $num_games ?></td></tr>
-		<tr><td><strong>Antal deltagere:</strong></td><td><?= $participants ?></td></tr>
+		<tr><td><strong>Dato:</strong></td><td><?= htmlspecialchars($dateFormatted) ?></td></tr>
+		<tr><td><strong>Tid:</strong></td><td><?= htmlspecialchars($startFormatted) ?> – <?= htmlspecialchars($endFormatted) ?></td></tr>
+		<tr><td><strong>Antal spil:</strong></td><td><?= (int)$num_games ?></td></tr>
+		<tr><td><strong>Antal deltagere:</strong></td><td><?= (int)$participants ?></td></tr>
 	</table>
 	<p>Mød gerne op 10 minutter før din spilletid.</p>
 	<p style="margin-top: 18px;">Hvis du har brug for at aflyse eller ændre din booking, kan du kontakte os på e-mail eller telefon.</p>

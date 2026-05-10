@@ -96,6 +96,7 @@
     "confirmed": "Booking bekræftet!",
     "games": "spil",
     "emailSent": "En bekræftelse er sendt til din email.",
+    "emailFailed": "Din booking er registreret, men bekræftelsesmailen kunne ikke sendes. Kontakt os venligst for at bekræfte.",
     "newBooking": "Book en ny tid",
     "chooseDate": "Vælg dato"
   },

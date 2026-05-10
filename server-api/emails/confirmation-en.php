@@ -6,10 +6,10 @@
   <h2 style="color: #0a3c6e;">Hi <?= htmlspecialchars($name) ?>,</h2>
   <p>Your lasertag session is now booked and confirmed!</p>
   <table style="margin: 16px 0 24px 0; font-size: 15px;">
-    <tr><td><strong>Date:</strong></td><td><?= $dateFormatted ?></td></tr>
-    <tr><td><strong>Time:</strong></td><td><?= $startFormatted ?> – <?= $endFormatted ?></td></tr>
-    <tr><td><strong>Number of games:</strong></td><td><?= $num_games ?></td></tr>
-    <tr><td><strong>Participants:</strong></td><td><?= $participants ?></td></tr>
+    <tr><td><strong>Date:</strong></td><td><?= htmlspecialchars($dateFormatted) ?></td></tr>
+    <tr><td><strong>Time:</strong></td><td><?= htmlspecialchars($startFormatted) ?> – <?= htmlspecialchars($endFormatted) ?></td></tr>
+    <tr><td><strong>Number of games:</strong></td><td><?= (int)$num_games ?></td></tr>
+    <tr><td><strong>Participants:</strong></td><td><?= (int)$participants ?></td></tr>
   </table>
   <p>Please arrive 10 minutes before your session.</p>
   <p style="margin-top: 18px;">If you need to cancel or change your booking, please contact us by email or phone.</p>
