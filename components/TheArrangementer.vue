@@ -58,10 +58,13 @@
         ? 'translate-x-full opacity-0'
         : '-translate-x-full opacity-0'"
       mode="out-in"
+      @after-enter="onTextAfterEnter"
     >
       <div
+        ref="textBoxRef"
         class="flex-1 border-neon-neonred p-6 flex flex-col justify-start md:justify-center"
         :key="slides[current].title"
+        :style="minTextHeight ? { minHeight: minTextHeight + 'px' } : {}"
       >
         <h2 class="text-xl sm:text-2xl font-bold mb-4 text-white">{{ slides[current].title }}</h2>
         <div class="text-white flex flex-col space-y-6">
@@ -87,6 +90,21 @@ const { t } = useI18n()
 
 const current = ref(0)
 const direction = ref('right')
+// Keeps track of the tallest slide so the section doesn't jump in height when switching between slides
+const textBoxRef = ref(null)
+const minTextHeight = ref(0)
+
+onMounted(async () => {
+  await nextTick()
+  if (textBoxRef.value) {
+    minTextHeight.value = textBoxRef.value.offsetHeight
+  }
+})
+
+function onTextAfterEnter(el) {
+  const h = el.offsetHeight
+  if (h > minTextHeight.value) minTextHeight.value = h
+}
 
 const slides = computed(() => [
   {

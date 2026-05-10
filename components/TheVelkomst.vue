@@ -3,13 +3,15 @@
     <!-- Velkommen Box -->
     <div class="border-2 border-neon-neonred p-6 relative md:w-6/12 mb-6 md:mb-0">
       <h2 class="text-2xl text-white mb-1">{{ $t('velkomst.title') }}</h2>
-      <p class="text-white md:mb-2 mb-6">
+      <p class="text-white mb-4">
         {{ $t('velkomst.p1') }}<br><br>
         {{ $t('velkomst.p2') }}<br><br>
         {{ $t('velkomst.p3') }}<br>
         {{ $t('velkomst.p4') }}
       </p>
-      <NeonButton to="/booking" custom-class="absolute bottom-4 right-4" :text="$t('common.bookNow')" />
+      <div class="flex justify-end">
+        <NeonButton to="/booking" custom-class="md:absolute md:bottom-4 md:right-4" :text="$t('common.bookNow')" />
+      </div>
     </div>
 
     <!-- Episk Box -->
