@@ -29,7 +29,6 @@ export default defineNuxtConfig({
         '/server-api': {
           target: 'https://laser.matmil.dk',
           changeOrigin: true,
-          secure: false,
         }
       }
     }

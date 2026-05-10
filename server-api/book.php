@@ -27,6 +27,16 @@ if (!empty(trim($data['website'] ?? ''))) {
     exit;
 }
 
+// Timebased honeypot: formularen skal have været synlig i mindst 3 sekunder.
+// Bots udfylder typisk formularer instantly
+$formLoadedAt = (int)($data['form_loaded_at'] ?? 0);
+$elapsedMs    = (int)(microtime(true) * 1000) - $formLoadedAt;
+if ($formLoadedAt === 0 || $elapsedMs < 3000) {
+    http_response_code(200);
+    echo json_encode(['error' => 'Spam detected']);
+    exit;
+}
+
 $name         = trim($data['name']       ?? '');
 $email        = filter_var($data['email'] ?? '', FILTER_VALIDATE_EMAIL);
 $phone        = trim($data['phone']      ?? '');
@@ -45,6 +55,19 @@ if (!$name || !$email || !$phone || !$date || !$start_time || !$num_games) {
 if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date) || !preg_match('/^\d{2}:\d{2}$/', $start_time)) {
     http_response_code(400);
     echo json_encode(['error' => 'Ugyldigt dato- eller tidsformat']);
+    exit;
+}
+// Verify the date is actually a valid calendar date (regex above allows e.g. 2025-13-45)
+$parsedDate = DateTime::createFromFormat('Y-m-d', $date);
+if (!$parsedDate || $parsedDate->format('Y-m-d') !== $date) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Ugyldigt dato- eller tidsformat']);
+    exit;
+}
+// Reject bookings in the past
+if ($parsedDate < new DateTime('today')) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Datoen er i fortiden.']);
     exit;
 }
 if ($num_games < 1 || $num_games > 4) {
@@ -99,6 +122,7 @@ if ($startMin < $winStart || $endMin > $winEnd) {
 $overlapStmt = $pdo->prepare(
     'SELECT COUNT(*) FROM bookings
      WHERE window_id = ?
+       AND cancelled_at IS NULL
        AND FLOOR(TIME_TO_SEC(start_time)/60) < ?
        AND FLOOR(TIME_TO_SEC(start_time)/60) + num_games * 30 > ?'
 );
@@ -153,10 +177,12 @@ ob_start();
 include __DIR__ . "/emails/confirmation-{$locale}.php";
 $mail->Body = ob_get_clean();
 
+$emailSent = true;
 try {
     $mail->send();
 } catch (Exception $e) {
     error_log('PHPMailer: ' . $mail->ErrorInfo);
+    $emailSent = false;
 }
 
 // Send notifikationsemail til siteejeren
@@ -188,9 +214,10 @@ if ($adminEmail) {
 }
 
 echo json_encode([
-    'success'   => true,
-    'date'      => $dateFormatted,
-    'time'      => $startFormatted,
-    'end_time'  => $endFormatted,
-    'num_games' => $num_games,
+    'success'      => true,
+    'date'         => $dateFormatted,
+    'time'         => $startFormatted,
+    'end_time'     => $endFormatted,
+    'num_games'    => $num_games,
+    'email_sent'   => $emailSent,
 ]);

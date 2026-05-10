@@ -105,7 +105,7 @@
 
       <button
         type="submit"
-        :disabled="loading"
+        :disabled="loading || submitted"
         class="w-full bg-black text-white border-neon-subtle-neonred py-3 font-bold tracking-wide hover:border-neon-subtle-neongreen disabled:opacity-50 transition-colors cursor-pointer"
       >
         {{ loading ? $t('bookingForm.sending') : $t('bookingForm.confirm') }}
@@ -136,8 +136,10 @@ const numGames         = ref(1)
 const participants     = ref(4)
 const slotsLoading     = ref(false)
 const loading          = ref(false)
+const submitted        = ref(false)
 const error            = ref('')
 const form             = reactive({ name: '', email: '', phone: '', note: '', website: '' })
+const formLoadedAt     = ref(0)
 
 const endTimePreview = computed(() => {
   if (!selectedTime.value) return ''
@@ -152,11 +154,14 @@ watch(() => props.date, async (newDate) => {
   numGames.value         = 1
   slots.value            = []
   error.value            = ''
+  submitted.value        = false
   if (!newDate) {
     participants.value = 4
+    formLoadedAt.value = 0
     Object.assign(form, { name: '', email: '', phone: '', note: '', website: '' })
     return
   }
+  formLoadedAt.value = Date.now()
   slotsLoading.value = true
   try {
     const dateStr = newDate instanceof Date ? calToKey(newDate) : newDate
@@ -175,21 +180,24 @@ function selectTime(slot) {
 }
 
 async function submitBooking() {
-  loading.value = true
-  error.value   = ''
+  if (loading.value || submitted.value) return
+  loading.value   = true
+  error.value     = ''
   try {
     const dateStr = props.date instanceof Date ? calToKey(props.date) : props.date
     const res = await $fetch(`${apiUrl}/book.php`, {
       method: 'POST',
       body: {
         ...form,
-        date:         dateStr,
-        start_time:   selectedTime.value,
-        num_games:    numGames.value,
-        participants: participants.value,
-        locale:       locale.value,
+        date:          dateStr,
+        start_time:    selectedTime.value,
+        num_games:     numGames.value,
+        participants:  participants.value,
+        locale:        locale.value,
+        form_loaded_at: formLoadedAt.value,
       },
     })
+    submitted.value = true
     emit('success', res)
     emit('refresh-dates')
   } catch (e) {

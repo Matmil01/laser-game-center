@@ -5,7 +5,13 @@ function setCorsHeaders(string $methods = 'POST, OPTIONS'): void {
     // Hent den tilladte frontend-oprindelse fra env
     $origin = getenv('CORS_ORIGIN');
     if (!$origin) return; // Ingen oprindelse konfigureret — spring CORS-headers over
+
+    if (!preg_match('#^https?://[a-zA-Z0-9\-\.]+(:\d+)?$#', $origin)) {
+        return;
+    }
+
     header('Access-Control-Allow-Origin: ' . $origin);
     header('Access-Control-Allow-Methods: ' . $methods);
     header('Access-Control-Allow-Headers: Content-Type');
+    header('Vary: Origin');
 }

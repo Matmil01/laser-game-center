@@ -30,7 +30,7 @@
 <script setup>
 const props = defineProps({
   password: String,
-  authed: Boolean
+  authed:   Boolean,
 })
 const emit = defineEmits(['update-contact-info', 'unauthorized', 'dirty-change'])
 

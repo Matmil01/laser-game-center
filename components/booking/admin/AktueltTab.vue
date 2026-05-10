@@ -144,7 +144,7 @@
 <script setup>
 const props = defineProps({
   password: String,
-  authed: Boolean
+  authed:   Boolean,
 })
 const emit = defineEmits(['update-aktuelt-info', 'unauthorized', 'dirty-change'])
 

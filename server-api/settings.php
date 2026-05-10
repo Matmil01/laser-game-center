@@ -61,6 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$key, $value]);
     }
 
+    $savedKeys = implode(', ', array_keys(array_intersect_key($body, $allowed)));
+    auditLog($pdo, 'update_settings', "keys=$savedKeys");
+
     echo json_encode(['success' => true]);
     exit;
 }
