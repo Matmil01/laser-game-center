@@ -36,6 +36,7 @@ if ($action === 'list') {
                     b.name, b.email, b.phone, b.note, b.participants, b.created_at
              FROM bookings b
              JOIN availability_windows aw ON b.window_id = aw.id
+             WHERE b.cancelled_at IS NULL
              ORDER BY aw.window_date, b.start_time'
         );
         $bookings = $bstmt->fetchAll();
@@ -103,6 +104,7 @@ if ($action === 'set_window') {
     $pdo->prepare('INSERT INTO availability_windows (window_date, start_time, end_time) VALUES (?, ?, ?)')
         ->execute([$date, $from . ':00', $to . ':00']);
     $windowId = (int) $pdo->lastInsertId();
+    auditLog($pdo, 'set_window', "date=$date from=$from to=$to");
     echo json_encode(['success' => true, 'id' => $windowId, 'created' => true]);
     exit;
 }
@@ -154,6 +156,7 @@ if ($action === 'update_window') {
     $check = $pdo->prepare(
         'SELECT COUNT(*) FROM bookings
          WHERE window_id = ?
+           AND cancelled_at IS NULL
            AND (FLOOR(TIME_TO_SEC(start_time)/60) < ?
              OR FLOOR(TIME_TO_SEC(start_time)/60) + num_games * 30 > ?)'
     );
@@ -166,6 +169,7 @@ if ($action === 'update_window') {
 
     $pdo->prepare('UPDATE availability_windows SET start_time = ?, end_time = ? WHERE id = ?')
         ->execute([$from . ':00', $to . ':00', $id]);
+    auditLog($pdo, 'update_window', "id=$id from=$from to=$to");
     echo json_encode(['success' => true]);
     exit;
 }
@@ -181,7 +185,7 @@ if ($action === 'delete_window') {
         http_response_code(404); echo json_encode(['error' => 'Vindue ikke fundet']); exit;
     }
 
-    $countStmt = $pdo->prepare('SELECT COUNT(*) FROM bookings WHERE window_id = ?');
+    $countStmt = $pdo->prepare('SELECT COUNT(*) FROM bookings WHERE window_id = ? AND cancelled_at IS NULL');
     $countStmt->execute([$id]);
     if ((int)$countStmt->fetchColumn() > 0) {
         http_response_code(409);
@@ -190,22 +194,24 @@ if ($action === 'delete_window') {
     }
 
     $pdo->prepare('DELETE FROM availability_windows WHERE id = ?')->execute([$id]);
+    auditLog($pdo, 'delete_window', "id=$id");
     echo json_encode(['success' => true]);
     exit;
 }
 
-// Annuller en booking
+// Annuller en booking (soft delete)
 
 if ($action === 'cancel') {
     if (!$id) { http_response_code(400); echo json_encode(['error' => 'Mangler booking-id']); exit; }
 
-    $stmt = $pdo->prepare('SELECT id FROM bookings WHERE id = ?');
+    $stmt = $pdo->prepare('SELECT id FROM bookings WHERE id = ? AND cancelled_at IS NULL');
     $stmt->execute([$id]);
     if (!$stmt->fetch()) {
         http_response_code(404); echo json_encode(['error' => 'Booking ikke fundet']); exit;
     }
 
-    $pdo->prepare('DELETE FROM bookings WHERE id = ?')->execute([$id]);
+    $pdo->prepare('UPDATE bookings SET cancelled_at = NOW() WHERE id = ?')->execute([$id]);
+    auditLog($pdo, 'cancel_booking', "id=$id");
     echo json_encode(['success' => true]);
     exit;
 }
