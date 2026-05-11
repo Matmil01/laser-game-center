@@ -31,7 +31,6 @@
   <div class="w-full max-w-2xl mx-auto px-4 py-10">
     <div>
 
-      <p class="mb-8 text-white font-semibold">{{ $t('booking.minPersons') }}</p>
       <p v-if="futureAvailableDates.length === 0" class="mb-8 text-white font-semibold">
         {{ $t('booking.noSlots', { phone: contact.phone }) }}
       </p>

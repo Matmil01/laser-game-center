@@ -52,28 +52,30 @@
 
       <!-- Antal deltagere -->
       <div>
-        <label class="block text-sm font-medium mb-2 text-white">{{ $t('bookingForm.numParticipants') }} <span class="font-bold">{{ participants }}</span></label>
-        <input
-          v-model.number="participants"
-          type="range"
-          min="4"
-          max="99"
-          class="w-full accent-neongreen cursor-pointer"
-        />
-        <div class="flex justify-center items-center gap-3 mt-2">
+        <label class="block text-sm font-medium mb-2 text-white">{{ $t('bookingForm.numParticipants') }}</label>
+        <div class="flex items-center gap-3">
           <button
             type="button"
             :disabled="participants <= 4"
-            class="w-9 h-9 border-neon-subtle-neonred text-lg font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer"
+            class="w-12 py-2 border-neon-subtle-neonred text-sm font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer flex-shrink-0"
             @click="participants = Math.max(4, participants - 1)"
           >−</button>
+          <input
+            v-model.number="participants"
+            type="number"
+            min="4"
+            max="99"
+            class="w-20 border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white text-center text-sm font-medium [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+            @change="participants = Math.min(99, Math.max(4, participants || 4))"
+          />
           <button
             type="button"
             :disabled="participants >= 99"
-            class="w-9 h-9 border-neon-subtle-neonred text-lg font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer"
+            class="w-12 py-2 border-neon-subtle-neonred text-sm font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer flex-shrink-0"
             @click="participants = Math.min(99, participants + 1)"
           >+</button>
         </div>
+        <p v-if="participants < 4" class="mt-2 text-xs text-neonred">{{ $t('booking.minPersons') }}</p>
       </div>
 
       <!-- Kontaktoplysninger -->
