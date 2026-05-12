@@ -84,10 +84,11 @@
     "phonePlaceholder": "Dit telefonnummer",
     "message": "Besked",
     "optional": "valgfri",
-    "messagePlaceholder": "Skriv gerne hvad du ønsker hjælp til…",
+    "messagePlaceholder": "Skriv gerne hvis du har ønsker!",
     "sending": "Sender…",
     "confirm": "Bekræft booking",
-    "error": "Noget gik galt. Prøv igen."
+    "error": "Noget gik galt. Prøv igen.",
+    "personsShort": "pers."
   },
   "booking": {
     "heroTitle": "BOOK TID",

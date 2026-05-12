@@ -84,10 +84,11 @@
     "phonePlaceholder": "Your phone number",
     "message": "Message",
     "optional": "optional",
-    "messagePlaceholder": "Feel free to write what you need help with…",
+    "messagePlaceholder": "Feel free to write if you have any wishes!",
     "sending": "Sending…",
     "confirm": "Confirm booking",
-    "error": "Something went wrong. Please try again."
+    "error": "Something went wrong. Please try again.",
+    "personsShort": "pers."
   },
   "booking": {
     "heroTitle": "BOOK A TIME",

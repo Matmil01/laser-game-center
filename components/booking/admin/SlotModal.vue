@@ -144,19 +144,15 @@ const props = defineProps({
 
 defineEmits(['close', 'delete-slot', 'cancel-booking', 'update-slot'])
 
-const calcEndTime = (s) => {
-  const [h, m] = s.slot_time.slice(0, 5).split(':').map(Number)
-  const end = h * 60 + m + (s.duration_min ?? 60)
-  return `${String(Math.floor(end / 60)).padStart(2, '0')}:${String(end % 60).padStart(2, '0')}`
-}
+const slotEnd = (s) => calSlotEndTime(s.slot_time, s.duration_min ?? 60)
 
 const editFrom      = ref(props.slot.slot_time.slice(0, 5))
-const editTo        = ref(calcEndTime(props.slot))
+const editTo        = ref(slotEnd(props.slot))
 const confirmDelete = ref(false)
 
 watch(() => props.slot, (s) => {
   editFrom.value      = s.slot_time.slice(0, 5)
-  editTo.value        = calcEndTime(s)
+  editTo.value        = slotEnd(s)
   confirmDelete.value = false
 })
 
@@ -171,8 +167,8 @@ const editToOptions = computed(() => {
 
 const editHasChanges = computed(() =>
   editFrom.value !== props.slot.slot_time.slice(0, 5) ||
-  editTo.value   !== calcEndTime(props.slot)
+  editTo.value   !== slotEnd(props.slot)
 )
 
-const slotEndTime = computed(() => calcEndTime(props.slot))
+const slotEndTime = computed(() => slotEnd(props.slot))
 </script>

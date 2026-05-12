@@ -84,10 +84,11 @@
     "phonePlaceholder": "Ihre Telefonnummer",
     "message": "Nachricht",
     "optional": "optional",
-    "messagePlaceholder": "Schreiben Sie gerne, wobei wir Ihnen helfen können…",
+    "messagePlaceholder": "Schreiben Sie gerne, falls Sie Wünsche haben!",
     "sending": "Wird gesendet…",
     "confirm": "Buchung bestätigen",
-    "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+    "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "personsShort": "Pers."
   },
   "booking": {
     "heroTitle": "TERMIN BUCHEN",

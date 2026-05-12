@@ -56,17 +56,17 @@
         <div class="flex items-center gap-3">
           <button
             type="button"
-            :disabled="participants <= 4"
+            :disabled="participants <= MIN_PARTICIPANTS"
             class="w-12 py-2 border-neon-subtle-neonred text-sm font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer flex-shrink-0"
-            @click="participants = Math.max(4, participants - 1)"
+            @click="participants = Math.max(MIN_PARTICIPANTS, participants - 1)"
           >−</button>
           <input
             v-model.number="participants"
             type="number"
-            min="4"
+            :min="MIN_PARTICIPANTS"
             max="99"
             class="w-20 border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white text-center text-sm font-medium [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-            @change="participants = Math.min(99, Math.max(4, participants || 4))"
+            @input="participants = Math.min(99, Math.max(MIN_PARTICIPANTS, participants || MIN_PARTICIPANTS))"
           />
           <button
             type="button"
@@ -75,7 +75,7 @@
             @click="participants = Math.min(99, participants + 1)"
           >+</button>
         </div>
-        <p v-if="participants < 4" class="mt-2 text-xs text-neonred">{{ $t('booking.minPersons') }}</p>
+        <p v-if="participants < MIN_PARTICIPANTS" class="mt-2 text-xs text-neonred">{{ $t('booking.minPersons') }}</p>
       </div>
 
       <!-- Kontaktoplysninger -->
@@ -101,6 +101,17 @@
           <label class="block text-sm font-medium mb-1 cursor-pointer text-white">{{ $t('bookingForm.message') }} <span class="text-zinc-500 font-normal">({{ $t('bookingForm.optional') }})</span></label>
           <textarea v-model="form.note" rows="3" :placeholder="$t('bookingForm.messagePlaceholder')" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500 resize-none" />
         </div>
+      </div>
+
+      <!-- Booking summary -->
+      <div class="border border-zinc-700 px-4 py-3 text-sm text-zinc-300 flex flex-wrap items-center gap-x-2.5 gap-y-1">
+        <span class="font-semibold text-white">{{ formatDate(date instanceof Date ? calToKey(date) : date) }}</span>
+        <span class="text-zinc-600">·</span>
+        <span>{{ selectedTime }}–{{ endTimePreview }}</span>
+        <span class="text-zinc-600">·</span>
+        <span>{{ numGames }} {{ $t('booking.games') }}</span>
+        <span class="text-zinc-600">·</span>
+        <span>{{ participants }} {{ $t('bookingForm.personsShort') }}</span>
       </div>
 
       <p v-if="error" class="text-sm text-neonred">{{ error }}</p>
@@ -131,11 +142,13 @@ const config = useRuntimeConfig()
 const apiUrl = config.public.apiUrl
 const { locale, t } = useI18n()
 
+const MIN_PARTICIPANTS = 4
+
 const slots            = ref([])
 const selectedTime     = ref(null)
 const selectedMaxGames = ref(4)
 const numGames         = ref(1)
-const participants     = ref(4)
+const participants     = ref(MIN_PARTICIPANTS)
 const slotsLoading     = ref(false)
 const loading          = ref(false)
 const submitted        = ref(false)
@@ -150,7 +163,10 @@ const endTimePreview = computed(() => {
   return `${String(Math.floor(end / 60)).padStart(2, '0')}:${String(end % 60).padStart(2, '0')}`
 })
 
+let fetchAbortController = null
+
 watch(() => props.date, async (newDate) => {
+  if (fetchAbortController) { fetchAbortController.abort(); fetchAbortController = null }
   selectedTime.value     = null
   selectedMaxGames.value = 4
   numGames.value         = 1
@@ -158,20 +174,22 @@ watch(() => props.date, async (newDate) => {
   error.value            = ''
   submitted.value        = false
   if (!newDate) {
-    participants.value = 4
+    participants.value = MIN_PARTICIPANTS
     formLoadedAt.value = 0
     Object.assign(form, { name: '', email: '', phone: '', note: '', website: '' })
     return
   }
   formLoadedAt.value = Date.now()
   slotsLoading.value = true
+  fetchAbortController = new AbortController()
   try {
     const dateStr = newDate instanceof Date ? calToKey(newDate) : newDate
-    slots.value = await $fetch(`${apiUrl}/slots.php?date=${dateStr}`)
-  } catch {
-    slots.value = []
+    slots.value = await $fetch(`${apiUrl}/slots.php?date=${dateStr}`, { signal: fetchAbortController.signal })
+  } catch (e) {
+    if (e?.name !== 'AbortError') slots.value = []
   } finally {
     slotsLoading.value = false
+    fetchAbortController = null
   }
 })
 
