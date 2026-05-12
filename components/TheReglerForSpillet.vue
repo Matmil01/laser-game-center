@@ -17,14 +17,11 @@ Har DU hvad der skal til for at blive Vestjyllands bedste laserkriger? <br><br>
     <!-- Right Box - YouTube Video -->
     <div class="flex-1 border-neon-neonred">
       <div class="aspect-video w-full h-full">
-        <iframe
-          class="w-full h-full"
-          src="https://www.youtube.com/embed/kgfZIeXGzb0?rel=0&showinfo=0"
-          title="Laser Game Video"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+          <video
+              src="/videos/lasergamecenteroksboelwalkthrough.mp4"
+              style="width: 100%; height: 100%; object-fit: cover;"
+              controls
+          ></video>
       </div>
     </div>
   </div>

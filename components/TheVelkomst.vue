@@ -17,13 +17,9 @@ Tør DU!?
     <!-- Episk Box -->
     <div class="border-neon-neonred md:w-6/12">
         <video
-            src="/videos/hero.mp4"
+            src="/videos/lasergamecenteroksboeltrailer.mp4"
             style="width: 100%; height: 100%; object-fit: cover;"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="none"
+            controls
         ></video>
     </div>
   </div>
