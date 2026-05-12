@@ -66,7 +66,8 @@
             :min="MIN_PARTICIPANTS"
             max="99"
             class="w-20 border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white text-center text-sm font-medium [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-            @input="participants = Math.min(99, Math.max(MIN_PARTICIPANTS, participants || MIN_PARTICIPANTS))"
+            @input="participants = participants ? Math.min(99, participants) : participants"
+            @blur="participants = Math.max(MIN_PARTICIPANTS, Number(participants) || MIN_PARTICIPANTS)"
           />
           <button
             type="button"
