@@ -84,7 +84,7 @@ import DatePicker from '~/components/booking/DatePicker.vue'
 
 const props = defineProps({
   password: String,
-  authed:   Boolean
+  authed:   Boolean,
 })
 
 const emit = defineEmits(['unauthorized'])

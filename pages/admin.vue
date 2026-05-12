@@ -87,7 +87,7 @@ const { contact: contactInfo } = useContactInfo()
 function onContactInfoUpdated(val) {
   contactInfo.value = { ...(contactInfo.value ?? {}), ...val }
 }
-// just the localStorage key
+// sessionStorage key — cleared when the tab/browser closes (Måske skal det være localStorage i stedet)
 const PASSWORD_KEY = 'admin_pw'
 
 const passwordInput = ref('')
@@ -106,9 +106,10 @@ function tryChangeTab(tab) {
   activeTab.value = tab
 }
 
-// Henter gemt adgangskode fra localStorage, så admin ikke skal logge ind igen ved sideopdatering.
+// Henter gemt adgangskode fra sessionStorage, så admin ikke skal logge ind igen ved sideopdatering.
+// sessionStorage ryddes, når fanen/browseren lukkes.
 onMounted(() => {
-  const stored = localStorage.getItem(PASSWORD_KEY)
+  const stored = sessionStorage.getItem(PASSWORD_KEY)
   if (stored) {
     password.value = stored
     authed.value = true
@@ -126,7 +127,7 @@ async function login() {
       body: { action: 'list', pw: passwordInput.value },
     })
     password.value = passwordInput.value
-    localStorage.setItem(PASSWORD_KEY, passwordInput.value)
+    sessionStorage.setItem(PASSWORD_KEY, passwordInput.value)
     authed.value = true
   } catch (e) {
     if (e.status === 401) {
@@ -140,9 +141,9 @@ async function login() {
 }
 
 function logout() {
-  localStorage.removeItem(PASSWORD_KEY)
+  sessionStorage.removeItem(PASSWORD_KEY)
   password.value = ''
-  authed.value = false
+  authed.value   = false
 }
 
 function handleUnauthorized() {

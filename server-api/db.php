@@ -8,6 +8,15 @@ date_default_timezone_set('Europe/Copenhagen');
 $envLoader = __DIR__ . '/load-env.php';
 if (file_exists($envLoader)) require_once $envLoader;
 
+// Valider at alle påkrævede env-variabler er sat — fail hurtigt med en klar fejl.
+$_required_env = ['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS'];
+$_missing_env  = array_filter($_required_env, fn($k) => getenv($k) === false || getenv($k) === '');
+if ($_missing_env) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Server configuration error: missing env vars: ' . implode(', ', $_missing_env)]);
+    exit;
+}
+
 // Hent databaseoplysninger fra env
 $host     = getenv('DB_HOST');
 $dbname   = getenv('DB_NAME');

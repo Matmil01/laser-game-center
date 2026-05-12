@@ -1,7 +1,7 @@
 <template>
   <v-calendar
     class="booking-datepicker"
-    locale="da"
+    :locale="locale"
     :first-day-of-week="2"
     :is-expanded="isExpanded"
     :min-date="minDate"
@@ -11,6 +11,8 @@
 </template>
 
 <script setup>
+const { locale } = useI18n()
+
 defineProps({
   minDate:    { default: undefined },
   attributes: { type: Array, default: () => [] },

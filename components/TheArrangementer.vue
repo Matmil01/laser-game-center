@@ -1,14 +1,14 @@
 <template>
   <div id="arrangementer" class="scroll-mt-24">
-  <h2 class="sm:text-4xl text-2xl font-bold text-white text-center">arrangementer</h2>
-  <div class="flex gap-8 items-center justify-start md:justify-center relative my-7 px-10 sm:px-20">
+  <h2 class="sm:text-4xl text-2xl font-bold text-white text-center">{{ $t('arrangementer.title') }}</h2>
+  <div class="flex gap-8 items-center justify-start md:justify-center relative my-7 px-10 sm:px-20 overflow-hidden">
     <!-- Venstre pil -->
     <button
       @click="slideLeft"
       class="z-20 absolute left-2 md:left-0 top-1/2 -translate-y-1/2 p-2"
-      aria-label="Forrige"
+      :aria-label="$t('arrangementer.prev')"
     >
-      <img src="/icons/pil.svg" alt="Forrige" class="sm:w-10 sm:h-10 w-6 h-6 rotate-180 cursor-pointer transition" />
+      <img src="/icons/pil.svg" :alt="$t('arrangementer.prev')" class="sm:w-10 sm:h-10 w-6 h-6 rotate-180 cursor-pointer transition" />
     </button>
 
     <!-- Billedboks (skjules på mobil) -->
@@ -58,10 +58,13 @@
         ? 'translate-x-full opacity-0'
         : '-translate-x-full opacity-0'"
       mode="out-in"
+      @after-enter="onTextAfterEnter"
     >
       <div
+        ref="textBoxRef"
         class="flex-1 border-neon-neonred p-6 flex flex-col justify-start md:justify-center"
         :key="slides[current].title"
+        :style="minTextHeight ? { minHeight: minTextHeight + 'px' } : {}"
       >
         <h2 class="text-xl sm:text-2xl font-bold mb-4 text-white">{{ slides[current].title }}</h2>
         <div class="text-white flex flex-col space-y-6">
@@ -74,62 +77,77 @@
     <button
       @click="slideRight"
       class="z-20 absolute right-2 md:right-0 top-1/2 -translate-y-1/2 p-2"
-      aria-label="Næste"
+      :aria-label="$t('arrangementer.next')"
     >
-      <img src="/icons/pil.svg" alt="Næste" class="sm:w-10 sm:h-10 w-6 h-6 cursor-pointer transition" />
+      <img src="/icons/pil.svg" :alt="$t('arrangementer.next')" class="sm:w-10 sm:h-10 w-6 h-6 cursor-pointer transition" />
     </button>
   </div>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      current: 0,
-      direction: 'right',
-      slides: [
-        {
-          image: "/photos/lasergame-spil-oksboel-10.webp",
-          alt: "Kvinde, der gemmer sig, mens hun spiller lasergame",
-          title: "Fødselsdag",
-          text: "Gør fødselsdagen ekstra spændende med lasergame! En af de sjoveste oplevelser på vestkysten!\nVed børnefødselsdage spiller fødselaren gratis ved opfyldelse af minimumskrav, hvilket skaber en særlig oplevelse og en dag, børnene sent vil glemme.\nDette kræver min. booking af to spil for mindst 6 personer! Gratis fødselsar er min. 8 personer",
-        },
-        {
-          image: "/photos/lasergame-spil-oksboel-11.webp",
-          alt: "To kvinder går mod hinanden iført lasergame-udstyr",
-          title: "Team Building",
-          text: "Er din virksomhed lokaliseret nær Oskbøl, Esbjerg, Varde, eller Blåvand? Eller kommer i langvejs fra?\nUanset hvor I kommer fra, er dette en oplagt aktivitet for virksomheder, foreninger eller grupper.\nGennem intense lasergame-oplevelser styrkes relationer og fællesskab på en sjov og anderledes måde.",
-        },
-        {
-          image: "/photos/lasergame-spil-oksboel-4.webp",
-          alt: "Kvinde og gruppe venner spiller lasergame sammen",
-          title: "Selskaber og private arrangementer",
-          text: "Uanset om det er en vennegruppe, familieevent eller anden fejring, kan centeret bookes uden for højsæsonen.\nDet giver mulighed for en anderledes og aktiv oplevelse, hvor alle kan være med.",
-        },
-        {
-          image: "/photos/lasergame-spil-oksboel-16.webp",
-          alt: "Mennesker iført lasergame-udstyr venter på spillets start",
-          title: "Mobil lasergame – vi kommer til jer",
-          text: "Er i ikke på vestkysten? Frygt ej! Vi kommer til dig!\nMed den mobile løsning fra OX-Consult kan lasergame rykkes ud til jeres egen lokation.\nPerfekt til skoler, events eller firmaer, der ønsker en fleksibel løsning.",
-        },
-        {
-          image: "/photos/lasergame-spil-oksboel-1.webp",
-          alt: "Mand der sigter med laserpistol",
-          title: "Fleksible faciliteter",
-          text: "Har I en hal eller et større lokale, kan det nemt omdannes til en lasergame-bane ved brug af borde, kasser eller gymnastikredskaber.\nDet giver en unik og tilpasset oplevelse i jeres egne rammer.",
-        },      ],
-    };
+<script setup>
+const { t } = useI18n()
+
+const current = ref(0)
+const direction = ref('right')
+// Keeps track of the tallest slide so the section doesn't jump in height when switching between slides
+const textBoxRef = ref(null)
+const minTextHeight = ref(0)
+
+onMounted(async () => {
+  await nextTick()
+  if (textBoxRef.value) {
+    minTextHeight.value = textBoxRef.value.offsetHeight
+  }
+})
+
+function onTextAfterEnter(el) {
+  const h = el.offsetHeight
+  if (h > minTextHeight.value) minTextHeight.value = h
+}
+
+const slides = computed(() => [
+  {
+    image: '/photos/lasergame-spil-oksboel-10.webp',
+    alt:   t('arrangementer.slides.0.alt'),
+    title: t('arrangementer.slides.0.title'),
+    text:  t('arrangementer.slides.0.text'),
   },
-  methods: {
-    slideRight() {
-      this.direction = 'right';
-      this.current = (this.current + 1) % this.slides.length;
-    },
-    slideLeft() {
-      this.direction = 'left';
-      this.current = (this.current - 1 + this.slides.length) % this.slides.length;
-    },
+  {
+    image: '/photos/lasergame-spil-oksboel-11.webp',
+    alt:   t('arrangementer.slides.1.alt'),
+    title: t('arrangementer.slides.1.title'),
+    text:  t('arrangementer.slides.1.text'),
   },
-};
+  {
+    image: '/photos/lasergame-spil-oksboel-4.webp',
+    alt:   t('arrangementer.slides.2.alt'),
+    title: t('arrangementer.slides.2.title'),
+    text:  t('arrangementer.slides.2.text'),
+  },
+  {
+    image: '/photos/lasergame-spil-oksboel-16.webp',
+    alt:   t('arrangementer.slides.3.alt'),
+    title: t('arrangementer.slides.3.title'),
+    text:  t('arrangementer.slides.3.text'),
+  },
+  {
+    image: '/photos/lasergame-spil-oksboel-1.webp',
+    alt:   t('arrangementer.slides.4.alt'),
+    title: t('arrangementer.slides.4.title'),
+    text:  t('arrangementer.slides.4.text'),
+  },
+])
+
+const totalSlides = 5
+
+function slideRight() {
+  direction.value = 'right'
+  current.value = (current.value + 1) % totalSlides
+}
+
+function slideLeft() {
+  direction.value = 'left'
+  current.value = (current.value - 1 + totalSlides) % totalSlides
+}
 </script>

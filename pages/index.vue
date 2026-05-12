@@ -39,3 +39,18 @@
     </div>
 </div>
 </template>
+
+<script setup>
+// clear hashtag fra url når man klikker på nav links
+const route = useRoute()
+
+onMounted(() => {
+  const section = route.query.scroll
+  if (section) {
+    history.replaceState(null, '', '/')
+    setTimeout(() => {
+      document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' })
+    }, 100)
+  }
+})
+</script>

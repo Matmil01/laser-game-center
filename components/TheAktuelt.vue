@@ -1,6 +1,6 @@
 <template>
 	<div
-		v-if="contact && contact.aktuelt_text && contact.aktuelt_visible !== '0'"
+		v-if="contact && aktueltText && contact.aktuelt_visible !== '0'"
 		class="relative max-w-md w-full mx-auto mt-14 mb-4 px-6 py-5 bg-black text-white border-2"
 		:style="{
 			borderColor: contact.aktuelt_color || '#FF9D00',
@@ -25,15 +25,32 @@
 				}"
 			/>
 			<div>
-				<h2 class="text-lg font-black tracking-wide mb-1">{{ contact.aktuelt_title || 'AKTUELT' }}</h2>
-				<p class="text-sm leading-relaxed whitespace-pre-wrap">{{ contact.aktuelt_text }}</p>
+				<h2 class="text-lg font-black tracking-wide mb-1">{{ aktueltTitle }}</h2>
+				<p class="text-sm leading-relaxed whitespace-pre-wrap">{{ aktueltText }}</p>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script setup>
-// useContactInfo fetcher også "aktuelt" fields fra settings.php
 const { contact, fetchContactInfo } = useContactInfo()
+const { locale } = useI18n()
+
+const aktueltTitle = computed(() => {
+  if (locale.value !== 'da') {
+    const t = contact.value[`aktuelt_title_${locale.value}`]
+    if (t) return t
+  }
+  return contact.value.aktuelt_title || 'AKTUELT'
+})
+
+const aktueltText = computed(() => {
+  if (locale.value !== 'da') {
+    const t = contact.value[`aktuelt_text_${locale.value}`]
+    if (t) return t
+  }
+  return contact.value.aktuelt_text || ''
+})
+
 onMounted(fetchContactInfo)
 </script>

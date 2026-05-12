@@ -1,4 +1,44 @@
 Options -MultiViews
+
+# Security headers
+# These are instructions sent to the browser alongside every page load.
+# They don't affect how the site looks or works for normal users.
+
+# Don't guess what type of file this is — trust what the server says.
+# Prevents attackers from uploading e.g. an image that secretly contains JavaScript.
+Header always set X-Content-Type-Options "nosniff"
+
+# Prevent this site from being loaded inside an <iframe> on someone else's page.
+# Stops "clickjacking" — where attackers overlay an invisible iframe to trick users into clicking things.
+Header always set X-Frame-Options "DENY"
+
+# When a user clicks a link to leave the site, only send our domain name as "where they came from",
+# not the full URL path. Keeps URLs private from third-party sites.
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+# Block the page from ever accessing the device camera, microphone, or GPS.
+# Even if an attacker injects JavaScript, it can't secretly activate those.
+Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+# Content Security Policy — a whitelist of where the browser is allowed to load things from.
+# If you add new external resources (maps, analytics, etc.), you'll need to add them here too.
+#
+#   script-src  — JavaScript: only from this server (unsafe-inline needed for Vue/Nuxt)
+#   style-src  — CSS: this server (Tailwind compiles to a static file served from here) + Google Fonts stylesheet
+#   img-src     — Images: this server, inline data URIs, blobs, and any HTTPS source
+#   font-src    — Font files: this server + Google's font file CDN (fonts.gstatic.com)
+#   connect-src — Fetch/API calls: this server + any HTTPS (covers the PHP API)
+#   frame-src   — What we're allowed to embed in an <iframe>: only YouTube
+#   frame-ancestors — Who is allowed to embed US in an iframe: nobody (anti-clickjacking)
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https:; frame-src https://www.youtube.com; frame-ancestors 'none';"
+
+# Tell browsers this site is HTTPS only — remember that for 1 year.
+# Simply.com already forces HTTPS at the server level, but HSTS goes one step further:
+# on repeat visits, the browser skips the HTTP request entirely instead of waiting for the server redirect.
+# Note: intentionally no "includeSubDomains" — shared hosting often has subdomains (webmail, cPanel)
+# that may not have HTTPS, and this would break those.
+Header always set Strict-Transport-Security "max-age=31536000"
+
 RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f

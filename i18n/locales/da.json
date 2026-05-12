@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "priser": "Priser",
+    "regler": "Regler",
+    "arrangementer": "Arrangementer",
+    "kontakt": "Kontakt",
+    "booking": "BOOKING"
+  },
+  "common": {
+    "bookNow": "BOOK NU",
+    "minutes": "minutter"
+  },
+  "velkomst": {
+    "title": "VELKOMMEN",
+    "p1": "Kom og prøv en spændende aktivitet for dig og dine venner – en af de fedeste oplevelser i Vestjylland! Her dyster to hold mod hinanden iført laservåben og veste i en gammel, forfalden bygning, hvor kun det stærkeste hold overlever",
+    "p2": "Er du på udkig efter sjove aktiviteter nær Blåvand, er dette den perfekte oplevelse for både venner, familie og kollegaer. Centeret befinder sig på Mønstervej 60, 6854 Henne og er indrettet som et mørkt labyrintområde på to etager fyldt med gemmesteder og overraskelser.",
+    "p3": "Max 5 personer per hold. Er I flere, laver vi turnering - og kun ét hold kan vinde æren.",
+    "p4": "Tør DU!?"
+  },
+  "priser": {
+    "title": "PRISER",
+    "game": "SPIL",
+    "perPerson": "Prisen er pr. person",
+    "includes": "Inkluderer intro & resultater",
+    "price1": "60 DKK",
+    "price2": "100 DKK",
+    "price3": "130 DKK",
+    "price4": "160 DKK"
+  },
+  "regler": {
+    "title": "REGLER FOR SPILLET",
+    "p1": "To hold kæmper fra hver sin base gennem et snørklet labyrintlandskab over to plan i to sammenhængende bygninger.",
+    "p2": "Du scorer point ved at ramme modstandere – men bliver du selv ramt, mister du point.",
+    "p3": "Når du bliver ramt, larmer vesten i 10 sekunder og våbnet går ud af funktion. Træk dig tilbage mod din base og kom tilbage klar til kamp.",
+    "p4": "Efter kampen vises både en teamscore og en individuel placering så alle ved, hvem der bar holdet - og hvem der ikke gjorde.",
+    "p5": "Har DU hvad der skal til for at blive Vestjyllands bedste laserkriger?",
+    "videoTitle": "Laser Game Video"
+  },
+  "arrangementer": {
+    "title": "ARRANGEMENTER",
+    "prev": "Forrige",
+    "next": "Næste",
+    "slides": [
+      {
+        "alt": "Kvinde, der gemmer sig, mens hun spiller lasergame",
+        "title": "Fødselsdag",
+        "text": "Gør fødselsdagen ekstra spændende med lasergame! En af de sjoveste oplevelser på vestkysten!\nVed børnefødselsdage spiller fødselaren gratis ved opfyldelse af minimumskrav, hvilket skaber en særlig oplevelse og en dag, børnene sent vil glemme.\nDette kræver min. booking af to spil for mindst 6 personer! Gratis fødselsar er min. 8 personer"
+      },
+      {
+        "alt": "To kvinder går mod hinanden iført lasergame-udstyr",
+        "title": "Team Building",
+        "text": "Er din virksomhed lokaliseret nær Oskbøl, Esbjerg, Varde, eller Blåvand? Eller kommer i langvejs fra?\nUanset hvor I kommer fra, er dette en oplagt aktivitet for virksomheder, foreninger eller grupper.\nGennem intense lasergame-oplevelser styrkes relationer og fællesskab på en sjov og anderledes måde."
+      },
+      {
+        "alt": "Kvinde og gruppe venner spiller lasergame sammen",
+        "title": "Selskaber og private arrangementer",
+        "text": "Uanset om det er en vennegruppe, familieevent eller anden fejring, kan centeret bookes uden for højsæsonen.\nDet giver mulighed for en anderledes og aktiv oplevelse, hvor alle kan være med."
+      },
+      {
+        "alt": "Mennesker iført lasergame-udstyr venter på spillets start",
+        "title": "Mobil lasergame – vi kommer til jer",
+        "text": "Er i ikke på vestkysten? Frygt ej! Vi kommer til dig!\nMed den mobile løsning fra OX-Consult kan lasergame rykkes ud til jeres egen lokation.\nPerfekt til skoler, events eller firmaer, der ønsker en fleksibel løsning."
+      },
+      {
+        "alt": "Mand der sigter med laserpistol",
+        "title": "Fleksible faciliteter",
+        "text": "Har I en hal eller et større lokale, kan det nemt omdannes til en lasergame-bane ved brug af borde, kasser eller gymnastikredskaber.\nDet giver en unik og tilpasset oplevelse i jeres egne rammer."
+      }
+    ]
+  },
+  "bookingForm": {
+    "chooseTime": "Vælg starttidspunkt",
+    "loadingSlots": "Henter ledige tider…",
+    "noSlots": "Ingen ledige tider på denne dag.",
+    "numGames": "Antal spil:",
+    "games": "spil",
+    "minPreview": "min · kl.",
+    "numParticipants": "Antal deltagere:",
+    "name": "Navn",
+    "namePlaceholder": "Dit fulde navn",
+    "email": "Email",
+    "emailPlaceholder": "Din email",
+    "phone": "Telefon",
+    "phonePlaceholder": "Dit telefonnummer",
+    "message": "Besked",
+    "optional": "valgfri",
+    "messagePlaceholder": "Skriv gerne hvis du har ønsker!",
+    "sending": "Sender…",
+    "confirm": "Bekræft booking",
+    "error": "Noget gik galt. Prøv igen.",
+    "personsShort": "pers."
+  },
+  "booking": {
+    "heroTitle": "BOOK TID",
+    "minPersons": "OBS! Minimum 4 personer til en booking",
+    "noSlots": "Ingen ledige tider? Ring til os på {phone} — så finder vi en løsning.",
+    "confirmed": "Booking bekræftet!",
+    "games": "spil",
+    "emailSent": "En bekræftelse er sendt til din email.",
+    "emailFailed": "Din booking er registreret, men bekræftelsesmailen kunne ikke sendes. Kontakt os venligst for at bekræfte.",
+    "newBooking": "Book en ny tid",
+    "chooseDate": "Vælg dato"
+  },
+  "kontakt": {
+    "title": "Kontakt os",
+    "googleMaps": "Se på Google Maps",
+    "appleMaps": "Se på Apple Maps",
+    "phoneAlt": "Telefon ikon",
+    "mailAlt": "Mail ikon",
+    "addressAlt": "Adresse ikon"
+  }
+}

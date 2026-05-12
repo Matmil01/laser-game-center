@@ -3,55 +3,55 @@
         <!-- Kontakt os -->
         <div class="flex-1 p-6 border-neon-neonred">
             <h2 class="text-white text-2xl font-bold text-left">
-                Kontakt os
+                {{ $t('kontakt.title') }}
             </h2>
             <div class="flex flex-col md:h-9/12 h-60 justify-between items-start py-14 md:pl-12">
-                <div class="flex text-xl items-center text-white">
+                <div class="flex text-base md:text-xl items-center text-white min-w-0">
                     <img
                         src="/icons/telefon.svg"
-                        alt="Telefon ikon"
-                        class="w-6 h-6 mr-4"
+                        :alt="$t('kontakt.phoneAlt')"
+                        class="w-6 h-6 mr-4 shrink-0"
                     />
                     <a
                         v-if="contact.phone"
                         :href="`tel:${contact.phone.replace(/\s/g, '')}`"
-                        class="hover:underline"
+                        class="hover:underline truncate"
                         >{{ contact.phone }}</a
                     >
                 </div>
 
-                <div class="flex text-xl items-center text-white">
+                <div class="flex text-base md:text-xl items-center text-white min-w-0">
                     <img
                         src="/icons/mail.svg"
-                        alt="Mail ikon"
-                        class="w-6 h-6 mr-4"
+                        :alt="$t('kontakt.mailAlt')"
+                        class="w-6 h-6 mr-4 shrink-0"
                     />
                     <a
                         v-if="contact.email"
                         :href="`mailto:${contact.email}`"
-                        class="hover:underline"
+                        class="hover:underline truncate"
                         >{{ contact.email }}</a
                     >
                 </div>
-                <div class="flex text-xl items-center text-white">
+                <div class="flex text-base md:text-xl items-center text-white min-w-0">
                     <img
                         src="/icons/lokation.svg"
-                        alt="Adresse ikon"
-                        class="w-6 h-6 mr-4"
+                        :alt="$t('kontakt.addressAlt')"
+                        class="w-6 h-6 mr-4 shrink-0"
                     />
-                    <span class="text-white text-center">{{
-                        contact.address
-                    }}</span>
+                    <span class="text-white text-center truncate">Mønstervej 60, 6854 Henne</span>
                 </div>
             </div>
             <div class="flex space-x-4 items-center justify-center w-full">
                 <NeonButton
                     to="https://maps.app.goo.gl/qDZTcvpdaMJsfkLv9"
-                    text="Se på Google Maps"
+                    :text="$t('kontakt.googleMaps')"
+                    customClass="text-base"
                 />
                 <NeonButton
                     to="https://maps.apple/p/AWPbK8TbMZgfJM"
-                    text="Se på Apple Maps"
+                    :text="$t('kontakt.appleMaps')"
+                    customClass="text-base"
                 />
             </div>
         </div>

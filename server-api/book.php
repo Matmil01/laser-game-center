@@ -27,6 +27,16 @@ if (!empty(trim($data['website'] ?? ''))) {
     exit;
 }
 
+// Timebased honeypot: formularen skal have været synlig i mindst 3 sekunder.
+// Bots udfylder typisk formularer instantly
+$formLoadedAt = (int)($data['form_loaded_at'] ?? 0);
+$elapsedMs    = (int)(microtime(true) * 1000) - $formLoadedAt;
+if ($formLoadedAt === 0 || $elapsedMs < 3000) {
+    http_response_code(200);
+    echo json_encode(['error' => 'Spam detected']);
+    exit;
+}
+
 $name         = trim($data['name']       ?? '');
 $email        = filter_var($data['email'] ?? '', FILTER_VALIDATE_EMAIL);
 $phone        = trim($data['phone']      ?? '');
@@ -35,6 +45,7 @@ $date         = $data['date']            ?? '';
 $start_time   = $data['start_time']      ?? '';
 $num_games    = (int)($data['num_games'] ?? 0);
 $participants = (int)($data['participants'] ?? 4);
+$locale       = in_array($data['locale'] ?? '', ['da', 'en', 'de']) ? $data['locale'] : 'da';
 
 if (!$name || !$email || !$phone || !$date || !$start_time || !$num_games) {
     http_response_code(400);
@@ -44,6 +55,19 @@ if (!$name || !$email || !$phone || !$date || !$start_time || !$num_games) {
 if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date) || !preg_match('/^\d{2}:\d{2}$/', $start_time)) {
     http_response_code(400);
     echo json_encode(['error' => 'Ugyldigt dato- eller tidsformat']);
+    exit;
+}
+// Verify the date is actually a valid calendar date (regex above allows e.g. 2025-13-45)
+$parsedDate = DateTime::createFromFormat('Y-m-d', $date);
+if (!$parsedDate || $parsedDate->format('Y-m-d') !== $date) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Ugyldigt dato- eller tidsformat']);
+    exit;
+}
+// Reject bookings in the past
+if ($parsedDate < new DateTime('today')) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Datoen er i fortiden.']);
     exit;
 }
 if ($num_games < 1 || $num_games > 4) {
@@ -98,6 +122,7 @@ if ($startMin < $winStart || $endMin > $winEnd) {
 $overlapStmt = $pdo->prepare(
     'SELECT COUNT(*) FROM bookings
      WHERE window_id = ?
+       AND cancelled_at IS NULL
        AND FLOOR(TIME_TO_SEC(start_time)/60) < ?
        AND FLOOR(TIME_TO_SEC(start_time)/60) + num_games * 30 > ?'
 );
@@ -137,31 +162,65 @@ $mail->Username   = getenv('SMTP_USER');
 $mail->Password   = getenv('SMTP_PASS');
 $mail->CharSet    = 'UTF-8';
 
+
+$subjects = [
+    'da' => 'Bekræftelse på din Lasertag-booking',
+    'en' => 'Confirmation of your Lasertag booking',
+    'de' => 'Bestätigung Ihrer Lasertag-Buchung',
+];
+
+$settingsStmt = $pdo->query("SELECT `value` FROM settings WHERE `key` = 'phone'");
+$contactPhone = $settingsStmt->fetchColumn() ?: '';
+
 $mail->setFrom(getenv('SMTP_USER'), getenv('SMTP_FROM_NAME'));
 $mail->addAddress($email, $name);
-$mail->Subject = 'Bekræftelse på din Lasertag-booking';
-$mail->Body    = "Hej $name,\n\n"
-    . "Din tid til lasertag er nu booket og bekræftet!\n\n"
-    . "Dato: $dateFormatted\n"
-    . "Tid: $startFormatted – $endFormatted\n"
-    . "Antal spil: $num_games\n"
-    . "Antal deltagere: $participants\n\n"
-    . "Mød gerne op 10 minutter før din spilletid.\n\n"
-    . "Hvis du har brug for at aflyse eller ændre din booking, kan du kontakte os på e-mail eller telefon.\n\n"
-    . "Vi glæder os til at se dig!\n\n"
-    . "Venlig hilsen\n"
-    . "Laser Game Center Oksbøl";
+$mail->isHTML(true);
+$mail->Subject = $subjects[$locale];
+ob_start();
+include __DIR__ . "/emails/confirmation-{$locale}.php";
+$mail->Body = ob_get_clean();
 
+$emailSent = true;
 try {
     $mail->send();
 } catch (Exception $e) {
     error_log('PHPMailer: ' . $mail->ErrorInfo);
+    $emailSent = false;
+}
+
+// Send notifikationsemail til admin
+$adminEmail = getenv('ADMIN_EMAIL');
+if ($adminEmail) {
+    $adminMail = new PHPMailer(true);
+    $adminMail->isSMTP();
+    $adminMail->Host       = getenv('SMTP_HOST');
+    $adminMail->Port       = (int)getenv('SMTP_PORT');
+    $adminMail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $adminMail->SMTPAuth   = true;
+    $adminMail->Username   = getenv('SMTP_USER');
+    $adminMail->Password   = getenv('SMTP_PASS');
+    $adminMail->CharSet    = 'UTF-8';
+
+    $adminMail->setFrom(getenv('SMTP_USER'), getenv('SMTP_FROM_NAME'));
+    $adminMail->addAddress($adminEmail);
+    $adminMail->isHTML(true);
+    $adminMail->Subject = 'Ny Lasertag-booking modtaget';
+    ob_start();
+    include __DIR__ . '/emails/admin-notification.php';
+    $adminMail->Body = ob_get_clean();
+
+    try {
+        $adminMail->send();
+    } catch (Exception $e) {
+        error_log('PHPMailer admin notify: ' . $adminMail->ErrorInfo);
+    }
 }
 
 echo json_encode([
-    'success'   => true,
-    'date'      => $dateFormatted,
-    'time'      => $startFormatted,
-    'end_time'  => $endFormatted,
-    'num_games' => $num_games,
+    'success'      => true,
+    'date'         => $dateFormatted,
+    'time'         => $startFormatted,
+    'end_time'     => $endFormatted,
+    'num_games'    => $num_games,
+    'email_sent'   => $emailSent,
 ]);

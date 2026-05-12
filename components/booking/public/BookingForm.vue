@@ -3,9 +3,9 @@
 
     <!-- Starttidspunkter -->
     <div v-if="date">
-      <label class="block text-sm font-medium mb-2 text-white">Vælg starttidspunkt</label>
-      <p v-if="slotsLoading" class="text-sm text-zinc-400">Henter ledige tider…</p>
-      <p v-else-if="slots.length === 0" class="text-sm text-zinc-500">Ingen ledige tider på denne dag.</p>
+      <label class="block text-sm font-medium mb-2 text-white">{{ $t('bookingForm.chooseTime') }}</label>
+      <p v-if="slotsLoading" class="text-sm text-zinc-400">{{ $t('bookingForm.loadingSlots') }}</p>
+      <p v-else-if="slots.length === 0" class="text-sm text-zinc-500">{{ $t('bookingForm.noSlots') }}</p>
       <div v-else class="grid grid-cols-3 gap-2">
         <button
           v-for="slot in slots"
@@ -27,8 +27,8 @@
     <!-- Antal spil -->
     <div v-if="selectedTime">
       <label class="block text-sm font-medium mb-2 text-white">
-        Antal spil: <span class="font-bold">{{ numGames }}</span>
-        <span class="block text-zinc-400 font-normal text-xs mt-0.5">{{ numGames * 30 }} min · kl. {{ selectedTime }}–{{ endTimePreview }}</span>
+        {{ $t('bookingForm.numGames') }} <span class="font-bold">{{ numGames }}</span>
+        <span class="block text-zinc-400 font-normal text-xs mt-0.5">{{ numGames * 30 }} {{ $t('bookingForm.minPreview') }} {{ selectedTime }}–{{ endTimePreview }}</span>
       </label>
       <div class="flex flex-wrap gap-2">
         <button
@@ -43,7 +43,7 @@
           ]"
           @click="numGames = n"
         >
-          {{ n }} spil
+          {{ n }} {{ $t('bookingForm.games') }}
         </button>
       </div>
     </div>
@@ -52,28 +52,30 @@
 
       <!-- Antal deltagere -->
       <div>
-        <label class="block text-sm font-medium mb-2 text-white">Antal deltagere: <span class="font-bold">{{ participants }}</span></label>
-        <input
-          v-model.number="participants"
-          type="range"
-          min="4"
-          max="99"
-          class="w-full accent-neongreen cursor-pointer"
-        />
-        <div class="flex justify-center items-center gap-3 mt-2">
+        <label class="block text-sm font-medium mb-2 text-white">{{ $t('bookingForm.numParticipants') }}</label>
+        <div class="flex items-center gap-3">
           <button
             type="button"
-            :disabled="participants <= 4"
-            class="w-9 h-9 border-neon-subtle-neonred text-lg font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer"
-            @click="participants = Math.max(4, participants - 1)"
+            :disabled="participants <= MIN_PARTICIPANTS"
+            class="w-12 py-2 border-neon-subtle-neonred text-sm font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer flex-shrink-0"
+            @click="participants = Math.max(MIN_PARTICIPANTS, participants - 1)"
           >−</button>
+          <input
+            v-model.number="participants"
+            type="number"
+            :min="MIN_PARTICIPANTS"
+            max="99"
+            class="w-20 border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white text-center text-sm font-medium [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+            @input="participants = Math.min(99, Math.max(MIN_PARTICIPANTS, participants || MIN_PARTICIPANTS))"
+          />
           <button
             type="button"
             :disabled="participants >= 99"
-            class="w-9 h-9 border-neon-subtle-neonred text-lg font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer"
+            class="w-12 py-2 border-neon-subtle-neonred text-sm font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer flex-shrink-0"
             @click="participants = Math.min(99, participants + 1)"
           >+</button>
         </div>
+        <p v-if="participants < MIN_PARTICIPANTS" class="mt-2 text-xs text-neonred">{{ $t('booking.minPersons') }}</p>
       </div>
 
       <!-- Kontaktoplysninger -->
@@ -84,31 +86,42 @@
           <input id="website" v-model="form.website" type="text" name="website" tabindex="-1" autocomplete="off" />
         </div>
         <div>
-          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">Navn</label>
-          <input v-model="form.name" type="text" required placeholder="Dit fulde navn" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
+          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">{{ $t('bookingForm.name') }}</label>
+          <input v-model="form.name" type="text" required :placeholder="$t('bookingForm.namePlaceholder')" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
         </div>
         <div>
-          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">Email</label>
-          <input v-model="form.email" type="email" required placeholder="din@mail.dk" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
+          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">{{ $t('bookingForm.email') }}</label>
+          <input v-model="form.email" type="email" required :placeholder="$t('bookingForm.emailPlaceholder')" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
         </div>
         <div>
-          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">Telefon</label>
-          <input v-model="form.phone" type="tel" required placeholder="Dit telefonnummer" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
+          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">{{ $t('bookingForm.phone') }}</label>
+          <input v-model="form.phone" type="tel" required :placeholder="$t('bookingForm.phonePlaceholder')" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
         </div>
         <div>
-          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">Besked <span class="text-zinc-500 font-normal">(valgfri)</span></label>
-          <textarea v-model="form.note" rows="3" placeholder="Skriv gerne hvad du ønsker hjælp til…" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500 resize-none" />
+          <label class="block text-sm font-medium mb-1 cursor-pointer text-white">{{ $t('bookingForm.message') }} <span class="text-zinc-500 font-normal">({{ $t('bookingForm.optional') }})</span></label>
+          <textarea v-model="form.note" rows="3" :placeholder="$t('bookingForm.messagePlaceholder')" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500 resize-none" />
         </div>
+      </div>
+
+      <!-- Booking summary -->
+      <div class="border border-zinc-700 px-4 py-3 text-sm text-zinc-300 flex flex-wrap items-center gap-x-2.5 gap-y-1">
+        <span class="font-semibold text-white">{{ formatDate(date instanceof Date ? calToKey(date) : date) }}</span>
+        <span class="text-zinc-600">·</span>
+        <span>{{ selectedTime }}–{{ endTimePreview }}</span>
+        <span class="text-zinc-600">·</span>
+        <span>{{ numGames }} {{ $t('booking.games') }}</span>
+        <span class="text-zinc-600">·</span>
+        <span>{{ participants }} {{ $t('bookingForm.personsShort') }}</span>
       </div>
 
       <p v-if="error" class="text-sm text-neonred">{{ error }}</p>
 
       <button
         type="submit"
-        :disabled="loading"
+        :disabled="loading || submitted"
         class="w-full bg-black text-white border-neon-subtle-neonred py-3 font-bold tracking-wide hover:border-neon-subtle-neongreen disabled:opacity-50 transition-colors cursor-pointer"
       >
-        {{ loading ? 'Sender…' : 'Bekræft booking' }}
+        {{ loading ? $t('bookingForm.sending') : $t('bookingForm.confirm') }}
       </button>
     </template>
 
@@ -127,16 +140,21 @@ const emit = defineEmits(['success', 'refresh-dates'])
 
 const config = useRuntimeConfig()
 const apiUrl = config.public.apiUrl
+const { locale, t } = useI18n()
+
+const MIN_PARTICIPANTS = 4
 
 const slots            = ref([])
 const selectedTime     = ref(null)
 const selectedMaxGames = ref(4)
 const numGames         = ref(1)
-const participants     = ref(4)
+const participants     = ref(MIN_PARTICIPANTS)
 const slotsLoading     = ref(false)
 const loading          = ref(false)
+const submitted        = ref(false)
 const error            = ref('')
 const form             = reactive({ name: '', email: '', phone: '', note: '', website: '' })
+const formLoadedAt     = ref(0)
 
 const endTimePreview = computed(() => {
   if (!selectedTime.value) return ''
@@ -145,25 +163,33 @@ const endTimePreview = computed(() => {
   return `${String(Math.floor(end / 60)).padStart(2, '0')}:${String(end % 60).padStart(2, '0')}`
 })
 
+let fetchAbortController = null
+
 watch(() => props.date, async (newDate) => {
+  if (fetchAbortController) { fetchAbortController.abort(); fetchAbortController = null }
   selectedTime.value     = null
   selectedMaxGames.value = 4
   numGames.value         = 1
   slots.value            = []
   error.value            = ''
+  submitted.value        = false
   if (!newDate) {
-    participants.value = 4
+    participants.value = MIN_PARTICIPANTS
+    formLoadedAt.value = 0
     Object.assign(form, { name: '', email: '', phone: '', note: '', website: '' })
     return
   }
+  formLoadedAt.value = Date.now()
   slotsLoading.value = true
+  fetchAbortController = new AbortController()
   try {
     const dateStr = newDate instanceof Date ? calToKey(newDate) : newDate
-    slots.value = await $fetch(`${apiUrl}/slots.php?date=${dateStr}`)
-  } catch {
-    slots.value = []
+    slots.value = await $fetch(`${apiUrl}/slots.php?date=${dateStr}`, { signal: fetchAbortController.signal })
+  } catch (e) {
+    if (e?.name !== 'AbortError') slots.value = []
   } finally {
     slotsLoading.value = false
+    fetchAbortController = null
   }
 })
 
@@ -174,24 +200,28 @@ function selectTime(slot) {
 }
 
 async function submitBooking() {
-  loading.value = true
-  error.value   = ''
+  if (loading.value || submitted.value) return
+  loading.value   = true
+  error.value     = ''
   try {
     const dateStr = props.date instanceof Date ? calToKey(props.date) : props.date
     const res = await $fetch(`${apiUrl}/book.php`, {
       method: 'POST',
       body: {
         ...form,
-        date:         dateStr,
-        start_time:   selectedTime.value,
-        num_games:    numGames.value,
-        participants: participants.value,
+        date:          dateStr,
+        start_time:    selectedTime.value,
+        num_games:     numGames.value,
+        participants:  participants.value,
+        locale:        locale.value,
+        form_loaded_at: formLoadedAt.value,
       },
     })
+    submitted.value = true
     emit('success', res)
     emit('refresh-dates')
   } catch (e) {
-    error.value = e.data?.error ?? 'Noget gik galt. Prøv igen.'
+    error.value = e.data?.error ?? t('bookingForm.error')
   } finally {
     loading.value = false
   }

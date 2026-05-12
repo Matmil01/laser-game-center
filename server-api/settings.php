@@ -34,14 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $allowed = [
         'cvr'          => 20,
-        'address'      => 200,
         'email'        => 200,
         'phone'        => 30,
-        'aktuelt_title'   => 100,
-        'aktuelt_text'    => 500,
-        'aktuelt_icon'    => 10,
-        'aktuelt_color'   => 20,
-        'aktuelt_visible' => 1,
+        'aktuelt_title'    => 100,
+        'aktuelt_text'     => 500,
+        'aktuelt_icon'     => 10,
+        'aktuelt_color'    => 20,
+        'aktuelt_visible'  => 1,
+        'aktuelt_title_en' => 100,
+        'aktuelt_text_en'  => 500,
+        'aktuelt_title_de' => 100,
+        'aktuelt_text_de'  => 500,
     ];
 
     $stmt = $pdo->prepare(
@@ -57,6 +60,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($key === 'aktuelt_color' && !preg_match('/^#[0-9A-Fa-f]{6}$/', $value)) continue;
         $stmt->execute([$key, $value]);
     }
+
+    $savedKeys = implode(', ', array_keys(array_intersect_key($body, $allowed)));
+    auditLog($pdo, 'update_settings', "keys=$savedKeys");
 
     echo json_encode(['success' => true]);
     exit;

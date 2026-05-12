@@ -19,8 +19,11 @@ CREATE TABLE IF NOT EXISTS bookings (
     note         TEXT,
     participants INT          NOT NULL DEFAULT 4,
     created_at   DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at   DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    cancelled_at DATETIME     NULL DEFAULT NULL,
     FOREIGN KEY (window_id) REFERENCES availability_windows(id),
-    INDEX idx_window_time (window_id, start_time)
+    INDEX idx_window_time (window_id, start_time),
+    INDEX idx_cancelled (cancelled_at)
 );
 
 -- Indstillinger: key/value-par til kontaktoplysninger og aktuelt-indhold på forsiden.
@@ -29,14 +32,27 @@ CREATE TABLE IF NOT EXISTS settings (
     `value` TEXT NOT NULL DEFAULT ''
 );
 
+-- Audit-log: sporer alle admin-writes med timestamp og IP.
+CREATE TABLE IF NOT EXISTS audit_log (
+    id         INT AUTO_INCREMENT PRIMARY KEY,
+    action     VARCHAR(100) NOT NULL,
+    detail     TEXT,
+    ip         VARCHAR(45)  NOT NULL DEFAULT '',
+    created_at DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_created (created_at)
+);
+
 -- Indsæt standardværdier ved første opsætning (springer over hvis de allerede findes)
 INSERT IGNORE INTO settings (`key`, `value`) VALUES
-    ('cvr',           ''),
-    ('address',       ''),
-    ('email',         ''),
-    ('phone',         ''),
-    ('aktuelt_title',   'AKTUELT'),
-    ('aktuelt_text',    ''),
-    ('aktuelt_icon',    'icon1'),
-    ('aktuelt_color',   '#FF9D00'),
-    ('aktuelt_visible', '1');
+    ('cvr',              ''),
+    ('email',            ''),
+    ('phone',            ''),
+    ('aktuelt_title',    'AKTUELT'),
+    ('aktuelt_text',     ''),
+    ('aktuelt_icon',     'icon1'),
+    ('aktuelt_color',    '#FF9D00'),
+    ('aktuelt_visible',  '1'),
+    ('aktuelt_title_en', ''),
+    ('aktuelt_text_en',  ''),
+    ('aktuelt_title_de', ''),
+    ('aktuelt_text_de',  '');

@@ -15,8 +15,8 @@
       <div class="text-[0.82rem] text-zinc-400 mt-0.5">
         {{ tooltipSlot.slot_time.slice(0, 5) }}–{{ calSlotEndTime(tooltipSlot.slot_time, tooltipSlot.duration_min ?? 60) }}
       </div>
-      <div v-if="tooltipSlot.is_booked && tooltipSlot.email" class="text-[0.82rem] text-zinc-400 mt-0.5">
-        {{ tooltipSlot.email }}
+      <div v-if="tooltipSlot.is_booked && tooltipSlot.phone" class="text-[0.82rem] text-zinc-400 mt-0.5">
+        Tlf: {{ tooltipSlot.phone }}
       </div>
       <div class="mt-1.5">
         <span
