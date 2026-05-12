@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: ".env.deploy" });
 
 if (!process.env.FTP_REMOTE_ROOT) {
   console.error("Error: FTP_REMOTE_ROOT is not set in your .env file.");
