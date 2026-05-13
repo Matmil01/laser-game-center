@@ -23,10 +23,10 @@
     "games": "SPIL",
     "perPerson": "Prisen er pr. person",
     "includes": "Inkluderer intro & resultater",
-    "price1": "60 DKK",
-    "price2": "100 DKK",
-    "price3": "130 DKK",
-    "price4": "160 DKK"
+    "price1": "60 kr",
+    "price2": "100 kr",
+    "price3": "130 kr",
+    "price4": "160 kr"
   },
   "regler": {
     "title": "REGLER FOR SPILLET",

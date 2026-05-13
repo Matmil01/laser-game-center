@@ -23,10 +23,10 @@
     "games": "SPIELE",
     "perPerson": "Preis pro Person",
     "includes": "Inklusive Einführung & Ergebnisse",
-    "price1": "8 €",
-    "price2": "13 €",
-    "price3": "17 €",
-    "price4": "21 €"
+    "price1": "€8 / 60 DKK",
+    "price2": "€13 / 100 DKK",
+    "price3": "€17 / 130 DKK",
+    "price4": "€21 / 160 DKK"
   },
   "regler": {
     "title": "SPIELREGELN",
