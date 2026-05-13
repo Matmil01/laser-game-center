@@ -1,8 +1,8 @@
 <template>
   <div>
-      <div class="sm:h-[570px] h-90">
+      <div class="sm:h-[300px] h-90">
           <div
-              class="absolute mt-15 top-0 left-0 w-full sm:h-[570px] h-90 overflow-hidden z-0"
+              class="absolute mt-15 top-0 left-0 w-full sm:h-[300px] h-90 overflow-hidden z-0"
           >
               <img
                   src="/photos/hero.webp"
@@ -22,7 +22,7 @@
           </div>
           <div class="relative z-10 flex items-center justify-center h-full">
               <h1
-                  class="mt-64 text-white text-center text-3xl sm:text-5xl z-10 bg-black/30 px-2 py-2 backdrop-blur-md rounded-xl"
+                  class="text-white text-center text-3xl sm:text-5xl z-10 bg-black/30 px-2 py-2 backdrop-blur-md rounded-xl"
               >{{ $t('booking.heroTitle') }}
               </h1>
           </div>
