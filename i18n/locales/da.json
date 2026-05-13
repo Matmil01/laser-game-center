@@ -108,5 +108,61 @@
     "phoneAlt": "Telefon ikon",
     "mailAlt": "Mail ikon",
     "addressAlt": "Adresse ikon"
+  },
+  "privatlivspolitik": {
+    "title": "Privatlivspolitik",
+    "intro": "Vi behandler personoplysninger, når du foretager en booking via vores hjemmeside.",
+    "dataansvarlig": {
+      "title": "Dataansvarlig"
+    },
+    "indsamler": {
+      "title": "Hvilke oplysninger vi indsamler",
+      "intro": "Når du opretter en booking, registrerer vi:",
+      "items": [
+        "Dit navn",
+        "Din e-mailadresse",
+        "Dit telefonnummer",
+        "Eventuel besked/note",
+        "Bookingdetaljer (dato, tidspunkt, antal spil, antal deltagere)"
+      ]
+    },
+    "formaal": {
+      "title": "Formål og retsgrundlag",
+      "intro": "Oplysningerne bruges udelukkende til:",
+      "items": [
+        "at oprette og bekræfte din booking",
+        "at sende dig en bekræftelsesmail",
+        "at kontakte dig vedrørende din reservation"
+      ],
+      "retsgrundlag": "Retsgrundlaget for behandlingen er GDPR artikel 6(1)(b) — behandling er nødvendig for at opfylde en aftale med dig."
+    },
+    "opbevaring": {
+      "title": "Opbevaring af data",
+      "p1": "Dine oplysninger opbevares sikkert hos Simply.com på europæiske servere.",
+      "p2": "Vi deler ikke dine oplysninger med andre."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "p1": "Vi anvender ingen cookies til statistik eller markedsføring.",
+      "p2": "Hjemmesiden bruger ikke tracking eller analyseredskaber."
+    },
+    "rettigheder": {
+      "title": "Dine rettigheder",
+      "intro": "Du har ret til:",
+      "items": [
+        "indsigt i de oplysninger vi har om dig",
+        "at få rettet ukorrekte oplysninger",
+        "at få slettet dine oplysninger",
+        "at få begrænset behandlingen af dine oplysninger",
+        "dataportabilitet (at modtage dine oplysninger i et maskinlæsbart format)",
+        "at gøre indsigelse mod behandlingen"
+      ],
+      "contactPre": "Kontakt os på",
+      "contactPost": "for at udøve dine rettigheder.",
+      "contactFallback": "vores e-mailadresse",
+      "datatilsynetPre": "Du kan også klage til",
+      "datatilsynetLink": "Datatilsynet",
+      "datatilsynetPost": ", hvis du mener, vi ikke behandler dine oplysninger korrekt."
+    }
   }
 }

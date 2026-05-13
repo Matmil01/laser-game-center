@@ -108,5 +108,61 @@
     "phoneAlt": "Telefon-Symbol",
     "mailAlt": "E-Mail-Symbol",
     "addressAlt": "Adress-Symbol"
+  },
+  "privatlivspolitik": {
+    "title": "Datenschutzerklärung",
+    "intro": "Wir verarbeiten personenbezogene Daten, wenn du eine Buchung über unsere Website vornimmst.",
+    "dataansvarlig": {
+      "title": "Verantwortlicher"
+    },
+    "indsamler": {
+      "title": "Welche Informationen wir sammeln",
+      "intro": "Wenn du eine Buchung erstellst, erfassen wir:",
+      "items": [
+        "Deinen Namen",
+        "Deine E-Mail-Adresse",
+        "Deine Telefonnummer",
+        "Eine eventuelle Nachricht/Notiz",
+        "Buchungsdetails (Datum, Uhrzeit, Anzahl der Spiele, Anzahl der Teilnehmer)"
+      ]
+    },
+    "formaal": {
+      "title": "Zweck und Rechtsgrundlage",
+      "intro": "Die Informationen werden ausschließlich verwendet, um:",
+      "items": [
+        "deine Buchung zu erstellen und zu bestätigen",
+        "dir eine Bestätigungs-E-Mail zu senden",
+        "dich bezüglich deiner Reservierung zu kontaktieren"
+      ],
+      "retsgrundlag": "Die Rechtsgrundlage für die Verarbeitung ist DSGVO Artikel 6(1)(b) — die Verarbeitung ist zur Erfüllung eines Vertrags mit dir erforderlich."
+    },
+    "opbevaring": {
+      "title": "Datenspeicherung",
+      "p1": "Deine Informationen werden sicher bei Simply.com auf europäischen Servern gespeichert.",
+      "p2": "Wir geben deine Informationen nicht an Dritte weiter."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "p1": "Wir verwenden keine Cookies für Statistiken oder Marketing.",
+      "p2": "Die Website verwendet keine Tracking- oder Analysewerkzeuge."
+    },
+    "rettigheder": {
+      "title": "Deine Rechte",
+      "intro": "Du hast das Recht:",
+      "items": [
+        "Einsicht in die Informationen zu erhalten, die wir über dich haben",
+        "unrichtige Informationen berichtigen zu lassen",
+        "deine Informationen löschen zu lassen",
+        "die Verarbeitung deiner Informationen einzuschränken",
+        "Datenportabilität (deine Informationen in einem maschinenlesbaren Format zu erhalten)",
+        "der Verarbeitung zu widersprechen"
+      ],
+      "contactPre": "Kontaktiere uns unter",
+      "contactPost": "um deine Rechte auszuüben.",
+      "contactFallback": "unserer E-Mail-Adresse",
+      "datatilsynetPre": "Du kannst auch eine Beschwerde bei der",
+      "datatilsynetLink": "dänischen Datenschutzbehörde",
+      "datatilsynetPost": " einreichen, wenn du der Meinung bist, dass wir deine Informationen nicht korrekt verarbeiten."
+    }
   }
 }

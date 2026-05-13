@@ -108,5 +108,61 @@
     "phoneAlt": "Phone icon",
     "mailAlt": "Mail icon",
     "addressAlt": "Address icon"
+  },
+  "privatlivspolitik": {
+    "title": "Privacy Policy",
+    "intro": "We process personal data when you make a booking through our website.",
+    "dataansvarlig": {
+      "title": "Data Controller"
+    },
+    "indsamler": {
+      "title": "What information we collect",
+      "intro": "When you create a booking, we register:",
+      "items": [
+        "Your name",
+        "Your email address",
+        "Your phone number",
+        "Any message/note",
+        "Booking details (date, time, number of games, number of participants)"
+      ]
+    },
+    "formaal": {
+      "title": "Purpose and legal basis",
+      "intro": "The information is used solely to:",
+      "items": [
+        "create and confirm your booking",
+        "send you a confirmation email",
+        "contact you regarding your reservation"
+      ],
+      "retsgrundlag": "The legal basis for the processing is GDPR Article 6(1)(b) — processing is necessary to fulfil a contract with you."
+    },
+    "opbevaring": {
+      "title": "Data storage",
+      "p1": "Your information is stored securely at Simply.com on European servers.",
+      "p2": "We do not share your information with others."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "p1": "We do not use cookies for statistics or marketing.",
+      "p2": "The website does not use tracking or analytics tools."
+    },
+    "rettigheder": {
+      "title": "Your rights",
+      "intro": "You have the right to:",
+      "items": [
+        "access the information we hold about you",
+        "have inaccurate information corrected",
+        "have your information deleted",
+        "have the processing of your information restricted",
+        "data portability (to receive your information in a machine-readable format)",
+        "object to the processing"
+      ],
+      "contactPre": "Contact us at",
+      "contactPost": "to exercise your rights.",
+      "contactFallback": "our email address",
+      "datatilsynetPre": "You can also file a complaint with",
+      "datatilsynetLink": "the Danish Data Protection Agency",
+      "datatilsynetPost": " if you believe we are not processing your information correctly."
+    }
   }
 }
