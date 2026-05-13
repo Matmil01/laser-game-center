@@ -20,6 +20,7 @@
   "priser": {
     "title": "PRICES",
     "game": "GAME",
+    "games": "GAMES",
     "perPerson": "Price per person",
     "includes": "Includes intro & results",
     "price1": "€8",

@@ -20,6 +20,7 @@
   "priser": {
     "title": "PRISER",
     "game": "SPIL",
+    "games": "SPIL",
     "perPerson": "Prisen er pr. person",
     "includes": "Inkluderer intro & resultater",
     "price1": "60 DKK",
