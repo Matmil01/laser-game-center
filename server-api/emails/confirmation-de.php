@@ -133,7 +133,7 @@
         <!-- Footer -->
         <tr>
           <td align="center" style="border-top:1px solid #1e1e1e;padding-top:18px;color:#555555;background:#000000;font-size:12px;font-family:Arial,sans-serif;line-height:1.6;">
-            &#169; <?= date('Y') ?> Laser Game Center<?php if ($contactPhone): ?> &nbsp;|&nbsp; <?= htmlspecialchars($contactPhone) ?><?php endif; ?> &nbsp;|&nbsp; M&#248;nstervej 60, 6854 Henne
+            &#169; <?= date('Y') ?> Laser Game Center<?php if ($contactPhone): ?> &nbsp;|&nbsp; <?= htmlspecialchars($contactPhone) ?><?php endif; ?> &nbsp;|&nbsp; Mønstervej 60, 6854 Henne
           </td>
         </tr>
 
