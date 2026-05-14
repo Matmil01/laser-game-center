@@ -1,7 +1,7 @@
 <template>
     <div id="kontakt" class="md:flex md:flex-row gap-8 p-8">
         <!-- Kontakt os -->
-        <div class="flex-1 p-6 border-neon-neonred">
+        <div class="p-6 border-neon-neonred md:w-6/12">
             <h2 class="text-white text-2xl font-bold text-left">
                 {{ $t('kontakt.title') }}
             </h2>
@@ -57,7 +57,7 @@
         </div>
         <!-- Maps -->
         <div
-            class="flex-1 border-neon-neonred md:p-6 mt-6 md:mt-0 box-border"
+            class="border-neon-neonred md:p-6 mt-6 md:mt-0 box-border md:w-6/12"
         >
             <img
                 src="/icons/lasergamecenter-i-danmark.svg"

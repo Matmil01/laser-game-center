@@ -5,20 +5,10 @@
               class="absolute mt-15 top-0 left-0 w-full sm:h-[300px] h-90 overflow-hidden z-0"
           >
               <img
-                  src="/photos/hero.webp"
+                  src="/photos/lasergame-spil-oksboel-1.webp"
                   aria-hidden="true"
-                  class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none blur-sm scale-105"
-              />
-              <video
-                  src="/videos/hero.mp4"
-                  autoplay
-                  loop
-                  muted
-                  playsinline
-                  preload="none"
                   class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none"
-                  style="min-width: 100%; min-height: 320px"
-              ></video>
+              />
           </div>
           <div class="relative z-10 flex items-center justify-center h-full">
               <h1

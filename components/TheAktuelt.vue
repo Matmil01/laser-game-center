@@ -1,7 +1,7 @@
 <template>
 	<div
 		v-if="contact && aktueltText && contact.aktuelt_visible !== '0'"
-		class="relative max-w-md w-full mx-auto mt-14 mb-4 px-6 py-5 bg-black text-white border-2"
+		class="relative max-w-md md:w-full mx-8 sm:mx-auto mt-14 mb-4 px-6 py-5 bg-black text-white border-2"
 		:style="{
 			borderColor: contact.aktuelt_color || '#FF9D00',
 			boxShadow: `0 0 18px 2px ${contact.aktuelt_color || '#FF9D00'}`
