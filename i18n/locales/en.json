@@ -11,7 +11,13 @@
     "minutes": "minutes"
   },
   "velkomst": {
-    "title": "WELCOME",
+    "title_prefix": "Ready for the best ",
+    "word_1": "day ever?",
+    "word_2": "family trip?",
+    "word_3": "birthday?",
+    "word_4": "party?",
+    "word_5": "teambuilding trip?",
+    "word_6": "bachelor party?",
     "p1": "Come and try an exciting activity for you and your friends – one of the coolest experiences in West Jutland! Two teams go head-to-head equipped with laser guns and vests in an old, derelict building, where only the strongest team survives.",
     "p2": "If you're looking for fun activities near Blåvand, this is the perfect experience for friends, family and colleagues. The center is located at Mønstervej 60, 6854 Henne and is set up as a dark, two-storey labyrinth filled with hiding spots and surprises.",
     "p3": "Max 5 people per team. For larger groups, we run a tournament – and only one team can claim the glory.",

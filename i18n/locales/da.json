@@ -11,7 +11,13 @@
     "minutes": "minutter"
   },
   "velkomst": {
-    "title": "VELKOMMEN",
+    "title_prefix": "Klar til den bedste ",
+    "word_1": "dag?",
+    "word_2": "familietur?",
+    "word_3": "fødselsdag?",
+    "word_4": "fest?",
+    "word_5": "teambuilding?",
+    "word_6": "polterabend?",
     "p1": "Kom og prøv en spændende aktivitet for dig og dine venner – en af de fedeste oplevelser i Vestjylland! Her dyster to hold mod hinanden iført laservåben og veste i en gammel, forfalden bygning, hvor kun det stærkeste hold overlever",
     "p2": "Er du på udkig efter sjove aktiviteter nær Blåvand, er dette den perfekte oplevelse for både venner, familie og kollegaer. Centeret befinder sig på Mønstervej 60, 6854 Henne og er indrettet som et mørkt labyrintområde på to etager fyldt med gemmesteder og overraskelser.",
     "p3": "Max 5 personer per hold. Er I flere, laver vi turnering - og kun ét hold kan vinde æren.",

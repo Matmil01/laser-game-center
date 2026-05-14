@@ -11,7 +11,13 @@
     "minutes": "Minuten"
   },
   "velkomst": {
-    "title": "WILLKOMMEN",
+    "title_prefix": "Bereit für das beste ",
+    "word_1": "Tag?",
+    "word_2": "Familienausflug?",
+    "word_3": "Geburtstag?",
+    "word_4": "Party?",
+    "word_5": "Teambuilding-Trip?",
+    "word_6": "Junggesellenabeschied?",
     "p1": "Komm und erlebe eine aufregende Aktivität mit dir und deinen Freunden – eines der coolsten Erlebnisse in Westjütland! Zwei Teams treten gegeneinander an, ausgestattet mit Lasergewehren und Westen in einem alten, verfallenen Gebäude, in dem nur das stärkste Team überlebt.",
     "p2": "Wenn du nach Spaßaktivitäten in der Nähe von Blåvand suchst, ist dies das perfekte Erlebnis für Freunde, Familie und Kollegen. Das Center befindet sich am Mønstervej 60, 6854 Henne und ist als dunkles, zweistöckiges Labyrinth eingerichtet, das voller Verstecke und Überraschungen ist.",
     "p3": "Max. 5 Personen pro Team. Bei größeren Gruppen veranstalten wir ein Turnier – und nur ein Team kann die Ehre gewinnen.",
