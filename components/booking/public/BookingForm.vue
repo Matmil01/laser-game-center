@@ -2,7 +2,7 @@
   <form @submit.prevent="submitBooking" class="space-y-6">
 
     <!-- Starttidspunkter -->
-    <div v-if="date">
+    <div v-if="date" id="booking-slots-section">
       <label class="block text-sm font-medium mb-2 text-white">{{ $t('bookingForm.chooseTime') }}</label>
       <p v-if="slotsLoading" class="text-sm text-zinc-400">{{ $t('bookingForm.loadingSlots') }}</p>
       <p v-else-if="slots.length === 0" class="text-sm text-zinc-500">{{ $t('bookingForm.noSlots') }}</p>
@@ -25,7 +25,7 @@
     </div>
 
     <!-- Antal spil -->
-    <div v-if="selectedTime">
+    <div v-if="selectedTime" ref="numGamesRef">
       <label class="block text-sm font-medium mb-2 text-white">
         {{ $t('bookingForm.numGames') }} <span class="font-bold">{{ numGames }}</span>
         <span class="block text-zinc-400 font-normal text-xs mt-0.5">{{ numGames * 30 }} {{ $t('bookingForm.minPreview') }} {{ selectedTime }}–{{ endTimePreview }}</span>
@@ -80,7 +80,7 @@
       </div>
 
       <!-- Kontaktoplysninger -->
-      <div class="space-y-4 pt-2 border-t border-zinc-700">
+      <div id="booking-contact-section" class="space-y-4 pt-2 border-t border-zinc-700">
         <!-- Honeypot -->
         <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
           <label for="website">Website</label>
@@ -88,7 +88,7 @@
         </div>
         <div>
           <label class="block text-sm font-medium mb-1 cursor-pointer text-white">{{ $t('bookingForm.name') }}</label>
-          <input v-model="form.name" type="text" required :placeholder="$t('bookingForm.namePlaceholder')" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" />
+          <input v-model="form.name" type="text" required autocapitalize="words" :placeholder="$t('bookingForm.namePlaceholder')" class="w-full border-neon-subtle-neonred px-3 py-2 focus:outline-none bg-black text-white placeholder-zinc-500" @focus="scrollTo('booking-contact-section')" />
         </div>
         <div>
           <label class="block text-sm font-medium mb-1 cursor-pointer text-white">{{ $t('bookingForm.email') }}</label>
@@ -146,7 +146,17 @@ const { locale, t } = useI18n()
 const MIN_PARTICIPANTS = 4
 
 const slots            = ref([])
+const numGamesRef      = ref(null)
 const selectedTime     = ref(null)
+
+function scrollTo(id) {
+  setTimeout(() => {
+    const el = document.getElementById(id)
+    if (!el) return
+    const navHeight = document.querySelector('nav')?.closest('.sticky')?.offsetHeight ?? 80
+    window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - navHeight - 12)
+  }, 50)
+}
 const selectedMaxGames = ref(4)
 const numGames         = ref(1)
 const participants     = ref(MIN_PARTICIPANTS)
@@ -186,6 +196,8 @@ watch(() => props.date, async (newDate) => {
   try {
     const dateStr = newDate instanceof Date ? calToKey(newDate) : newDate
     slots.value = await $fetch(`${apiUrl}/slots.php?date=${dateStr}`, { signal: fetchAbortController.signal })
+    await nextTick()
+    scrollTo('booking-slots-section')
   } catch (e) {
     if (e?.name !== 'AbortError') slots.value = []
   } finally {
@@ -198,6 +210,12 @@ function selectTime(slot) {
   selectedTime.value     = slot.start_time
   selectedMaxGames.value = slot.max_games
   numGames.value         = 1
+  nextTick(() => {
+    const el = numGamesRef.value
+    if (!el) return
+    const navHeight = document.querySelector('nav')?.closest('.sticky')?.offsetHeight ?? 80
+    window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - navHeight - 12)
+  })
 }
 
 async function submitBooking() {
