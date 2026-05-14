@@ -16,12 +16,13 @@
 
     <!-- Episk Box -->
     <div class="border-neon-neonred md:w-6/12">
-        <video
-            src="/videos/lasergamecenteroksboeltrailer.mp4"
-            style="width: 100%; height: 100%; object-fit: cover;"
-            controls
-        ></video>
-    </div>
+            <video
+                src="/videos/lasergamecenteroksboeltrailer.mp4"
+                poster="/photos/lasergame-spil-oksboel-1.webp"
+                style="width: 100%; height: 100%; object-fit: cover;"
+                controls
+            ></video>
+        </div>
   </div>
 </template>
 
