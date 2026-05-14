@@ -6,7 +6,7 @@
     <div class="flex flex-wrap justify-center gap-4 mb-4 px-4">
         <a href="https://www.facebook.com/lasergamecenter/" target="_blank" rel="noopener" class="text-white hover:text-neonred transition-colors duration-300">Facebook</a>
         <a v-if="contact.email" :href="`mailto:${contact.email}`" class="text-white hover:text-neonred transition-colors duration-300 break-all min-w-0">{{ contact.email }}</a>
-        <NuxtLink to="/privatlivspolitik" class="text-white hover:text-neonred transition-colors duration-300">Privatlivspolitik</NuxtLink>
+        <NuxtLink to="/privatlivspolitik" class="text-white hover:text-neonred transition-colors duration-300">{{ $t('privatlivspolitik.title') }}</NuxtLink>
     </div>
 </div>
 </template>
