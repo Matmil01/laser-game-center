@@ -12,7 +12,7 @@
         <section class="mb-8">
           <h2 class="text-2xl text-white font-bold mb-3">{{ $t('privatlivspolitik.dataansvarlig.title') }}</h2>
           <p class="text-white leading-relaxed">
-            Laser Game Center Oksbøl<br>
+            Lasergame Center Oksbøl<br>
             Mønstervej 60, 6854 Henne<br>
             CVR: {{ contact.cvr }}<br>
             Telefon: {{ contact.phone }}<br>

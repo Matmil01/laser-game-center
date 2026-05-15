@@ -23,7 +23,7 @@
         <div class="relative z-10 flex items-center justify-center h-full">
             <h1
                 class="mt-64 text-white text-center text-3xl sm:text-5xl z-10 bg-black/30 px-2 py-2 backdrop-blur-md rounded-xl"
-            >LASER GAME CENTER OKSBØL
+            >LASERGAME CENTER OKSBØL
             </h1>
         </div>
     </div>
