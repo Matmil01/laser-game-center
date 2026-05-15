@@ -173,6 +173,7 @@ $settingsStmt = $pdo->query("SELECT `value` FROM settings WHERE `key` = 'phone'"
 $contactPhone = $settingsStmt->fetchColumn() ?: '';
 
 $mail->setFrom(getenv('SMTP_USER'), getenv('SMTP_FROM_NAME'));
+$mail->addReplyTo(getenv('ADMIN_EMAIL'), getenv('SMTP_FROM_NAME'));
 $mail->addAddress($email, $name);
 $mail->isHTML(true);
 $mail->Subject = $subjects[$locale];
