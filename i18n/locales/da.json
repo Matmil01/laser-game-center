@@ -18,9 +18,9 @@
     "word_4": "fest?",
     "word_5": "teambuilding?",
     "word_6": "polterabend?",
-    "p1": "Kom og prøv en spændende aktivitet for dig og dine venner – en af de fedeste oplevelser i Vestjylland! Her dyster to hold mod hinanden iført laservåben og veste i en gammel, forfalden bygning, hvor kun det stærkeste hold overlever",
+    "p1": "Kom og prøv en spændende aktivitet for dig og dine venner – en af de fedeste oplevelser i Vestjylland! Her dyster to hold mod hinanden iført laservåben og veste i en ældre bygning med karakter, hvor kun det stærkeste hold overlever.",
     "p2": "Er du på udkig efter sjove aktiviteter nær Blåvand, er dette den perfekte oplevelse for både venner, familie og kollegaer. Centeret befinder sig på Mønstervej 60, 6854 Henne og er indrettet som et mørkt labyrintområde på to etager fyldt med gemmesteder og overraskelser.",
-    "p3": "Max 5 personer per hold. Er I flere, laver vi turnering - og kun ét hold kan vinde æren.",
+    "p3": "max. 10 spiller ad gangen fordelt på to hold, er I flere laver vi turnering - og kun ét hold kan vinde æren.",
     "p4": "Tør DU!?"
   },
   "priser": {
@@ -41,6 +41,7 @@
     "p3": "Når du bliver ramt, larmer vesten i 10 sekunder og våbnet går ud af funktion. Træk dig tilbage mod din base og kom tilbage klar til kamp.",
     "p4": "Efter kampen vises både en teamscore og en individuel placering så alle ved, hvem der bar holdet - og hvem der ikke gjorde.",
     "p5": "Har DU hvad der skal til for at blive Vestjyllands bedste laserkriger?",
+    "p6": "Grundet vestens størrelse og spilforståelsen anbefales normalt en deltageralder fra 7 år og opefter.",
     "videoTitle": "Lasergame Video"
   },
   "arrangementer": {

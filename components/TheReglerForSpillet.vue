@@ -9,6 +9,7 @@
         {{ $t('regler.p3') }}<br><br>
         {{ $t('regler.p4') }}<br><br>
         {{ $t('regler.p5') }}<br><br>
+        {{ $t('regler.p6') }}<br><br>
       </p>
     </div>
 

@@ -18,9 +18,9 @@
     "word_4": "party?",
     "word_5": "teambuilding trip?",
     "word_6": "bachelor party?",
-    "p1": "Come and try an exciting activity for you and your friends – one of the coolest experiences in West Jutland! Two teams go head-to-head equipped with laser guns and vests in an old, derelict building, where only the strongest team survives.",
+    "p1": "Come and try an exciting activity for you and your friends – one of the coolest experiences in West Jutland! Two teams go head-to-head equipped with laser guns and vests in an older building with character, where only the strongest team survives.",
     "p2": "If you're looking for fun activities near Blåvand, this is the perfect experience for friends, family and colleagues. The center is located at Mønstervej 60, 6854 Henne and is set up as a dark, two-storey labyrinth filled with hiding spots and surprises.",
-    "p3": "Max 5 people per team. For larger groups, we run a tournament – and only one team can claim the glory.",
+    "p3": "Max. 10 players at a time divided into two teams. If you are more, we will set up a tournament – and only one team can claim the glory.",
     "p4": "Do YOU dare!?"
   },
   "priser": {
@@ -41,6 +41,7 @@
     "p3": "When you're hit, your vest makes noise for 10 seconds and your weapon stops working. Retreat to your base and come back ready to fight.",
     "p4": "After the battle, both a team score and individual rankings are shown, so everyone knows who carried the team – and who didn't.",
     "p5": "Do YOU have what it takes to become West Jutland's best laser warrior?",
+    "p6": "Due to the size of the vest and the understanding of the game, a participant age of 7 years and up is normally recommended.",
     "videoTitle": "Laser Game Video"
   },
   "arrangementer": {
