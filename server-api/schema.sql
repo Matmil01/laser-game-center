@@ -55,4 +55,12 @@ INSERT IGNORE INTO settings (`key`, `value`) VALUES
     ('aktuelt_title_en', ''),
     ('aktuelt_text_en',  ''),
     ('aktuelt_title_de', ''),
-    ('aktuelt_text_de',  '');
+    ('aktuelt_text_de',  ''),
+    ('price_1',          '60'),
+    ('price_2',          '100'),
+    ('price_3',          '130'),
+    ('price_4',          '160'),
+    ('price_eur_1',      '8'),
+    ('price_eur_2',      '14'),
+    ('price_eur_3',      '18'),
+    ('price_eur_4',      '22');

@@ -9,7 +9,7 @@
 
 
       <div class="flex-grow">
-        <p class="text-white text-center text-xl mb-4">{{ $t('priser.price1') }}</p>
+        <p class="text-white text-center text-xl mb-4">{{ formatted(1, locale) }}</p>
         <p class="text-white text-center">20 {{ $t('common.minutes') }}</p>
       </div>
 
@@ -22,7 +22,7 @@
       <NeonButton to="/booking" customClass="mb-5 !border-neon-neonpink transition-all duration-500 !p-0 !text-[0px] group-hover:!py-2 group-hover:!px-6 group-hover:!text-base hover:!border-neon-neonred" :text="$t('common.bookNow')" />
 
       <div class="flex-grow">
-        <p class="text-white text-center text-xl mb-4">{{ $t('priser.price2') }}</p>
+        <p class="text-white text-center text-xl mb-4">{{ formatted(2, locale) }}</p>
         <p class="text-white text-center">40 {{ $t('common.minutes') }}</p>
       </div>
 
@@ -35,7 +35,7 @@
       <NeonButton to="/booking" customClass="mb-5 !border-neon-neonorange transition-all duration-500 !p-0 !text-[0px] group-hover:!py-2 group-hover:!px-6 group-hover:!text-base hover:!border-neon-neonred" :text="$t('common.bookNow')" />
 
       <div class="flex-grow">
-        <p class="text-white text-center text-xl mb-4">{{ $t('priser.price3') }}</p>
+        <p class="text-white text-center text-xl mb-4">{{ formatted(3, locale) }}</p>
         <p class="text-white text-center">60 {{ $t('common.minutes') }}</p>
       </div>
 
@@ -48,7 +48,7 @@
       <NeonButton to="/booking" customClass="mb-5 !border-neon-neonblue transition-all duration-500 !p-0 !text-[0px] group-hover:!py-2 group-hover:!px-6 group-hover:!text-base hover:!border-neon-neonred" :text="$t('common.bookNow')" />
 
       <div class="flex-grow">
-        <p class="text-white text-center text-xl mb-4">{{ $t('priser.price4') }}</p>
+        <p class="text-white text-center text-xl mb-4">{{ formatted(4, locale) }}</p>
         <p class="text-white text-center">80 {{ $t('common.minutes') }}</p>
       </div>
 
@@ -57,3 +57,10 @@
   </div>
   </div>
 </template>
+
+<script setup>
+const { locale } = useI18n()
+const { formatted } = usePrices()
+const { fetchContactInfo } = useContactInfo()
+onMounted(fetchContactInfo)
+</script>

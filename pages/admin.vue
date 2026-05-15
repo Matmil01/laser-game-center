@@ -33,6 +33,11 @@
         >Aktuelt</button>
         <button
           class="px-4 py-2 font-bold text-sm border-b-2 transition-colors"
+          :class="activeTab === 'priser' ? 'border-neonred text-white' : 'border-transparent text-zinc-400 hover:text-white cursor-pointer'"
+          @click="tryChangeTab('priser')"
+        >Priser</button>
+        <button
+          class="px-4 py-2 font-bold text-sm border-b-2 transition-colors"
           :class="activeTab === 'contact' ? 'border-neonred text-white' : 'border-transparent text-zinc-400 hover:text-white cursor-pointer'"
           @click="tryChangeTab('contact')"
         >Kontakt</button>
@@ -57,6 +62,14 @@
           @dirty-change="v => dirtyTabs.aktuelt = v"
         />
       </template>
+      <template v-if="activeTab === 'priser'">
+        <PriserTab
+          :password="password"
+          :authed="authed"
+          @unauthorized="handleUnauthorized"
+          @dirty-change="v => dirtyTabs.priser = v"
+        />
+      </template>
       <template v-if="activeTab === 'contact'">
         <KontaktTab
           :password="password"
@@ -77,6 +90,7 @@ import AdminLogin from '~/components/booking/AdminLogin.vue'
 import BookingerTab from '~/components/booking/admin/BookingerTab.vue'
 import KontaktTab from '~/components/booking/admin/KontaktTab.vue'
 import AktueltTab from '~/components/booking/admin/AktueltTab.vue'
+import PriserTab from '~/components/booking/admin/PriserTab.vue'
 
 const config  = useRuntimeConfig()
 const apiUrl  = config.public.apiUrl
@@ -97,7 +111,7 @@ const authed        = ref(false)
 const password      = ref('')
 
 const activeTab    = ref('booking')
-const dirtyTabs    = reactive({ aktuelt: false, contact: false })
+const dirtyTabs    = reactive({ aktuelt: false, contact: false, priser: false })
 
 function tryChangeTab(tab) {
   const currentDirty = dirtyTabs[activeTab.value]

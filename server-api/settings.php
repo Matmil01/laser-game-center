@@ -45,6 +45,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'aktuelt_text_en'  => 500,
         'aktuelt_title_de' => 100,
         'aktuelt_text_de'  => 500,
+        'price_1'          => 10,
+        'price_2'          => 10,
+        'price_3'          => 10,
+        'price_4'          => 10,
+        'price_eur_1'      => 10,
+        'price_eur_2'      => 10,
+        'price_eur_3'      => 10,
+        'price_eur_4'      => 10,
     ];
 
     $stmt = $pdo->prepare(
@@ -58,6 +66,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $value = mb_substr(trim((string) $body[$key]), 0, $maxLen);
         // Valider farveformat (#RRGGBB) for aktuelt_color
         if ($key === 'aktuelt_color' && !preg_match('/^#[0-9A-Fa-f]{6}$/', $value)) continue;
+        // Valider numerisk format for priser
+        if (in_array($key, ['price_1','price_2','price_3','price_4','price_eur_1','price_eur_2','price_eur_3','price_eur_4']) && !preg_match('/^\d+(\.\d+)?$/', $value)) continue;
         $stmt->execute([$key, $value]);
     }
 
