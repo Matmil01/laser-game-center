@@ -35,9 +35,9 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Laser Game Center',
+      title: 'Lasergame Center',
       meta: [
-        { name: 'description', content: 'Velkommen til Laser Game Center!' }
+        { name: 'description', content: 'Velkommen til Lasergame Center!' }
       ],
 
     }

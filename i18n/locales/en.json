@@ -28,11 +28,7 @@
     "game": "GAME",
     "games": "GAMES",
     "perPerson": "Price per person",
-    "includes": "Includes intro & results",
-    "price1": "€8 / 60 DKK",
-    "price2": "€13 / 100 DKK",
-    "price3": "€17 / 130 DKK",
-    "price4": "€21 / 160 DKK"
+    "includes": "Includes intro & results"
   },
   "regler": {
     "title": "RULES OF THE GAME",
@@ -42,7 +38,7 @@
     "p4": "After the battle, both a team score and individual rankings are shown, so everyone knows who carried the team – and who didn't.",
     "p5": "Do YOU have what it takes to become West Jutland's best laser warrior?",
     "p6": "Due to the size of the vest and the understanding of the game, a participant age of 7 years and up is normally recommended.",
-    "videoTitle": "Laser Game Video"
+    "videoTitle": "Lasergame Video"
   },
   "arrangementer": {
     "title": "EVENTS",
@@ -50,29 +46,29 @@
     "next": "Next",
     "slides": [
       {
-        "alt": "Woman hiding while playing laser game",
+        "alt": "Woman hiding while playing lasergame",
         "title": "Birthday Party",
-        "text": "Make the birthday extra exciting with laser game! One of the most fun experiences on the west coast!\nAt children's birthday parties, the birthday child plays for free when minimum requirements are met, creating a special experience and a day the children will remember for a long time.\nThis requires a minimum booking of two games for at least 6 people! Free birthday child requires min. 8 people"
+        "text": "Make the birthday extra exciting with lasergame! One of the most fun experiences on the west coast!\nAt children's birthday parties, the birthday child plays for free when minimum requirements are met, creating a special experience and a day the children will remember for a long time.\nThis requires a minimum booking of two games for at least 6 people! Free birthday child requires min. 8 people"
       },
       {
-        "alt": "Two women walking towards each other in laser game gear",
+        "alt": "Two women walking towards each other in lasergame gear",
         "title": "Team Building",
-        "text": "Is your company located near Oksbøl, Esbjerg, Varde, or Blåvand? Or are you coming from far away?\nNo matter where you come from, this is an ideal activity for companies, associations or groups.\nThrough intense laser game experiences, relationships and community are strengthened in a fun and different way."
+        "text": "Is your company located near Oksbøl, Esbjerg, Varde, or Blåvand? Or are you coming from far away?\nNo matter where you come from, this is an ideal activity for companies, associations or groups.\nThrough intense lasergame experiences, relationships and community are strengthened in a fun and different way."
       },
       {
-        "alt": "Woman and group of friends playing laser game together",
+        "alt": "Woman and group of friends playing lasergame together",
         "title": "Parties and private events",
         "text": "Whether it's a group of friends, a family event or another celebration, the center can be booked outside of peak season.\nThis provides an opportunity for a different and active experience where everyone can join in."
       },
       {
-        "alt": "People in laser game gear waiting for the game to start",
-        "title": "Mobile laser game – we come to you",
-        "text": "Not on the west coast? Fear not! We come to you!\nWith the mobile solution from OX-Consult, laser game can be brought to your own location.\nPerfect for schools, events or companies looking for a flexible solution."
+        "alt": "People in lasergame gear waiting for the game to start",
+        "title": "Mobile lasergame – we come to you",
+        "text": "Not on the west coast? Fear not! We come to you!\nWith the mobile solution from OX-Consult, lasergame can be brought to your own location.\nPerfect for schools, events or companies looking for a flexible solution."
       },
       {
-        "alt": "Man aiming with laser gun",
+        "alt": "Man aiming with lasergame gun",
         "title": "Flexible facilities",
-        "text": "If you have a hall or a larger space, it can easily be transformed into a laser game arena using tables, boxes or gym equipment.\nThis creates a unique and customised experience in your own setting."
+        "text": "If you have a hall or a larger space, it can easily be transformed into a lasergame arena using tables, boxes or gym equipment.\nThis creates a unique and customised experience in your own setting."
       }
     ]
   },

@@ -122,7 +122,7 @@
         <tr>
           <td align="center" style="padding-bottom:28px;background:#000000;">
             <img src="https://laser.matmil.dk/icons/logoGif.gif"
-                 alt="Laser Game Center"
+                 alt="Lasergame Center"
                  width="200"
                  height="auto"
                  border="0"
@@ -133,7 +133,7 @@
         <!-- Footer -->
         <tr>
           <td align="center" style="border-top:1px solid #1e1e1e;padding-top:18px;color:#555555;background:#000000;font-size:12px;font-family:Arial,sans-serif;line-height:1.6;">
-            &#169; <?= date('Y') ?> Laser Game Center<?php if ($contactPhone): ?> &nbsp;|&nbsp; <?= htmlspecialchars($contactPhone) ?><?php endif; ?> &nbsp;|&nbsp; Mønstervej 60, 6854 Henne
+            &#169; <?= date('Y') ?> Lasergame Center<?php if ($contactPhone): ?> &nbsp;|&nbsp; <?= htmlspecialchars($contactPhone) ?><?php endif; ?> &nbsp;|&nbsp; Mønstervej 60, 6854 Henne
           </td>
         </tr>
 

@@ -17,10 +17,10 @@
     "word_3": "Geburtstag?",
     "word_4": "Party?",
     "word_5": "Teambuilding-Trip?",
-    "word_6": "Junggesellenabeschied?",
-    "p1": "Komm und erlebe eine aufregende Aktivität mit dir und deinen Freunden – eines der coolsten Erlebnisse in Westjütland! Zwei Teams treten gegeneinander an, ausgestattet mit Lasergewehren und Westen in einem älteren Gebäude mit Charakter, in dem nur das stärkste Team überlebt.",
-    "p2": "Wenn du nach Spaßaktivitäten in der Nähe von Blåvand suchst, ist dies das perfekte Erlebnis für Freunde, Familie und Kollegen. Das Center befindet sich am Mønstervej 60, 6854 Henne und ist als dunkles, zweistöckiges Labyrinth eingerichtet, das voller Verstecke und Überraschungen ist.",
-    "p3": "Max. 10 Spieler gleichzeitig, aufgeteilt in zwei Teams Bei größeren Gruppen veranstalten wir ein Turnier – und nur ein Team kann die Ehre gewinnen.",
+    "word_6": "Junggesellenabschied?",
+    "p1": "Komm und erlebe eine aufregende Aktivität mit dir und deinen Freunden – eines der coolsten Erlebnisse in Westjütland! Zwei Teams treten gegeneinander an, ausgestattet mit Lasergewehren und Westen in einem alten, verfallenen Gebäude, in dem nur das stärkste Team überlebt.",
+    "p2": "Wenn du nach Spaß und Spannung in der Nähe von Blåvand suchst, ist dies das perfekte Erlebnis für Freunde, Familie und Kollegen. Das Center befindet sich am Mønstervej 60, 6854 Henne und ist als dunkles, zweistöckiges Labyrinth eingerichtet, das voller Verstecke und Überraschungen ist.",
+    "p3": "Max. 5 Personen pro Team. Bei größeren Gruppen veranstalten wir ein Turnier – und nur ein Team kann die Ehre gewinnen.",
     "p4": "Traust DU dich!?"
   },
   "priser": {
@@ -28,16 +28,12 @@
     "game": "SPIEL",
     "games": "SPIELE",
     "perPerson": "Preis pro Person",
-    "includes": "Inklusive Einführung & Ergebnisse",
-    "price1": "€8 / 60 DKK",
-    "price2": "€13 / 100 DKK",
-    "price3": "€17 / 130 DKK",
-    "price4": "€21 / 160 DKK"
+    "includes": "Inklusive Einführung & Ergebnisse"
   },
   "regler": {
     "title": "SPIELREGELN",
-    "p1": "Zwei Teams kämpfen von ihrer eigenen Basis durch ein verschlungenes Labyrinth auf zwei Etagen in zwei verbundenen Gebäuden.",
-    "p2": "Du sammelst Punkte, indem du Gegner triffst – aber wenn du selbst getroffen wirst, verlierst du Punkte.",
+    "p1": "Zwei Teams kämpfen von ihrer eigenen Base durch ein verschlungenes Labyrinth auf zwei Etagen in zwei verbundenen Gebäuden.",
+    "p2": "Du sammelst Punkte, indem du ein Gegner triffst – aber wenn du selbst getroffen wirst, verlierst du Punkte.",
     "p3": "Wenn du getroffen wirst, macht deine Weste 10 Sekunden lang Lärm und die Waffe funktioniert nicht mehr. Rückzug zur Basis und zurückkehren, kampfbereit.",
     "p4": "Nach dem Kampf werden sowohl ein Teamergebnis als auch eine individuelle Platzierung angezeigt, sodass jeder weiß, wer das Team getragen hat – und wer nicht.",
     "p5": "Hast DU das Zeug dazu, Westjütlands bester Laserkrieger zu werden?",

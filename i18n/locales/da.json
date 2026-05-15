@@ -20,7 +20,7 @@
     "word_6": "polterabend?",
     "p1": "Kom og prøv en spændende aktivitet for dig og dine venner – en af de fedeste oplevelser i Vestjylland! Her dyster to hold mod hinanden iført laservåben og veste i en ældre bygning med karakter, hvor kun det stærkeste hold overlever.",
     "p2": "Er du på udkig efter sjove aktiviteter nær Blåvand, er dette den perfekte oplevelse for både venner, familie og kollegaer. Centeret befinder sig på Mønstervej 60, 6854 Henne og er indrettet som et mørkt labyrintområde på to etager fyldt med gemmesteder og overraskelser.",
-    "p3": "max. 10 spiller ad gangen fordelt på to hold, er I flere laver vi turnering - og kun ét hold kan vinde æren.",
+    "p3": "Max. 10 spiller ad gangen fordelt på to hold, er I flere laver vi turnering - og kun ét hold kan vinde æren.",
     "p4": "Tør DU!?"
   },
   "priser": {
@@ -28,11 +28,7 @@
     "game": "SPIL",
     "games": "SPIL",
     "perPerson": "Prisen er pr. person",
-    "includes": "Inkluderer intro & resultater",
-    "price1": "60 kr",
-    "price2": "100 kr",
-    "price3": "130 kr",
-    "price4": "160 kr"
+    "includes": "Inkluderer intro & resultater"
   },
   "regler": {
     "title": "REGLER FOR SPILLET",
