@@ -16,6 +16,11 @@ if (!$date || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
     exit;
 }
 
+// Beregn afskæringstidspunkt: nu + 2 timer (kun relevant for dagens dato)
+$cutoffMin = ($date === date('Y-m-d'))
+    ? (int)date('H') * 60 + (int)date('i') + 120
+    : 0;
+
 // Hent alle tilgængeligheds-vinduer for denne dato
 $wstmt = $pdo->prepare(
     'SELECT id, start_time, end_time FROM availability_windows WHERE window_date = ? ORDER BY start_time'
@@ -70,7 +75,7 @@ foreach ($windows as $window) {
             if ($blocked) break;
             $maxGames = $g;
         }
-        if ($maxGames >= 1) {
+        if ($maxGames >= 1 && $t >= $cutoffMin) {
             $slots[] = [
                 'start_time' => sprintf('%02d:%02d', intdiv($t, 60), $t % 60),
                 'max_games'  => $maxGames,
