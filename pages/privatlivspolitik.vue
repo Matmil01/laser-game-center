@@ -14,9 +14,9 @@
           <p class="text-white leading-relaxed">
             Lasergame Center Oksbøl<br>
             Mønstervej 60, 6854 Henne<br>
-            CVR: {{ contact.cvr }}<br>
-            Telefon: {{ contact.phone }}<br>
-            E-mail: <a v-if="contact.email" :href="`mailto:${contact.email}`" class="underline hover:text-neonred transition-colors duration-300">{{ contact.email }}</a>
+            CVR: {{ settings.cvr }}<br>
+            Telefon: {{ settings.phone }}<br>
+            E-mail: <a v-if="settings.email" :href="`mailto:${settings.email}`" class="underline hover:text-neonred transition-colors duration-300">{{ settings.email }}</a>
           </p>
         </section>
 
@@ -63,7 +63,7 @@
           </ul>
           <p class="text-white leading-relaxed mt-3">
             {{ $t('privatlivspolitik.rettigheder.contactPre') }}
-            <a v-if="contact.email" :href="`mailto:${contact.email}`" class="underline hover:text-neonred transition-colors duration-300">{{ contact.email }}</a><span v-else>{{ $t('privatlivspolitik.rettigheder.contactFallback') }}</span>
+            <a v-if="settings.email" :href="`mailto:${settings.email}`" class="underline hover:text-neonred transition-colors duration-300">{{ settings.email }}</a><span v-else>{{ $t('privatlivspolitik.rettigheder.contactFallback') }}</span>
             {{ $t('privatlivspolitik.rettigheder.contactPost') }}
           </p>
           <p class="text-white leading-relaxed mt-3">
@@ -78,6 +78,6 @@
 </template>
 
 <script setup>
-const { contact, fetchContactInfo } = useContactInfo()
-onMounted(fetchContactInfo)
+const { settings, fetchSettings } = useSettings()
+onMounted(fetchSettings)
 </script>

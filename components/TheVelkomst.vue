@@ -34,7 +34,7 @@ import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import Typed from 'typed.js'
 
-const { contact, fetchContactInfo } = useContactInfo()
+const { settings, fetchSettings } = useSettings()
 const { t, locale } = useI18n()
 
 const textRef = ref(null)
@@ -66,7 +66,7 @@ const initTyped = () => {
 }
 
 onMounted(() => {
-  fetchContactInfo()
+  fetchSettings()
   initTyped()
 })
 

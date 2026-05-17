@@ -13,10 +13,10 @@
                         class="w-6 h-6 mr-4 shrink-0"
                     />
                     <a
-                        v-if="contact.phone"
-                        :href="`tel:${contact.phone.replace(/\s/g, '')}`"
+                        v-if="settings.phone"
+                        :href="`tel:${settings.phone.replace(/\s/g, '')}`"
                         class="hover:underline truncate"
-                        >{{ contact.phone }}</a
+                        >{{ settings.phone }}</a
                     >
                 </div>
 
@@ -27,10 +27,10 @@
                         class="w-6 h-6 mr-4 shrink-0"
                     />
                     <a
-                        v-if="contact.email"
-                        :href="`mailto:${contact.email}`"
+                        v-if="settings.email"
+                        :href="`mailto:${settings.email}`"
                         class="hover:underline truncate"
-                        >{{ contact.email }}</a
+                        >{{ settings.email }}</a
                     >
                 </div>
                 <div class="flex text-base md:text-xl items-center text-white min-w-0">
@@ -70,6 +70,6 @@
 </template>
 
 <script setup>
-const { contact, fetchContactInfo } = useContactInfo();
-onMounted(fetchContactInfo);
+const { settings, fetchSettings } = useSettings();
+onMounted(fetchSettings);
 </script>

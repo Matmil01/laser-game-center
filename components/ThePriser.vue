@@ -61,6 +61,6 @@
 <script setup>
 const { locale } = useI18n()
 const { formatted } = usePrices()
-const { fetchContactInfo } = useContactInfo()
-onMounted(fetchContactInfo)
+const { fetchSettings } = useSettings()
+onMounted(fetchSettings)
 </script>

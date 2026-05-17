@@ -22,7 +22,7 @@
     <div>
 
       <p v-if="futureAvailableDates.length === 0" class="mb-8 text-white font-semibold">
-        {{ $t('booking.noSlots', { phone: contact.phone }) }}
+        {{ $t('booking.noSlots', { phone: settings.phone }) }}
       </p>
 
       <div v-if="success" class="bg-black border-2 border-neonred shadow-[0_0_18px_2px_var(--color-neonred)] p-6 text-center">
@@ -64,7 +64,7 @@
 import BookingForm from '~/components/booking/public/BookingForm.vue'
 import DatePicker from '~/components/booking/DatePicker.vue'
 
-const { contact, fetchContactInfo } = useContactInfo()
+const { settings, fetchSettings } = useSettings()
 
 const config = useRuntimeConfig()
 const apiUrl = config.public.apiUrl
@@ -94,7 +94,7 @@ async function loadAvailableDates() {
     availableDates.value = []
   }
 }
-onMounted(() => { fetchContactInfo(); loadAvailableDates() })
+onMounted(() => { fetchSettings(); loadAvailableDates() })
 
 
 // Viser kun beskeden om ingen ledige tider hvis der ikke er slots fra og med i dag.

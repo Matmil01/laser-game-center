@@ -57,7 +57,7 @@
         <AktueltTab
           :password="password"
           :authed="authed"
-          @update-aktuelt-info="onContactInfoUpdated"
+          @update-aktuelt-info="onSettingsUpdated"
           @unauthorized="handleUnauthorized"
           @dirty-change="v => dirtyTabs.aktuelt = v"
         />
@@ -74,7 +74,7 @@
         <KontaktTab
           :password="password"
           :authed="authed"
-          @update-contact-info="onContactInfoUpdated"
+          @update-contact-info="onSettingsUpdated"
           @unauthorized="handleUnauthorized"
           @dirty-change="v => dirtyTabs.contact = v"
         />
@@ -94,11 +94,11 @@ import PriserTab from '~/components/booking/admin/PriserTab.vue'
 
 const config  = useRuntimeConfig()
 const apiUrl  = config.public.apiUrl
-const { contact: contactInfo } = useContactInfo()
+const { settings: contactInfo } = useSettings()
 
 // Når en fane gemmer indstillinger, opdaterer kontaktinfo med det samme –
 // så footer og kontaktsiden ikke viser forældet data uden refresh.
-function onContactInfoUpdated(val) {
+function onSettingsUpdated(val) {
   contactInfo.value = { ...(contactInfo.value ?? {}), ...val }
 }
 // sessionStorage key — cleared when the tab/browser closes (Måske skal det være localStorage i stedet)

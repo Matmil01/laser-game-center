@@ -102,9 +102,9 @@ async function saveSettings() {
     })
     saveInfo.value = 'Gemt!'
     emit('dirty-change', false)
-    const { contact } = useContactInfo()
+    const { settings } = useSettings()
     const fresh = await $fetch(`${apiUrl}/settings.php`)
-    contact.value = { ...(contact.value ?? {}), ...fresh }
+    settings.value = { ...(settings.value ?? {}), ...fresh }
   } catch (e) {
     if (e.status === 401) { emit('unauthorized'); return }
     saveError.value = e.data?.error ?? 'Kunne ikke gemme.'
