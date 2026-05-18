@@ -1,3 +1,5 @@
 User-Agent: *
 Disallow: /admin
 Disallow: /server-api/
+
+Sitemap: https://lasergamecenter.dk/sitemap.xml

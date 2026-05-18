@@ -168,5 +168,19 @@
       "datatilsynetLink": "dänischen Datenschutzbehörde",
       "datatilsynetPost": " einreichen, wenn du der Meinung bist, dass wir deine Informationen nicht korrekt verarbeiten."
     }
+  },
+  "seo": {
+    "index": {
+      "title": "Lasergame Center Oksbøl – Spaß für die ganze Familie",
+      "description": "Erlebe Lasergame im Herzen von Oksbøl. Online buchen, Preise und Öffnungszeiten."
+    },
+    "booking": {
+      "title": "Lasergame buchen – Lasergame Center Oksbøl",
+      "description": "Buche deine Lasergame-Session online. Wähle direkt Datum und Uhrzeit."
+    },
+    "privatlivspolitik": {
+      "title": "Datenschutzrichtlinie – Lasergame Center Oksbøl",
+      "description": "Lies unsere Datenschutzrichtlinie und erfahre, wie wir deine Daten verarbeiten."
+    }
   }
 }

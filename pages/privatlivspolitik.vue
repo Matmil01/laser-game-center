@@ -78,6 +78,12 @@
 </template>
 
 <script setup>
+const { t } = useI18n()
+useSeoMeta({
+  title: computed(() => t('seo.privatlivspolitik.title')),
+  description: computed(() => t('seo.privatlivspolitik.description')),
+})
+
 const { settings, fetchSettings } = useSettings()
 onMounted(fetchSettings)
 </script>

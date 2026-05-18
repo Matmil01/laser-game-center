@@ -61,6 +61,12 @@
 </template>
 
 <script setup>
+const { t } = useI18n()
+useSeoMeta({
+  title: computed(() => t('seo.booking.title')),
+  description: computed(() => t('seo.booking.description')),
+})
+
 import BookingForm from '~/components/booking/public/BookingForm.vue'
 import DatePicker from '~/components/booking/DatePicker.vue'
 

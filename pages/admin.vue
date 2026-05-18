@@ -86,6 +86,11 @@
 </template>
 
 <script setup>
+useSeoMeta({
+  title: 'Admin – Lasergame Center Oksbøl',
+  robots: 'noindex, nofollow',
+})
+
 import AdminLogin from '~/components/booking/AdminLogin.vue'
 import BookingerTab from '~/components/booking/admin/BookingerTab.vue'
 import KontaktTab from '~/components/booking/admin/KontaktTab.vue'

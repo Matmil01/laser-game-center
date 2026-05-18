@@ -41,6 +41,12 @@
 </template>
 
 <script setup>
+const { t } = useI18n()
+useSeoMeta({
+  title: computed(() => t('seo.index.title')),
+  description: computed(() => t('seo.index.description')),
+})
+
 // clear hashtag fra url når man klikker på nav links
 const route = useRoute()
 
