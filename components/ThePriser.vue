@@ -10,7 +10,7 @@
 
       <div class="flex-grow">
         <p class="text-white text-center text-xl mb-4">{{ formatted(1, locale) }}</p>
-        <p class="text-white text-center">20 {{ $t('common.minutes') }}</p>
+        <p class="text-white text-center">20-25 {{ $t('common.minutes') }}</p>
       </div>
 
       <p class="text-white text-xs text-center mt-8 opacity-70">{{ $t('priser.perPerson') }}<br>{{ $t('priser.includes') }}</p>
@@ -23,7 +23,7 @@
 
       <div class="flex-grow">
         <p class="text-white text-center text-xl mb-4">{{ formatted(2, locale) }}</p>
-        <p class="text-white text-center">40 {{ $t('common.minutes') }}</p>
+        <p class="text-white text-center">40-45 {{ $t('common.minutes') }}</p>
       </div>
 
       <p class="text-white text-xs text-center mt-8 opacity-70">{{ $t('priser.perPerson') }}<br>{{ $t('priser.includes') }}</p>
@@ -36,7 +36,7 @@
 
       <div class="flex-grow">
         <p class="text-white text-center text-xl mb-4">{{ formatted(3, locale) }}</p>
-        <p class="text-white text-center">60 {{ $t('common.minutes') }}</p>
+        <p class="text-white text-center">60-65 {{ $t('common.minutes') }}</p>
       </div>
 
       <p class="text-white text-xs text-center mt-8 opacity-70">{{ $t('priser.perPerson') }}<br>{{ $t('priser.includes') }}</p>
@@ -49,7 +49,7 @@
 
       <div class="flex-grow">
         <p class="text-white text-center text-xl mb-4">{{ formatted(4, locale) }}</p>
-        <p class="text-white text-center">80 {{ $t('common.minutes') }}</p>
+        <p class="text-white text-center">80-85 {{ $t('common.minutes') }}</p>
       </div>
 
       <p class="text-white text-xs text-center mt-8 opacity-70">{{ $t('priser.perPerson') }}<br>{{ $t('priser.includes') }}</p>
