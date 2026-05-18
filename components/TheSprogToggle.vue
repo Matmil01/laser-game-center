@@ -2,12 +2,12 @@
   <div class="flex items-center gap-1">
     <button
       v-for="option in otherLangs"
-      :key="option.code"
-      @click="setLocale(option.code)"
+      :key="option.flag"
+      @click="setLocale(option.flag)"
       :title="option.label"
-      class="text-xl leading-none cursor-pointer"
+      class="leading-none cursor-pointer"
     >
-      {{ option.flag }}
+      <img :src="`/icons/${option.flag}.svg`" :alt="option.label" class="w-6 h-4 object-cover" />
     </button>
   </div>
 </template>
@@ -18,10 +18,10 @@ import { computed } from 'vue'
 const { locale, setLocale } = useI18n()
 
 const langs = [
-  { code: 'da', flag: '🇩🇰', label: 'Dansk' },
-  { code: 'en', flag: '🇬🇧', label: 'English' },
-  { code: 'de', flag: '🇩🇪', label: 'Deutsch' },
+  { flag: 'da', label: 'Dansk' },
+  { flag: 'en', label: 'English' },
+  { flag: 'de', label: 'Deutsch' },
 ]
 
-const otherLangs = computed(() => langs.filter(l => l.code !== locale.value))
+const otherLangs = computed(() => langs.filter(l => l.flag !== locale.value))
 </script>

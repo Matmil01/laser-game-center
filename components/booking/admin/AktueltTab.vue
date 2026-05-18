@@ -21,13 +21,13 @@
         <div class="flex gap-1 mb-3">
           <button
             v-for="tab in langTabs"
-            :key="tab.code"
+            :key="tab.flag"
             type="button"
-            @click="activeLangTab = tab.code"
+            @click="activeLangTab = tab.flag"
             :title="tab.label"
-            class="text-xl leading-none px-2 py-1 border-b-2 transition-all duration-150 cursor-pointer"
-            :class="activeLangTab === tab.code ? 'border-white' : 'border-transparent'"
-          >{{ tab.flag }}</button>
+            class="leading-none px-2 py-1 border-b-2 transition-all duration-150 cursor-pointer"
+            :class="activeLangTab === tab.flag ? 'border-white' : 'border-transparent'"
+          ><img :src="`/icons/${tab.flag}.svg`" :alt="tab.label" class="w-6 h-4 object-cover" /></button>
         </div>
         <label class="block text-sm font-medium mb-1 text-white">Titel</label>
         <input
@@ -152,9 +152,9 @@ const config  = useRuntimeConfig()
 const apiUrl  = config.public.apiUrl
 
 const langTabs = [
-  { code: 'da', flag: '🇩🇰', label: 'Dansk' },
-  { code: 'en', flag: '🇬🇧', label: 'English' },
-  { code: 'de', flag: '🇩🇪', label: 'Deutsch' },
+  { flag: 'da', label: 'Dansk' },
+  { flag: 'en', label: 'English' },
+  { flag: 'de', label: 'Deutsch' },
 ]
 const activeLangTab = ref('da')
 
