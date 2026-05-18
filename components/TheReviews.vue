@@ -57,13 +57,13 @@
                             <h4 class="text-white font-light text-xl">
                                 {{ review.name }}
                             </h4>
-                            <div class="flex flex-col">
+                            <!-- <div class="flex flex-col">
                                 <p
                                     class="text-neonorange md:text-4xl text-3xl md:-mt-3"
                                 >
                                     ★★★★★
                                 </p>
-                            </div>
+                            </div> -->
                         </div>
                         <p class="text-white font-light text-content">
                             {{ review.comment }}
