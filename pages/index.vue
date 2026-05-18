@@ -32,6 +32,7 @@
         <TheAktuelt />
         <TheVelkomst />
         <ThePriser />
+        <TheReviews />
         <TheFotokarrusel />
         <TheReglerForSpillet />
         <TheArrangementer />
