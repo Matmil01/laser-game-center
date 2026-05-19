@@ -1,6 +1,6 @@
 <template>
   <div id="priser" class="scroll-mt-24">
-    <h2 class="text-4xl font-bold text-white text-center">{{ $t('priser.title') }}</h2>
+    <h2 class="text-2xl sm:text-4xl font-bold text-white text-center">{{ $t('priser.title') }}</h2>
   <div class="sm:flex gap-8 p-8 mb-7">
     <!-- Card 1 - Green -->
     <div class="flex-1 border-neon-neongreen p-8 flex flex-col mb-6 md:mb-0 group h-80 transition-transform duration-500 hover:scale-105">

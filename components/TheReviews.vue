@@ -2,7 +2,7 @@
     <div class="">
         <div class="max-w-[1200px] mx-auto">
             <div class="relative">
-                <h2 class="text-4xl font-bold text-white text-center mb-6">{{ $t('anmeldelser.title') }}</h2>
+                <h2 class="text-2xl sm:text-4xl font-bold text-white text-center mb-6">{{ $t('anmeldelser.title') }}</h2>
                 <!-- Loading "skelet" :) -->
                 <div
                     v-if="pending"
