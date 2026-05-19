@@ -54,16 +54,17 @@
                         class="flex flex-col p-4 border-neon-neonred transition-transform duration-200 hover:scale-105 min-w-[80vw] max-w-[90vw] sm:min-w-[350px] sm:max-w-[400px] lg:min-w-[400px] lg:max-w-[400px]"
                     >
                         <div class="flex justify-between">
-                            <h4 class="text-white font-light text-xl">
+                            <h4 class="text-white font-light text-xl w-12">
                                 {{ review.name }}
                             </h4>
-                             <div class="flex flex-col">
-                                <p
-                                    class="text-neonorange md:text-4xl text-3xl md:-mt-3"
-                                >
-                                    ★★★★★
-                                </p>
-                            </div>
+                             <div class="flex -mr-4 -mt-4">
+                                 <img src="/icons/Star.png" alt="Black star icon" class="w-15 h-15 -mr-8" />
+                                 <img src="/icons/Star.png" alt="Black star icon" class="w-15 h-15 -mr-8" />
+                                 <img src="/icons/Star.png" alt="Black star icon" class="w-15 h-15 -mr-8" />
+                                 <img src="/icons/Star.png" alt="Black star icon" class="w-15 h-15 -mr-8" />
+                                 <img src="/icons/Star.png" alt="Black star icon" class="w-15 h-15" />
+
+                             </div>
                         </div>
                         <p class="text-white font-light text-content">
                             {{ review.comment }}
