@@ -33,9 +33,9 @@
         <TheVelkomst />
         <ThePriser />
         <TheReviews />
-        <TheFotokarrusel />
         <TheReglerForSpillet />
         <TheArrangementer />
+        <TheFotokarrusel />
         <TheKontakt />
     </div>
 </div>
