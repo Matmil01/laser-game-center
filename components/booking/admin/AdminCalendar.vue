@@ -283,6 +283,10 @@ function calBookingStyle(slotTime, durationMin = 60) {
 
 const calViewMode = ref('week')
 const calCurrentDate = ref(new Date())
+
+onMounted(() => {
+  if (window.innerWidth < 640) calViewMode.value = 'agenda'
+})
 const calScrollContainer = ref(null)
 const selectedCalDate = ref('')
 

@@ -1,8 +1,8 @@
 // Læser priser fra settings (price_1–price_4, price_eur_1–price_eur_4)
 // locale-opmærksom formatering. Falder tilbage på hardcodede værdier som er de oprindelige priser
 
-const FALLBACK_DKK = [60, 100, 130, 160]
-const FALLBACK_EUR = [8, 14, 18, 22]
+export const FALLBACK_DKK = [60, 100, 130, 160]
+export const FALLBACK_EUR = [8, 14, 18, 22]
 
 export const usePrices = () => {
   const { settings } = useSettings()

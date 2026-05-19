@@ -44,22 +44,17 @@ foreach ($windows as $window) {
 
     // Hent alle bookinger i dette vindue
     $booked = [];
-    try {
-        $bstmt = $pdo->prepare(
-            'SELECT FLOOR(TIME_TO_SEC(start_time)/60) AS start_min, num_games
-             FROM bookings WHERE window_id = ?'
-        );
-        $bstmt->execute([$window['id']]);
-        $bookingRows = $bstmt->fetchAll();
+    $bstmt = $pdo->prepare(
+        'SELECT FLOOR(TIME_TO_SEC(start_time)/60) AS start_min, num_games
+         FROM bookings WHERE window_id = ?'
+    );
+    $bstmt->execute([$window['id']]);
+    $bookingRows = $bstmt->fetchAll();
 
-        // Build liste over booket tidsrum [start_min, end_min]
-        foreach ($bookingRows as $b) {
-            $bStart   = (int)$b['start_min'];
-            $booked[] = [$bStart, $bStart + (int)$b['num_games'] * 30];
-        }
-    } catch (Exception $e) {
-        // Bookings table issue – treat as no bookings so available slots still show
-        $booked = [];
+    // Build liste over booket tidsrum [start_min, end_min]
+    foreach ($bookingRows as $b) {
+        $bStart   = (int)$b['start_min'];
+        $booked[] = [$bStart, $bStart + (int)$b['num_games'] * 30];
     }
 
     // Generate ledige starttider (30-min trin) med max antal spil

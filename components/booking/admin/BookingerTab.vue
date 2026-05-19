@@ -189,7 +189,6 @@ async function loadData(navigate = false) {
     })
     windows.value  = res.windows  ?? []
     bookings.value = res.bookings ?? []
-    if (res.db_error) loadError.value = res.db_error
     if (navigate && newDate.value) calendarRef.value?.navigateTo(newDate.value, true)
   } catch (e) {
     if (e.status === 401) { emit('unauthorized'); return }

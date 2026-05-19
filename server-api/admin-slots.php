@@ -30,32 +30,21 @@ if ($action === 'list') {
     );
     $windows = $wstmt->fetchAll();
 
-    try {
-        $bstmt = $pdo->query(
-            'SELECT b.id, b.window_id, aw.window_date, b.start_time, b.num_games,
-                    b.name, b.email, b.phone, b.note, b.participants, b.created_at
-             FROM bookings b
-             JOIN availability_windows aw ON b.window_id = aw.id
-             WHERE b.cancelled_at IS NULL
-             ORDER BY aw.window_date, b.start_time'
-        );
-        $bookings = $bstmt->fetchAll();
+    $bstmt = $pdo->query(
+        'SELECT b.id, b.window_id, aw.window_date, b.start_time, b.num_games,
+                b.name, b.email, b.phone, b.note, b.participants, b.created_at
+         FROM bookings b
+         JOIN availability_windows aw ON b.window_id = aw.id
+         WHERE b.cancelled_at IS NULL
+         ORDER BY aw.window_date, b.start_time'
+    );
+    $bookings = $bstmt->fetchAll();
 
-        foreach ($bookings as &$b) {
-            $b['id']           = (int) $b['id'];
-            $b['window_id']    = (int) $b['window_id'];
-            $b['num_games']    = (int) $b['num_games'];
-            $b['participants'] = (int) $b['participants'];
-        }
-    } catch (Exception $e) {
-        // Bookings table may have wrong schema – return windows with empty bookings
-        // and surface the DB error so it can be diagnosed.
-        echo json_encode([
-            'windows'  => $windows,
-            'bookings' => [],
-            'db_error' => 'Bookings-tabel fejl',
-        ]);
-        exit;
+    foreach ($bookings as &$b) {
+        $b['id']           = (int) $b['id'];
+        $b['window_id']    = (int) $b['window_id'];
+        $b['num_games']    = (int) $b['num_games'];
+        $b['participants'] = (int) $b['participants'];
     }
 
     echo json_encode(['windows' => $windows, 'bookings' => $bookings]);
@@ -104,7 +93,6 @@ if ($action === 'set_window') {
     $pdo->prepare('INSERT INTO availability_windows (window_date, start_time, end_time) VALUES (?, ?, ?)')
         ->execute([$date, $from . ':00', $to . ':00']);
     $windowId = (int) $pdo->lastInsertId();
-    auditLog($pdo, 'set_window', "date=$date from=$from to=$to");
     echo json_encode(['success' => true, 'id' => $windowId, 'created' => true]);
     exit;
 }
@@ -169,7 +157,6 @@ if ($action === 'update_window') {
 
     $pdo->prepare('UPDATE availability_windows SET start_time = ?, end_time = ? WHERE id = ?')
         ->execute([$from . ':00', $to . ':00', $id]);
-    auditLog($pdo, 'update_window', "id=$id from=$from to=$to");
     echo json_encode(['success' => true]);
     exit;
 }
@@ -194,7 +181,6 @@ if ($action === 'delete_window') {
     }
 
     $pdo->prepare('DELETE FROM availability_windows WHERE id = ?')->execute([$id]);
-    auditLog($pdo, 'delete_window', "id=$id");
     echo json_encode(['success' => true]);
     exit;
 }
@@ -211,7 +197,6 @@ if ($action === 'cancel') {
     }
 
     $pdo->prepare('UPDATE bookings SET cancelled_at = NOW() WHERE id = ?')->execute([$id]);
-    auditLog($pdo, 'cancel_booking', "id=$id");
     echo json_encode(['success' => true]);
     exit;
 }

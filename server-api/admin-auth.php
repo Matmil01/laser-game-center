@@ -35,17 +35,6 @@ function checkLoginRateLimit(): void {
     file_put_contents($file, json_encode($data), LOCK_EX);
 }
 
-// Skriv til audit_log-tabel. Kræver at $pdo er tilgængelig i det kaldende scope.
-function auditLog(PDO $pdo, string $action, string $detail = ''): void {
-    $ip = $_SERVER['REMOTE_ADDR'] ?? '';
-    try {
-        $pdo->prepare('INSERT INTO audit_log (action, detail, ip) VALUES (?, ?, ?)')
-            ->execute([$action, $detail, $ip]);
-    } catch (Exception $e) {
-        error_log('auditLog failed: ' . $e->getMessage());
-    }
-}
-
 // Tjek at client har sendt den rigtige admin-password.
 // Hvis ikke, giv fejl og stop script.
 function requireAdminAuth(): void {

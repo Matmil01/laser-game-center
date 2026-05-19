@@ -1,6 +1,6 @@
 <?php
-// Template-variabler forventet fra det kaldende scope:
-// $name, $email, $phone, $dateFormatted, $startFormatted, $endFormatted, $num_games, $participants, $note
+// Admin-notifikation e-mail (dansk)
+// Variabler sendes til template fra book.php: kundens navn, e-mail, telefon, dato, tidspunkt, antal spil, antal spillere og note.
 ?><!DOCTYPE html>
 <html lang="da">
 <head>
