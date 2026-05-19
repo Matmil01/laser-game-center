@@ -7,6 +7,7 @@
 
     <div class="flex items-center gap-6">
       <a href="/#priser" @click.prevent="handleSectionNav('priser')" class="text-white text-sm hover:text-neonred transition-colors duration-300 hidden md:block">{{ $t('nav.priser') }}</a>
+      <a href="/#reviews" @click.prevent="handleSectionNav('reviews')" class="text-white text-sm hover:text-neonred transition-colors duration-300 hidden md:block">{{ $t('anmeldelser.title') }}</a>
       <a href="/#regler" @click.prevent="handleSectionNav('regler')" class="text-white text-sm hover:text-neonred transition-colors duration-300 hidden md:block">{{ $t('nav.regler') }}</a>
       <a href="/#arrangementer" @click.prevent="handleSectionNav('arrangementer')" class="text-white text-sm hover:text-neonred transition-colors duration-300 hidden md:block">{{ $t('nav.arrangementer') }}</a>
       <a href="/#kontakt" @click.prevent="handleSectionNav('kontakt')" class="text-white text-sm hover:text-neonred transition-colors duration-300 hidden md:block">{{ $t('nav.kontakt') }}</a>
