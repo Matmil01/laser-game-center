@@ -42,7 +42,7 @@
                 <div
                     v-else-if="reviews.length > 0"
                     ref="scrollContainer"
-                    class="flex gap-6 p-6 overflow-x-auto -mt-6 max-w-full scroll-smooth scrollbar-hide"
+                    class="flex gap-6 p-6 overflow-x-auto -mt-6 max-w-full scrollbar-hide"
                     @mouseenter="isPaused = true"
                     @mouseleave="isPaused = false"
                     @touchstart="isPaused = true"
@@ -88,7 +88,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import reviewsData from "@/assets/data/reviews.json";
 
 const pending = ref(false);
@@ -101,6 +101,7 @@ const scrollContainer = ref(null);
 const isPaused = ref(false);
 let scrollAmount = 0;
 let animationStarted = false;
+let rafId = null;
 
 function startAutoScroll() {
     if (animationStarted) return;
@@ -112,19 +113,23 @@ function startAutoScroll() {
 
     function autoScroll() {
         if (!container) return;
+        const halfWidth = container.scrollWidth / 2;
         if (!isPaused.value) {
-            scrollAmount += scrollStep;
-            container.scrollLeft = scrollAmount;
-            if (scrollAmount >= container.scrollWidth / 2) {
-                scrollAmount = 0;
-                container.scrollLeft = 0;
+            if (halfWidth > 0) {
+                scrollAmount += scrollStep;
+                container.scrollLeft = scrollAmount;
+                if (scrollAmount >= halfWidth) {
+                    scrollAmount = 0;
+                    container.scrollLeft = 0;
+                }
             }
         } else {
             scrollAmount = container.scrollLeft;
         }
-        requestAnimationFrame(autoScroll);
+        rafId = requestAnimationFrame(autoScroll);
     }
-    autoScroll();
+    // Double rAF ensures Chrome has finished layout before reading scrollWidth
+    requestAnimationFrame(() => { rafId = requestAnimationFrame(autoScroll); });
 }
 
 onMounted(() => {
@@ -133,8 +138,8 @@ onMounted(() => {
     }
 });
 
-watch(scrollContainer, (el) => {
-    if (el) startAutoScroll();
+onUnmounted(() => {
+    if (rafId) cancelAnimationFrame(rafId);
 });
 </script>
 
