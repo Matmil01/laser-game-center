@@ -59,6 +59,8 @@
 </template>
 
 <script setup>
+import { usePrices } from '~/composables/usePrices.js'
+
 const { locale } = useI18n()
 const { formatted } = usePrices()
 const { fetchSettings } = useSettings()
