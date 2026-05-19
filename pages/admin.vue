@@ -20,7 +20,7 @@
     <!-- Admin-panel med tabs -->
     <template v-else>
       <h1 class="text-3xl font-black mb-8 tracking-wide text-white">Admin</h1>
-      <div class="flex border-b-2 border-neonred mb-8">
+      <div class="flex flex-wrap border-b-2 border-neonred mb-8">
         <button
           class="px-4 py-2 font-bold text-sm border-b-2 transition-colors"
           :class="activeTab === 'booking' ? 'border-neonred text-white' : 'border-transparent text-zinc-400 hover:text-white cursor-pointer'"

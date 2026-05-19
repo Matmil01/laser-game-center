@@ -27,6 +27,5 @@ export function calSlotEndTime(slotTime, durationMin = 60) {
 
 // farveskift ved ledig/optaget i kalender og tooltip
 export function calSlotColor(slot) {
-  if (slot._type === 'window') return 'var(--color-neongreen)'
   return slot.is_booked ? 'var(--color-neonred)' : 'var(--color-neongreen)'
 }

@@ -32,16 +32,6 @@ CREATE TABLE IF NOT EXISTS settings (
     `value` TEXT NOT NULL DEFAULT ''
 );
 
--- Audit-log: sporer alle admin-writes med timestamp og IP.
-CREATE TABLE IF NOT EXISTS audit_log (
-    id         INT AUTO_INCREMENT PRIMARY KEY,
-    action     VARCHAR(100) NOT NULL,
-    detail     TEXT,
-    ip         VARCHAR(45)  NOT NULL DEFAULT '',
-    created_at DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    INDEX idx_created (created_at)
-);
-
 -- Indsæt standardværdier ved første opsætning (springer over hvis de allerede findes)
 INSERT IGNORE INTO settings (`key`, `value`) VALUES
     ('cvr',              ''),
