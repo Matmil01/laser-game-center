@@ -47,11 +47,17 @@
                     to="https://maps.app.goo.gl/qDZTcvpdaMJsfkLv9"
                     :text="$t('kontakt.googleMaps')"
                     customClass="text-base"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    external
                 />
                 <NeonButton
                     to="https://maps.apple/p/AWPbK8TbMZgfJM"
                     :text="$t('kontakt.appleMaps')"
                     customClass="text-base"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    external
                 />
             </div>
         </div>
