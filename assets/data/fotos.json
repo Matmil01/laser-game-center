@@ -1,10 +1,5 @@
 [
   {
-    "id": 1,
-    "src": "/photos/lasergame-spil-oksboel-1.webp",
-    "alt": "Mand der skyder med laserpistol"
-  },
-  {
     "id": 2,
     "src": "/photos/lasergame-spil-oksboel-2.webp",
     "alt": "Kvinde der løber med laserpistol og laservest på"
@@ -13,11 +8,6 @@
     "id": 3,
     "src": "/photos/lasergame-spil-oksboel-3.webp",
     "alt": "Ung kvinde der skyder med laserpistol"
-  },
-  {
-    "id": 4,
-    "src": "/photos/lasergame-spil-oksboel-4.webp",
-    "alt": "Ung kvinde og gruppe iført laserveste og laserpistoler"
   },
   {
     "id": 5,
@@ -43,16 +33,6 @@
     "id": 9,
     "src": "/photos/lasergame-spil-oksboel-9.webp",
     "alt": "To personer skyder med laserpistoler og iført laserveste"
-  },
-  {
-    "id": 10,
-    "src": "/photos/lasergame-spil-oksboel-10.webp",
-    "alt": "Ung kvinde der skyder med laserpistol"
-  },
-  {
-    "id": 11,
-    "src": "/photos/lasergame-spil-oksboel-11.webp",
-    "alt": "To kvinder iført laserveste og laserpistoler"
   },
   {
     "id": 12,
