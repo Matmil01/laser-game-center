@@ -1,5 +1,8 @@
 <?php
-// I don't know man, noget security så browseren ved hvem der må kalde API'et.
+// CORS (Cross-Origin Resource Sharing) er en sikkerhedsmekanisme i browseren.
+// Når en hjemmeside forsøger at kalde et API på et andet domæne, tjekker browseren
+// om serveren aktivt tillader det via disse headers — ellers blokerer browseren kaldet.
+// Her sætter vi headeren "Access-Control-Allow-Origin" til kun at tillade vores eget frontend-domæne.
 
 function setCorsHeaders(string $methods = 'POST, OPTIONS'): void {
     // Hent den tilladte frontend-oprindelse fra env

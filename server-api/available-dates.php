@@ -10,7 +10,7 @@ require 'db.php';
 
 $today = date('Y-m-d');
 
-// Hent alle fremtidige datoer med et tilgængeligheds-vindue
+// Hent alle fremtidige datoer med et availability_window
 $stmt = $pdo->prepare(
     'SELECT DISTINCT window_date FROM availability_windows WHERE window_date >= ? ORDER BY window_date'
 );

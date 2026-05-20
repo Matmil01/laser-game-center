@@ -1,4 +1,5 @@
 <template>
+  <!-- Formular til at oprette eller opdatere en tidsramme for en given dato -->
   <div class="bg-black border-neon-subtle-neonred p-6 mb-8">
     <h2 class="font-black text-lg tracking-wide mb-4 text-white">Sæt tilgængelighed</h2>
     <form @submit.prevent="setWindow">
@@ -78,6 +79,9 @@
 </template>
 
 <script setup>
+// Admin-fane til at administrere tilgængelighed og bookinger.
+// Håndterer oprettelse, opdatering og sletning af tidsrammer samt annullering af bookinger.
+
 import AdminCalendar from '~/components/booking/admin/AdminCalendar.vue'
 import SlotModal from '~/components/booking/admin/SlotModal.vue'
 import DatePicker from '~/components/booking/DatePicker.vue'
@@ -92,23 +96,29 @@ const emit = defineEmits(['unauthorized'])
 const config  = useRuntimeConfig()
 const apiUrl  = config.public.apiUrl
 
+// Hentet data fra API
 const windows      = ref([])
 const bookings     = ref([])
 const slotsLoading = ref(false)
-const newDate      = ref(calToKey(new Date()))
-const windowFrom   = ref('10:00')
-const windowTo     = ref('21:00')
-const addLoading   = ref(false)
-const addError     = ref('')
-const addInfo      = ref('')
+const loadError    = ref('')
+
+// Formular til at tilføje ny tidsramme
+const newDate    = ref(calToKey(new Date()))
+const windowFrom = ref('10:00')
+const windowTo   = ref('21:00')
+const addLoading = ref(false)
+const addError   = ref('')
+const addInfo    = ref('')
+
+// sletning, annullering og redigering
 const deletingId     = ref(null)
 const cancellingId   = ref(null)
 const editingSlot    = ref(null)
-const loadError      = ref('')
 const calendarRef    = ref(null)
 const modalSaving    = ref(false)
 const modalSaveError = ref('')
 
+// Beregn hvilke tidspunkter der må vælges som sluttidspunkt
 const windowToOptions = computed(() => {
   const [h, m] = windowFrom.value.split(':').map(Number)
   const fromMin = h * 60 + m
@@ -118,6 +128,7 @@ const windowToOptions = computed(() => {
   })
 })
 
+// Vis en kort beskrivelse af den valgte tidsrammes længde og antal mulige spilstarttider
 const windowPreviewText = computed(() => {
   if (!windowFrom.value || !windowTo.value) return ''
   const [fh, fm] = windowFrom.value.split(':').map(Number)
@@ -130,6 +141,7 @@ const windowPreviewText = computed(() => {
   return `${label} tilgængelighed – op til ${Math.floor(mins / 30)} spilstarttider`
 })
 
+// Sammensæt windows og bookinger til én fælles liste af events, som sendes til AdminCalendar.
 const events = computed(() => {
   const result = []
   for (const w of windows.value) {
@@ -163,6 +175,7 @@ const events = computed(() => {
   return result
 })
 
+// Kalenderattributes til "Tilføj slot"-kalenderen: grøn for eksisterende windows, grå for valgt dato
 const addSlotCalAttrs = computed(() => {
   const attrs = []
   const winDates = windows.value.map(w => new Date(w.window_date + 'T00:00:00'))
@@ -179,6 +192,7 @@ function onAddSlotDayClick(day) {
 
 const today = calToKey(new Date())
 
+// Hent alle windows og bookinger fra API
 async function loadData(navigate = false) {
   slotsLoading.value = true
   loadError.value    = ''
@@ -198,6 +212,7 @@ async function loadData(navigate = false) {
   }
 }
 
+// Opret eller opdater availability_window for den valgte dato og tidsramme
 async function setWindow() {
   addLoading.value = true
   addError.value   = ''
@@ -219,6 +234,7 @@ async function setWindow() {
   }
 }
 
+// Slet et availability_window – lukker også modal hvis det slettede window er åbent
 async function deleteWindow(compositeId) {
   const windowId = parseInt(String(compositeId).replace('w-', ''))
   deletingId.value = compositeId
@@ -237,6 +253,7 @@ async function deleteWindow(compositeId) {
   }
 }
 
+// Annuller en booking (soft delete via cancelled_at)
 async function cancelBooking(compositeId) {
   const bookingId = parseInt(String(compositeId).replace('b-', ''))
   cancellingId.value = compositeId
@@ -255,6 +272,7 @@ async function cancelBooking(compositeId) {
   }
 }
 
+// Opdater tidsrammen for et eksisterende window fra SlotModal
 async function updateWindow({ id: compositeId, from, to }) {
   const windowId = parseInt(String(compositeId).replace('w-', ''))
   modalSaving.value    = true
@@ -274,6 +292,7 @@ async function updateWindow({ id: compositeId, from, to }) {
   }
 }
 
+// Synkroniser den klikkede dato til formularen.
 function selectDate(dateKey) {
   newDate.value = dateKey
   const existing = windows.value.find(w => w.window_date === dateKey)
@@ -283,6 +302,7 @@ function selectDate(dateKey) {
   }
 }
 
+// Åbn SlotModal for det valgte event
 function openEvent(event) {
   editingSlot.value = event
 }

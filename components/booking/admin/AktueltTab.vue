@@ -2,6 +2,7 @@
   <div class="bg-black border-neon-subtle-neonred p-6 mb-2">
     <h2 class="font-black text-lg mb-4 tracking-wide text-white">Aktuelt</h2>
     <form @submit.prevent="saveAktuelt" class="flex flex-col gap-4 max-w-sm">
+      <!-- Synlighedstoggle –  viser/skjuler boksen på forsiden -->
       <div>
         <button
           type="button"
@@ -17,6 +18,7 @@
           <span class="text-sm font-medium text-white">Vis på hjemmeside</span>
         </button>
       </div>
+      <!-- Sprogfaner + titel/tekst-input -->
       <div>
         <div class="flex gap-1 mb-3">
           <button
@@ -48,6 +50,7 @@
           class="border-neon-subtle-neonred px-3 py-2 w-full focus:outline-none text-sm bg-black text-white resize-y"
         />
       </div>
+      <!-- Ikonvælger – SVG'erne vises via CSS mask-image -->
       <div>
         <label class="block text-sm font-medium mb-1 text-white">Ikon</label>
         <div class="flex flex-wrap gap-3">
@@ -142,6 +145,9 @@
 </template>
 
 <script setup>
+// Admin-fane til at redigere "Aktuelt"-boks på forsiden.
+// Understøtter flersproget indhold (da/en/de), ikonvalg og kantfarve.
+
 const props = defineProps({
   password: String,
   authed:   Boolean,
@@ -151,6 +157,7 @@ const emit = defineEmits(['update-aktuelt-info', 'unauthorized', 'dirty-change']
 const config  = useRuntimeConfig()
 const apiUrl  = config.public.apiUrl
 
+// Sprogfaner til titel og tekst
 const langTabs = [
   { flag: 'da', label: 'Dansk' },
   { flag: 'en', label: 'English' },
@@ -158,9 +165,11 @@ const langTabs = [
 ]
 const activeLangTab = ref('da')
 
+// Flersproget indhold
 const titles = reactive({ da: 'AKTUELT', en: '', de: '' })
 const texts  = reactive({ da: '', en: '', de: '' })
 
+// Udseende og tilstand for boksen
 const settingsAktueltIcon    = ref('icon1')
 const settingsAktueltColor   = ref('#FF9D00')
 const settingsAktueltVisible = ref(true)
@@ -169,12 +178,14 @@ const aktueltSaveError       = ref('')
 const aktueltSaveInfo        = ref('')
 const aktueltLoaded          = ref(false)
 
+// Markér formularen som ændret når indhold opdateres – men ikke ved den første indlæsning
 watch(
   [() => ({ ...titles }), () => ({ ...texts }), settingsAktueltIcon, settingsAktueltColor, settingsAktueltVisible],
   () => { if (aktueltLoaded.value) emit('dirty-change', true) },
   { deep: true }
 )
 
+// Tilgængelige kantfarver
 const themeColors = [
   { name: 'NeonRed',    hex: '#FF0000' },
   { name: 'NeonPink',   hex: '#FF009D' },
@@ -183,6 +194,7 @@ const themeColors = [
   { name: 'NeonGreen',   hex: '#00FF00' },
 ]
 
+// Hent aktuelt-indstillinger fra API og udfyld formularen
 async function loadSettings() {
   try {
     const data = await $fetch(`${apiUrl}/settings.php`)
@@ -196,11 +208,13 @@ async function loadSettings() {
     settingsAktueltColor.value   = data.aktuelt_color   ?? '#FF9D00'
     settingsAktueltVisible.value = data.aktuelt_visible !== '0'
     emit('update-aktuelt-info', { ...data })
+    // Vent til næste tick så watchers ikke trigger dirty-flag ved indlæsning
     await nextTick()
     aktueltLoaded.value = true
   } catch {}
 }
 
+// Gem aktuelt-indstillinger via API og opdater parent-komponentet.
 async function saveAktuelt() {
   aktueltSaving.value    = true
   aktueltSaveError.value = ''

@@ -1,4 +1,4 @@
--- Tilgængeligheds-vinduer: admin sætter en åbningstidsramme (fx 10:00–18:00) for en given dato.
+-- availability_windows: admin sætter en åbningstidsramme (fx 10:00–18:00) for en given dato.
 CREATE TABLE IF NOT EXISTS availability_windows (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     window_date DATE NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS availability_windows (
     end_time    TIME NOT NULL
 );
 
--- Bookinger: en kunde booker et starttidspunkt og et antal spil inden for en tidsramme.
+-- bookings: en kunde booker et starttidspunkt og et antal spil inden for en tidsramme.
 -- Hvert spil varer 30 minutter; maks. 4 spil per booking.
 CREATE TABLE IF NOT EXISTS bookings (
     id           INT AUTO_INCREMENT PRIMARY KEY,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS bookings (
     INDEX idx_cancelled (cancelled_at)
 );
 
--- Indstillinger: key/value-par til kontaktoplysninger og aktuelt-indhold på forsiden.
+-- settings: key/value-par til kontaktoplysninger og aktuelt-indhold på forsiden.
 CREATE TABLE IF NOT EXISTS settings (
     `key`   VARCHAR(100) PRIMARY KEY,
     `value` TEXT NOT NULL DEFAULT ''

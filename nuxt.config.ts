@@ -37,7 +37,7 @@ export default defineNuxtConfig({
     head: {
       title: 'Lasergame Center Oksbøl',
       meta: [
-        { name: 'description', content: 'Velkommen til Lasergame Center Oksbøl!' }
+        { name: 'description', content: 'Sjov for hele familien i Vestjylland' } // Fallback, useSeoMeta sætter title og description i hver fil
       ],
 
     }

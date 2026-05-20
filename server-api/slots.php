@@ -21,7 +21,7 @@ $cutoffMin = ($date === date('Y-m-d'))
     ? (int)date('H') * 60 + (int)date('i') + 120
     : 0;
 
-// Hent alle tilgængeligheds-vinduer for denne dato
+// Hent alle availability_windows for denne dato
 $wstmt = $pdo->prepare(
     'SELECT id, start_time, end_time FROM availability_windows WHERE window_date = ? ORDER BY start_time'
 );

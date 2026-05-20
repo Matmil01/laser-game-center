@@ -33,6 +33,9 @@
 </template>
 
 <script setup>
+// Viser "Aktuelt"-boksen på forsiden hvis den er aktiveret og har indhold.
+// Titel og tekst på valgte sprog - dansk fallback
+
 const { settings, fetchSettings } = useSettings()
 const { locale } = useI18n()
 

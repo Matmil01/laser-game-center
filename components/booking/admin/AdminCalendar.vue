@@ -254,6 +254,9 @@
 </template>
 
 <script setup>
+// Kalenderkomponent i admin
+// dag-, uge-, måned- og agenda-visning med slots og bookinger.
+
 const props = defineProps({
   slots:        { type: Array,   required: true },
   today:        { type: String,  required: true },
@@ -287,9 +290,11 @@ const calCurrentDate = ref(new Date())
 onMounted(() => {
   if (window.innerWidth < 640) calViewMode.value = 'agenda'
 })
+// Ref til scroll-containeren – bruges til at scrolle til arbejdstiden ved skift
 const calScrollContainer = ref(null)
+// Den valgte dato i kalenderen (YYYY-MM-DD)
 const selectedCalDate = ref('')
-
+// Midnat i dag – bruges til at afgøre om en dag er fortid
 const calTodayStart = computed(() => {
   const d = new Date(); d.setHours(0,0,0,0); return d
 })
@@ -341,6 +346,7 @@ const calRangeLabel = computed(() => {
   return `${calWeekStart.value.toLocaleDateString('da-DK', { day: 'numeric', month: 'short' })} – ${end.toLocaleDateString('da-DK', { day: 'numeric', month: 'short', year: 'numeric' })}`
 })
 
+// Indekser alle slots efter dato for hurtig opslag i visningerne
 const calSlotsByDate = computed(() => {
   const result = {}
   for (const slot of props.slots) {
@@ -350,6 +356,7 @@ const calSlotsByDate = computed(() => {
   return result
 })
 
+// Generer 42 celler (6 uger) til månedsvisningen inkl. dage fra forrige/næste måned
 const calMonthCells = computed(() => {
   const today  = calTodayStart.value
   const year   = calCurrentDate.value.getFullYear()
@@ -370,6 +377,7 @@ const calMonthCells = computed(() => {
   })
 })
 
+// 14 dage fra ugens start til agenda-stripens datoknapper
 const calAgendaDays = computed(() =>
   Array.from({ length: 14 }, (_, i) => {
     const d = new Date(calWeekStart.value)
@@ -380,7 +388,7 @@ const calAgendaDays = computed(() =>
   })
 )
 
-// slots for den valgte dag , sorteret efter tid
+// Slots for den valgte dag, sorteret efter tid
 const calAgendaSlots = computed(() =>
   (calSlotsByDate.value[selectedCalDate.value] || []).slice().sort((a, b) => a.slot_time.localeCompare(b.slot_time))
 )
@@ -409,8 +417,8 @@ function navigateTo(dateStr, select = false) {
 
 defineExpose({ navigateTo })
 
-// Tooltip-state og positionsberegning her fordi adgang til de hoverede elementer.
-// Selve renderingen i Tooltip.vue
+// Tooltip-state og positionsberegning her fordi vi har adgang til de hoverede elementer.
+// Selve renderingen sker i Tooltip.vue
 const calTooltipSlot  = ref(null)
 const calTooltipStyle = ref({})
 

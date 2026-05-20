@@ -1,7 +1,7 @@
 <?php
 // Offentligt API-endpoint til at oprette en booking.
 // Modtager kundeoplysninger, ønsket dato, starttidspunkt og antal spil.
-// Validerer mod tilgængeligheds-vinduet og eksisterende bookinger.
+// Validerer mod availability_windows og eksisterende bookinger.
 
 require 'cors.php';
 $envLoader = __DIR__ . '/load-env.php';
@@ -28,7 +28,6 @@ if (!empty(trim($data['website'] ?? ''))) {
 }
 
 // Timebased honeypot: formularen skal have været synlig i mindst 3 sekunder.
-// Bots udfylder typisk formularer instantly
 $formLoadedAt = (int)($data['form_loaded_at'] ?? 0);
 $elapsedMs    = (int)(microtime(true) * 1000) - $formLoadedAt;
 if ($formLoadedAt === 0 || $elapsedMs < 3000) {

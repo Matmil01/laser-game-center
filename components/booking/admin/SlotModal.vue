@@ -134,6 +134,9 @@
 </template>
 
 <script setup>
+// Modal som åbner når du klikker på et slot i admin kalender.
+// Viser redigeringsmuligheder for ledige tidsrammer og booking-detaljer for bookede slots.
+
 const props = defineProps({
   slot:         { type: Object,  required: true },
   deletingId:   { default: null },
@@ -144,18 +147,22 @@ const props = defineProps({
 
 defineEmits(['close', 'delete-slot', 'cancel-booking', 'update-slot'])
 
+// Hjælpefunktion til at beregne sluttidspunkt ud fra slot_time og varighed
 const slotEnd = (s) => calSlotEndTime(s.slot_time, s.duration_min ?? 60)
 
+// Redigeringsfelter til tidsrammen og bekræftelsestilstand for sletning
 const editFrom      = ref(props.slot.slot_time.slice(0, 5))
 const editTo        = ref(slotEnd(props.slot))
 const confirmDelete = ref(false)
 
+// Synkroniser redigeringsfelter når et nyt slot åbnes i modalen
 watch(() => props.slot, (s) => {
   editFrom.value      = s.slot_time.slice(0, 5)
   editTo.value        = slotEnd(s)
   confirmDelete.value = false
 })
 
+// Filtrer "Til"-valgmuligheder til kun at vise tidspunkter efter "Fra"
 const editToOptions = computed(() => {
   const [h, m] = editFrom.value.split(':').map(Number)
   const fromMin = h * 60 + m
@@ -165,6 +172,7 @@ const editToOptions = computed(() => {
   })
 })
 
+// Afgør om tidsrammen er ændret i forhold til det gemte slot
 const editHasChanges = computed(() =>
   editFrom.value !== props.slot.slot_time.slice(0, 5) ||
   editTo.value   !== slotEnd(props.slot)

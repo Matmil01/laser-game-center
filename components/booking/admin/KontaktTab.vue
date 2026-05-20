@@ -28,6 +28,8 @@
 </template>
 
 <script setup>
+// Admin-fane til kontaktoplysninger (CVR, email, telefon).
+
 const props = defineProps({
   password: String,
   authed:   Boolean,
@@ -37,6 +39,7 @@ const emit = defineEmits(['update-contact-info', 'unauthorized', 'dirty-change']
 const config  = useRuntimeConfig()
 const apiUrl  = config.public.apiUrl
 
+// Formularfelter og gem-tilstand
 const settingsCvr = ref('')
 const settingsEmail = ref('')
 const settingsPhone = ref('')
@@ -45,11 +48,13 @@ const settingsSaveError = ref('')
 const settingsSaveInfo = ref('')
 const kontaktLoaded = ref(false)
 
+// Markér formularen som ændret når felterne opdateres
 watch(
   [settingsCvr, settingsEmail, settingsPhone],
   () => { if (kontaktLoaded.value) emit('dirty-change', true) }
 )
 
+// Hent kontaktoplysninger fra API
 async function loadSettings() {
   try {
     const data = await $fetch(`${apiUrl}/settings.php`)
@@ -57,11 +62,13 @@ async function loadSettings() {
     settingsEmail.value   = data.email   ?? ''
     settingsPhone.value   = data.phone   ?? ''
     emit('update-contact-info', { ...data })
+    // Vent til næste tick så watchers ikke trigger dirty-flag ved indlæsning
     await nextTick()
     kontaktLoaded.value = true
   } catch {}
 }
 
+// Gem kontaktoplysninger via API og hent dem tilbage for at sikre synkronisering med serveren
 async function saveSettings() {
   settingsSaving.value    = true
   settingsSaveError.value = ''

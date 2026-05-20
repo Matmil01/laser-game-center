@@ -61,6 +61,9 @@
 </template>
 
 <script setup>
+// Offentlig bookingside – vælg dato i kalender og udfyld BookingForm.
+// Henter tilgængelige datoer fra API og viser bekræftelse efter vellykket booking.
+
 const { t } = useI18n()
 useSeoMeta({
   title: computed(() => t('seo.booking.title')),
@@ -76,6 +79,7 @@ const config = useRuntimeConfig()
 const apiUrl = config.public.apiUrl
 const today  = new Date()
 
+// Valgt dato, liste af datoer med tilgængelighed og booking-bekræftelse
 const date           = ref(null)
 const availableDates = ref([])
 const success        = ref(null)
@@ -89,6 +93,7 @@ watch(
   }
 )
 
+// Hent datoer med tilgængelighed fra API og konverter til Date-objekter
 async function loadAvailableDates() {
   try {
     const dates = await $fetch(`${apiUrl}/available-dates.php`)
@@ -102,17 +107,18 @@ async function loadAvailableDates() {
 }
 onMounted(() => { fetchSettings(); loadAvailableDates() })
 
-
 // Viser kun beskeden om ingen ledige tider hvis der ikke er slots fra og med i dag.
 const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate())
 const futureAvailableDates = computed(() =>
   availableDates.value.filter(d => d >= todayMidnight)
 )
 
+// Bruges til at afgøre om den valgte dato faktisk har ledige slots
 const selectedDateHasSlots = computed(() =>
   date.value && availableDates.value.some(d => d.toDateString() === date.value.toDateString())
 )
 
+// Kalenderattributter: grøn for datoer med tilgængelighed, blå for valgt dato
 const calendarAttributes = computed(() => [
   ...(availableDates.value.length ? [{
     highlight: { color: 'green', fillMode: 'light' },
@@ -132,6 +138,7 @@ function onSuccess(res) {
   success.value = res
 }
 
+// Nulstil valgt dato og bekræftelse så brugeren kan booke igen
 function reset() {
   success.value = null
   date.value    = null

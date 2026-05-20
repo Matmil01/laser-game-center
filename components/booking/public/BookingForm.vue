@@ -130,6 +130,9 @@
 </template>
 
 <script setup>
+// Offentlig bookingformular – vælg tidspunkt, antal spil, deltagere og kontaktoplysninger.
+// Henter ledige starttider fra API når datoen ændres og sender booking ved indsendelse.
+
 const props = defineProps({
   date: {
     type: [Date, String],
@@ -145,10 +148,12 @@ const { locale, t } = useI18n()
 
 const MIN_PARTICIPANTS = 4
 
+// Ledige starttider for den valgte dato
 const slots            = ref([])
 const numGamesRef      = ref(null)
 const selectedTime     = ref(null)
 
+// Scroller siden ned til et bestemt afsnit med højde-korrektion for navbar
 function scrollTo(id) {
   setTimeout(() => {
     const el = document.getElementById(id)
@@ -157,16 +162,24 @@ function scrollTo(id) {
     window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - navHeight - 12)
   }, 50)
 }
+
+// Valg af antal spil og deltagere
 const selectedMaxGames = ref(4)
 const numGames         = ref(1)
 const participants     = ref(MIN_PARTICIPANTS)
-const slotsLoading     = ref(false)
-const loading          = ref(false)
-const submitted        = ref(false)
-const error            = ref('')
-const form             = reactive({ name: '', email: '', phone: '', note: '', website: '' })
-const formLoadedAt     = ref(0)
 
+// Indsendelses- og fejltilstand
+const slotsLoading = ref(false)
+const loading      = ref(false)
+const submitted    = ref(false)
+const error        = ref('')
+
+// Kontaktformularfelter inkl. honeypot til spam-beskyttelse
+const form         = reactive({ name: '', email: '', phone: '', note: '', website: '' })
+// Tidsstempel for hvornår formularen blev synlig – bruges til tidsbaseret honeypot i API'et
+const formLoadedAt = ref(0)
+
+// Beregn sluttidspunktet ud fra valgt starttid og antal spil
 const endTimePreview = computed(() => {
   if (!selectedTime.value) return ''
   const [h, m] = selectedTime.value.split(':').map(Number)
@@ -174,8 +187,10 @@ const endTimePreview = computed(() => {
   return `${String(Math.floor(end / 60)).padStart(2, '0')}:${String(end % 60).padStart(2, '0')}`
 })
 
+// AbortController til at afbryde igangværende slot-fetch hvis datoen skifter
 let fetchAbortController = null
 
+// Hent ledige starttider når datoen ændres og nulstil formularen
 watch(() => props.date, async (newDate) => {
   if (fetchAbortController) { fetchAbortController.abort(); fetchAbortController = null }
   selectedTime.value     = null
@@ -206,6 +221,7 @@ watch(() => props.date, async (newDate) => {
   }
 })
 
+// Vælg et tidspunkt og scroll ned til antal-spil-sektionen
 function selectTime(slot) {
   selectedTime.value     = slot.start_time
   selectedMaxGames.value = slot.max_games
@@ -218,6 +234,7 @@ function selectTime(slot) {
   })
 }
 
+// Send booking til API og emit success så parent kan vise bekræftelse
 async function submitBooking() {
   if (loading.value || submitted.value) return
   loading.value   = true

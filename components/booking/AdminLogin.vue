@@ -22,6 +22,9 @@
 </template>
 
 <script setup>
+// Simpel login-formular til admin.
+// selve auth (API-kald, fejlhåndtering, tilstandsstyring) håndteres i parent.
+
 const props = defineProps({
   passwordInput: { type: String,  required: true },
   loginError:    { type: String,  required: true },

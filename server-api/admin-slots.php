@@ -20,7 +20,7 @@ $action = $body['action'] ?? 'list';
 $date   = $body['date']   ?? '';
 $id     = isset($body['id']) ? (int) $body['id'] : 0;
 
-// Hent alle tilgængeligheds-windows og bookinger.
+// Hent alle availability_windows og bookinger.
 
 if ($action === 'list') {
     $wstmt = $pdo->query(
@@ -51,7 +51,7 @@ if ($action === 'list') {
     exit;
 }
 
-// Opret eller opdater tilgængeligheds-window for en dato
+// Opret eller opdater availability_windows for en dato
 
 if ($action === 'set_window') {
     $from = $body['from'] ?? '';
@@ -161,7 +161,7 @@ if ($action === 'update_window') {
     exit;
 }
 
-// Slet et tilgængeligheds-window
+// Slet et availability_windows
 
 if ($action === 'delete_window') {
     if (!$id) { http_response_code(400); echo json_encode(['error' => 'Mangler vindue-id']); exit; }

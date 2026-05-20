@@ -48,6 +48,8 @@
 </template>
 
 <script setup>
+// Admin-fane til at redigere priser per antal spil i DKK og EUR.
+
 import { FALLBACK_DKK, FALLBACK_EUR } from '~/composables/usePrices.js'
 
 const props = defineProps({
@@ -59,6 +61,7 @@ const emit = defineEmits(['unauthorized', 'dirty-change'])
 const config = useRuntimeConfig()
 const apiUrl = config.public.apiUrl
 
+// Priser for 1–4 spil – forudfyldt med fallback-værdier indtil API svarer
 const prices    = reactive({ 1: String(FALLBACK_DKK[0]), 2: String(FALLBACK_DKK[1]), 3: String(FALLBACK_DKK[2]), 4: String(FALLBACK_DKK[3]) })
 const eurPrices = reactive({ 1: String(FALLBACK_EUR[0]), 2: String(FALLBACK_EUR[1]), 3: String(FALLBACK_EUR[2]), 4: String(FALLBACK_EUR[3]) })
 const saving    = ref(false)
@@ -66,11 +69,13 @@ const saveError = ref('')
 const saveInfo  = ref('')
 const loaded    = ref(false)
 
+// Markér formularen som ændret når priser opdateres
 watch(
   () => ({ ...prices, ...eurPrices }),
   () => { if (loaded.value) emit('dirty-change', true) }
 )
 
+// Hent priser fra API og overskriv fallback
 async function loadSettings() {
   try {
     const data = await $fetch(`${apiUrl}/settings.php`)
@@ -78,11 +83,13 @@ async function loadSettings() {
       if (data[`price_${n}`])     prices[n]    = data[`price_${n}`]
       if (data[`price_eur_${n}`]) eurPrices[n] = data[`price_eur_${n}`]
     }
+    // Vent til næste tick så watchers ikke trigger dirty-flag ved indlæsning
     await nextTick()
     loaded.value = true
   } catch {}
 }
 
+// Gem priser via API og opdater det globale settings-objekt så resten af appen ser de nye priser
 async function saveSettings() {
   saving.value    = true
   saveError.value = ''

@@ -1,3 +1,7 @@
+// Deploy-script til at uploade frontend og server-api via FTP.
+// config læses fra .env.deploy
+// kør med npm run deploy.
+
 require("dotenv").config({ path: ".env.deploy" });
 
 if (!process.env.FTP_REMOTE_ROOT) {
@@ -8,6 +12,8 @@ if (!process.env.FTP_REMOTE_ROOT) {
 const FtpDeploy = require("ftp-deploy");
 
 const remoteRoot = process.env.FTP_REMOTE_ROOT;
+
+// credentials fra .env.deploy
 const credentials = {
   user: process.env.FTP_USER,
   password: process.env.FTP_PASSWORD,
@@ -17,6 +23,8 @@ const credentials = {
   sftp: false,
 };
 
+// Uploader én mappe til FTP med progress-output i terminalen.
+// deleteRemote: true sikrer at gamle filer fjernes på serveren.
 function deploy(localRoot, remoteRoot, label, exclude = []) {
   const ftpDeploy = new FtpDeploy();
   const config = {
@@ -40,6 +48,7 @@ function deploy(localRoot, remoteRoot, label, exclude = []) {
   return ftpDeploy.deploy(config);
 }
 
+// Deploy frontend først, derefter server-api (.env kommer ikke med)
 deploy(__dirname + "/.output/public", remoteRoot, "frontend")
   .then(() => {
     console.log("Frontend deployed!");
