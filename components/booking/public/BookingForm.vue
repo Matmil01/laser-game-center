@@ -57,7 +57,7 @@
           <button
             type="button"
             :disabled="participants <= MIN_PARTICIPANTS"
-            class="w-12 py-2 border-neon-subtle-neonred text-sm font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer flex-shrink-0"
+            class="w-12 py-2 border-neon-subtle-neonred text-sm font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer shrink-0"
             @click="participants = Math.max(MIN_PARTICIPANTS, participants - 1)"
           >−</button>
           <input
@@ -72,7 +72,7 @@
           <button
             type="button"
             :disabled="participants >= 99"
-            class="w-12 py-2 border-neon-subtle-neonred text-sm font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer flex-shrink-0"
+            class="w-12 py-2 border-neon-subtle-neonred text-sm font-bold hover:border-neon-subtle-neongreen text-zinc-300 hover:text-white disabled:opacity-30 transition-colors cursor-pointer shrink-0"
             @click="participants = Math.min(99, participants + 1)"
           >+</button>
         </div>
@@ -106,7 +106,7 @@
 
       <!-- Booking summary -->
       <div class="border border-zinc-700 px-4 py-3 text-sm text-zinc-300 flex flex-wrap items-center gap-x-2.5 gap-y-1">
-        <span class="font-semibold text-white">{{ formatDate(date instanceof Date ? calToKey(date) : date) }}</span>
+        <span class="font-semibold text-white">{{ formatDate(date instanceof Date ? calToKey(date) : date, locale) }}</span>
         <span class="text-zinc-600">·</span>
         <span>{{ selectedTime }}–{{ endTimePreview }}</span>
         <span class="text-zinc-600">·</span>

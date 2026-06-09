@@ -1,8 +1,8 @@
 <template>
   <div>
-      <div class="sm:h-[300px] h-90">
+      <div class="sm:h-75 h-90">
           <div
-              class="absolute mt-15 top-0 left-0 w-full sm:h-[300px] h-90 overflow-hidden z-0"
+              class="absolute mt-15 top-0 left-0 w-full sm:h-75 h-90 overflow-hidden z-0"
           >
               <img
                   src="/photos/lasergame-spil-oksboel-1.webp"

@@ -95,7 +95,7 @@
     "sending": "Sender…",
     "confirm": "Bekræft booking",
     "error": "Noget gik galt. Prøv igen.",
-    "personsShort": "pers."
+    "personsShort": "deltagere"
   },
   "booking": {
     "heroTitle": "BOOK TID",

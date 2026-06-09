@@ -163,29 +163,27 @@ const slides = computed(() => [
         title: t("arrangementer.slides.2.title"),
         text: t("arrangementer.slides.2.text"),
     },
-    {
-        image: "/photos/lasergame-spil-oksboel-16.webp",
-        alt: t("arrangementer.slides.3.alt"),
-        title: t("arrangementer.slides.3.title"),
-        text: t("arrangementer.slides.3.text"),
-    },
-    {
-        image: "/photos/lasergame-spil-oksboel-1.webp",
-        alt: t("arrangementer.slides.4.alt"),
-        title: t("arrangementer.slides.4.title"),
-        text: t("arrangementer.slides.4.text"),
-    },
+    // {
+    //     image: "/photos/lasergame-spil-oksboel-16.webp",
+    //     alt: t("arrangementer.slides.3.alt"),
+    //     title: t("arrangementer.slides.3.title"),
+    //     text: t("arrangementer.slides.3.text"),
+    // },
+    // {
+    //     image: "/photos/lasergame-spil-oksboel-1.webp",
+    //     alt: t("arrangementer.slides.4.alt"),
+    //     title: t("arrangementer.slides.4.title"),
+    //     text: t("arrangementer.slides.4.text"),
+    // },
 ]);
-
-const totalSlides = 5;
 
 function slideRight() {
     direction.value = "right";
-    current.value = (current.value + 1) % totalSlides;
+    current.value = (current.value + 1) % slides.value.length;
 }
 
 function slideLeft() {
     direction.value = "left";
-    current.value = (current.value - 1 + totalSlides) % totalSlides;
+    current.value = (current.value - 1 + slides.value.length) % slides.value.length;
 }
 </script>

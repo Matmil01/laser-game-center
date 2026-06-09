@@ -8,7 +8,7 @@
       <NeonButton to="/booking" customClass="mb-5 !border-neon-neongreen transition-all duration-500 !p-0 !text-[0px] group-hover:!py-2 group-hover:!px-6 group-hover:!text-base hover:!border-neon-neonred" :text="$t('common.bookNow')" />
 
 
-      <div class="flex-grow">
+      <div class="grow">
         <p class="text-white text-center text-xl mb-4">{{ formatted(1, locale) }}</p>
         <p class="text-white text-center">20-25 {{ $t('common.minutes') }}</p>
       </div>
@@ -21,7 +21,7 @@
       <h2 class="text-2xl text-white text-center mb-6">2 {{ $t('priser.games') }}</h2>
       <NeonButton to="/booking" customClass="mb-5 !border-neon-neonpink transition-all duration-500 !p-0 !text-[0px] group-hover:!py-2 group-hover:!px-6 group-hover:!text-base hover:!border-neon-neonred" :text="$t('common.bookNow')" />
 
-      <div class="flex-grow">
+      <div class="grow">
         <p class="text-white text-center text-xl mb-4">{{ formatted(2, locale) }}</p>
         <p class="text-white text-center">40-45 {{ $t('common.minutes') }}</p>
       </div>
@@ -34,7 +34,7 @@
       <h2 class="text-2xl text-white text-center mb-6">3 {{ $t('priser.games') }}</h2>
       <NeonButton to="/booking" customClass="mb-5 !border-neon-neonorange transition-all duration-500 !p-0 !text-[0px] group-hover:!py-2 group-hover:!px-6 group-hover:!text-base hover:!border-neon-neonred" :text="$t('common.bookNow')" />
 
-      <div class="flex-grow">
+      <div class="grow">
         <p class="text-white text-center text-xl mb-4">{{ formatted(3, locale) }}</p>
         <p class="text-white text-center">60-65 {{ $t('common.minutes') }}</p>
       </div>
@@ -47,7 +47,7 @@
       <h2 class="text-2xl text-white text-center mb-6">4 {{ $t('priser.games') }}</h2>
       <NeonButton to="/booking" customClass="mb-5 !border-neon-neonblue transition-all duration-500 !p-0 !text-[0px] group-hover:!py-2 group-hover:!px-6 group-hover:!text-base hover:!border-neon-neonred" :text="$t('common.bookNow')" />
 
-      <div class="flex-grow">
+      <div class="grow">
         <p class="text-white text-center text-xl mb-4">{{ formatted(4, locale) }}</p>
         <p class="text-white text-center">80-85 {{ $t('common.minutes') }}</p>
       </div>

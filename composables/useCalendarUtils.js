@@ -11,8 +11,8 @@ export function calToKey(date) {
 }
 
 // konverterer til dato med ugedag, fx "tir. 5. maj"
-export function formatDate(dateStr) {
-  return new Date(dateStr + 'T00:00:00').toLocaleDateString('da-DK', {
+export function formatDate(dateStr, locale = 'da-DK') {
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString(locale, {
     weekday: 'short', day: 'numeric', month: 'short',
     timeZone: 'Europe/Copenhagen',
   })

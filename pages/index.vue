@@ -1,8 +1,8 @@
 <template>
 <div id="top" class="bg-black min-h-screen justify-center">
-    <div class="sm:h-[570px] h-90">
+    <div class="sm:h-142.5 h-90">
         <div
-            class="absolute mt-15 top-0 left-0 w-full sm:h-[570px] h-90 overflow-hidden z-0"
+            class="absolute mt-15 top-0 left-0 w-full sm:h-142.5 h-90 overflow-hidden z-0"
         >
             <img
                 src="/photos/hero.webp"

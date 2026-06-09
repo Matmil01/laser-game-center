@@ -3,7 +3,7 @@
     <div class="lg:w-300 mx-auto p-8">
       <div class="max-w-2xl mx-auto">
 
-        <h1 class="text-4xl font-bold text-white mb-10">{{ $t('privatlivspolitik.title') }}</h1>
+        <h1 class="text-2xl sm:text-4xl font-bold text-white mb-10">{{ $t('privatlivspolitik.title') }}</h1>
 
         <p class="text-white leading-relaxed mb-10">
           {{ $t('privatlivspolitik.intro') }}

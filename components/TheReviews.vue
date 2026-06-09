@@ -1,6 +1,6 @@
 <template>
     <div id="reviews" class="scroll-mt-24">
-        <div class="max-w-[1200px] mx-auto">
+        <div class="max-w-300 mx-auto">
             <div class="relative">
                 <h2 class="text-2xl sm:text-4xl font-bold text-white text-center mb-6">{{ $t('anmeldelser.title') }}</h2>
                 <!-- Loading "skelet" :) -->
@@ -11,7 +11,7 @@
                     <div
                         v-for="i in 3"
                         :key="`skeleton-${i}`"
-                        class="bg-white/50 flex flex-col p-4 rounded-3xl min-w-[80vw] max-w-[90vw] sm:min-w-[350px] sm:max-w-[400px] lg:min-w-[400px] lg:max-w-[400px] animate-pulse"
+                        class="bg-white/50 flex flex-col p-4 rounded-3xl min-w-[80vw] max-w-[90vw] sm:min-w-87.5 sm:max-w-100 lg:min-w-100 lg:max-w-100 animate-pulse"
                     >
                         <div class="flex justify-between mb-3">
                             <div
@@ -51,7 +51,7 @@
                     <div
                         v-for="(review, idx) in infiniteReviews"
                         :key="idx"
-                        class="flex flex-col p-4 border-neon-neonred transition-transform duration-200 hover:scale-105 min-w-[80vw] max-w-[90vw] sm:min-w-[350px] sm:max-w-[400px] lg:min-w-[400px] lg:max-w-[400px]"
+                        class="flex flex-col p-4 border-neon-neonred transition-transform duration-200 hover:scale-105 min-w-[80vw] max-w-[90vw] sm:min-w-87.5 sm:max-w-100 lg:min-w-100 lg:max-w-100"
                     >
                         <div class="flex justify-between">
                             <h4 class="text-white font-light text-xl w-12">
@@ -75,7 +75,7 @@
                 <!-- Error state -->
                 <div v-else-if="error" class="flex gap-6 p-6 -mt-6">
                     <div
-                        class="bg-white/50 flex flex-col p-4 rounded-3xl min-w-[80vw] sm:min-w-[350px] lg:min-w-[400px] text-center"
+                        class="bg-white/50 flex flex-col p-4 rounded-3xl min-w-[80vw] sm:min-w-87.5 lg:min-w-100 text-center"
                     >
                         <p class="text-white font-light">
                             Kunne ikke indlæse anmeldelser. Prøv igen senere.
