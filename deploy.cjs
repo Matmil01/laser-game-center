@@ -20,7 +20,7 @@ const credentials = {
   host: process.env.FTP_HOST,
   port: process.env.FTP_PORT ? Number(process.env.FTP_PORT) : 21,
   forcePasv: true,
-  sftp: false,
+  secure: true,
 };
 
 // Uploader én mappe til FTP med progress-output i terminalen.
