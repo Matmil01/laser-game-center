@@ -98,7 +98,7 @@
                 </td>
                 <!-- Text -->
                 <td valign="top" style="color:#ffffff;font-family:'Quantico',Arial,sans-serif;font-size:14px;line-height:1.65;">
-                  <p style="margin:0 0 8px 0;">Bitte erscheinen Sie 10 Minuten vor Ihrer Spielzeit.</p>
+                  <p style="margin:0 0 8px 0;">Bitte erscheinen Sie 5 Minuten vor Ihrer Spielzeit.</p>
                   <p style="margin:0;color:#aaaaaa;">Wenn Sie Ihre Buchung stornieren oder &#228;ndern m&#246;chten, kontaktieren Sie uns bitte per E-Mail oder Telefon.</p>
                 </td>
               </tr>

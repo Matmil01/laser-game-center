@@ -103,6 +103,7 @@
     "noSlots": "No available times? Call us on {phone} — we'll find a solution.",
     "confirmed": "Booking confirmed!",
     "games": "games",
+    "arrivalReminder": "Please arrive 5 minutes before your session.",
     "emailSent": "A confirmation has been sent to your email.",
     "emailFailed": "Your booking is registered, but the confirmation email could not be sent. Please contact us to confirm.",
     "newBooking": "Book a new time",

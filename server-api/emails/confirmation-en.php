@@ -98,7 +98,7 @@
                 </td>
                 <!-- Text -->
                 <td valign="top" style="color:#ffffff;font-family:'Quantico',Arial,sans-serif;font-size:14px;line-height:1.65;">
-                  <p style="margin:0 0 8px 0;">Please arrive 10 minutes before your session.</p>
+                  <p style="margin:0 0 8px 0;">Please arrive 5 minutes before your session.</p>
                   <p style="margin:0;color:#aaaaaa;">If you need to cancel or change your booking, please contact us by email or phone.</p>
                 </td>
               </tr>

@@ -98,7 +98,7 @@
                 </td>
                 <!-- Text -->
                 <td valign="top" style="color:#ffffff;font-family:'Quantico',Arial,sans-serif;font-size:14px;line-height:1.65;">
-                  <p style="margin:0 0 8px 0;">Mød gerne op 10 minutter før din spilletid.</p>
+                  <p style="margin:0 0 8px 0;">Mød gerne op 5 minutter før din spilletid.</p>
                   <p style="margin:0;color:#aaaaaa;">Hvis du har brug for at aflyse eller ændre din booking, kan du kontakte os på mail eller telefon.</p>
                 </td>
               </tr>

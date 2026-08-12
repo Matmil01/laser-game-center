@@ -29,6 +29,7 @@
         <p class="text-xl font-semibold text-neongreen mb-1">{{ $t('booking.confirmed') }}</p>
         <p class="text-neongreen">{{ success.date }} kl. {{ success.time }}–{{ success.end_time }}</p>
         <p class="text-neongreen text-sm mt-1">{{ success.num_games }} {{ $t('booking.games') }} · {{ success.num_games * 30 }} {{ $t('common.minutes') }}</p>
+        <p class="text-sm text-zinc-300 mt-3">{{ $t('booking.arrivalReminder') }}</p>
         <p v-if="success.email_sent !== false" class="text-sm text-zinc-400 mt-2">{{ $t('booking.emailSent') }}</p>
         <p v-else class="text-sm text-yellow-400 mt-2">{{ $t('booking.emailFailed') }}</p>
         <button

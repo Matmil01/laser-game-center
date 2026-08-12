@@ -103,6 +103,7 @@
     "noSlots": "Keine freien Zeiten? Rufen Sie uns an unter {phone} — wir finden eine Lösung.",
     "confirmed": "Buchung bestätigt!",
     "games": "Spiele",
+    "arrivalReminder": "Bitte erscheinen Sie 5 Minuten vor Ihrer Spielzeit.",
     "emailSent": "Eine Bestätigung wurde an Ihre E-Mail gesendet.",
     "emailFailed": "Ihre Buchung ist registriert, aber die Bestätigungsmail konnte nicht gesendet werden. Bitte kontaktieren Sie uns zur Bestätigung.",
     "newBooking": "Neue Zeit buchen",

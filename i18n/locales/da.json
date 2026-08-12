@@ -103,6 +103,7 @@
     "noSlots": "Ingen ledige tider? Ring til os på {phone} — så finder vi en løsning.",
     "confirmed": "Booking bekræftet!",
     "games": "spil",
+    "arrivalReminder": "Mød gerne op 5 minutter før din spilletid.",
     "emailSent": "En bekræftelse er sendt til din email.",
     "emailFailed": "Din booking er registreret, men bekræftelsesmailen kunne ikke sendes. Kontakt os venligst for at bekræfte.",
     "newBooking": "Book en ny tid",
