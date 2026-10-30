@@ -24,14 +24,6 @@ export default defineNuxtConfig({
   css: ['~/assets/main.css'],
   vite: {
     plugins: [tailwindcss()],
-    server: {
-      proxy: {
-        '/server-api': {
-          target: 'https://laser.matmil.dk',
-          changeOrigin: true,
-        }
-      }
-    }
   },
   app: {
     head: {

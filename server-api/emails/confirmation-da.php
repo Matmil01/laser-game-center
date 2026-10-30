@@ -121,7 +121,7 @@
         <!-- Logo GIF -->
         <tr>
           <td align="center" style="padding-bottom:28px;background:#000000;">
-            <img src="https://laser.matmil.dk/icons/logoGif.gif"
+            <img src="https://lasergamecenter.dk/icons/logoGif.gif"
                  alt="Lasergame Center"
                  width="200"
                  height="auto"
